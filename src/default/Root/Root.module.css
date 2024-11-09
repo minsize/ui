@@ -1,0 +1,153 @@
+.Root {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: var(--bg_color);
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: -webkit-fill-available;
+}
+
+.Root--active,
+.Root--back {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* .Root--to-back.Root--animate.Root--active::before,
+.Root--to-next.Root--animate.Root--back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--at-bg_html);
+  z-index: 100;
+} */
+
+
+
+/* Исправляет анимацию с Root */
+/* .Root--back>* {
+  opacity: 0;
+} */
+
+
+.Root__header {
+  position: relative;
+  z-index: 1000;
+  /* padding-top: var(--safe-area-inset-top); */
+}
+
+.Root__header::before {
+  content: " ";
+  display: block;
+  position: relative;
+  height: var(--safe-area-inset-top, 0px);
+  background-color: var(--bg_color);
+}
+
+.Root--back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.Root__isHeader {
+  .Root--back {
+    top: calc(var(--header-height) + var(--safe-area-inset-top, 0px));
+  }
+}
+
+.Root__noneHeader>* {
+  --header-height: 0px !important
+}
+
+
+html[platform="others"] {
+  .Root--animate {
+    -webkit-animation: _androidRootSwap .01s ease forwards;
+    animation: _androidRootSwap .01s ease forwards;
+  }
+}
+
+html[platform="android"] {
+  .Root--back {
+    z-index: 1;
+  }
+
+  .Root--active {
+    position: relative;
+    z-index: 2;
+  }
+
+  .Root--active.Root--animate {
+    -webkit-animation: _androidRootSwap .3s ease forwards;
+    animation: _androidRootSwap .3s ease forwards;
+  }
+}
+
+@keyframes _androidRootSwap {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+html[platform="iOS"] {
+  .Root--back {
+    z-index: 100;
+  }
+
+  .Root--active {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .Root--to-next.Root--active.Root--animate {
+    z-index: 101;
+    -webkit-animation: _iOSRootnextAnimation .3s ease forwards;
+    animation: _iOSRootnextAnimation .3s ease forwards;
+  }
+
+  .Root--to-back.Root--back.Root--animate {
+    z-index: 101;
+    -webkit-animation: _iOSRootbackAnimation .3s ease forwards;
+    animation: _iOSRootbackAnimation .3s ease forwards;
+  }
+}
+
+@keyframes _iOSRootnextAnimation {
+  from {
+    transform: translateY(100%)
+  }
+
+  to {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes _iOSRootbackAnimation {
+  from {
+    transform: translateY(0%)
+  }
+
+  to {
+    transform: translateY(100%)
+  }
+}

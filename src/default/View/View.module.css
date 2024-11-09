@@ -1,0 +1,212 @@
+.View {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: var(--bg_color);
+}
+
+.View--active,
+.View--back {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.View--back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.View--active {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+html[platform="others"] {
+  .View--animate {
+    -webkit-animation: _nextAnimation .01s ease forwards;
+    animation: _nextAnimation .01s ease forwards;
+  }
+}
+
+html[platform="android"] {
+  .View--to-next.View--back.View--animate {
+    -webkit-animation: _androidtoLeft .2s ease forwards;
+    animation: _androidtoLeft .2s ease forwards;
+  }
+
+  .View--to-next.View--active.View--animate {
+    z-index: 101;
+    -webkit-animation: _androidnextAnimation .2s ease forwards;
+    animation: _androidnextAnimation .2s ease forwards;
+  }
+
+
+  .View--to-back.View--back.View--animate {
+    z-index: 101;
+    -webkit-animation: _androidbackAnimation .2s ease forwards;
+    animation: _androidbackAnimation .2s ease forwards;
+  }
+
+  .View--to-back.View--active.View--animate {
+    -webkit-animation: _androidfromLeft .2s ease forwards;
+    animation: _androidfromLeft .2s ease forwards;
+  }
+
+}
+
+@keyframes _androidtoLeft {
+  from {
+    transform: translateX(0%)
+  }
+
+  to {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes _androidfromLeft {
+  from {
+    transform: translateX(0%)
+  }
+
+  to {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes _androidnextAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(15%)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%)
+  }
+}
+
+@keyframes _androidbackAnimation {
+  from {
+    opacity: 1;
+    transform: translateY(0%)
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(15%)
+  }
+}
+
+html[platform="iOS"] {
+
+  .View--to-back.View--animate.View--active::before,
+  .View--to-next.View--animate.View--back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg_color);
+    z-index: 100;
+  }
+
+  .View--to-next.View--back.View--animate {
+    -webkit-animation: _toLeft .4s ease forwards;
+    animation: _toLeft .4s ease forwards;
+  }
+
+  .View--to-next.View--active.View--animate {
+    z-index: 101;
+    -webkit-animation: _nextAnimation .4s ease forwards;
+    animation: _nextAnimation .4s ease forwards;
+  }
+
+  .View--to-next.View--back::before {
+    -webkit-animation: _upShadow .4s ease forwards;
+    animation: _upShadow .4s ease forwards;
+  }
+
+  .View--to-back.View--back.View--animate {
+    z-index: 101;
+    -webkit-animation: _backAnimation .4s ease forwards;
+    animation: _backAnimation .4s ease forwards;
+  }
+
+  .View--to-back.View--active.View--animate {
+    -webkit-animation: _fromLeft .4s ease forwards;
+    animation: _fromLeft .4s ease forwards;
+  }
+
+  .View--to-back.View--active::before {
+    -webkit-animation: _downShadow .4s ease forwards;
+    animation: _downShadow .4s ease forwards;
+  }
+}
+
+@keyframes _upShadow {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes _downShadow {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
+@keyframes _toLeft {
+  from {
+    transform: translateX(0%)
+  }
+
+  to {
+    transform: translateX(-10%)
+  }
+}
+
+@keyframes _fromLeft {
+  from {
+    transform: translateX(-10%)
+  }
+
+  to {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes _nextAnimation {
+  from {
+    transform: translateX(100%)
+  }
+
+  to {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes _backAnimation {
+  from {
+    transform: translateX(0%)
+  }
+
+  to {
+    transform: translateX(100%)
+  }
+}

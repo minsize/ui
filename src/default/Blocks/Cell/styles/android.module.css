@@ -1,0 +1,47 @@
+html[platform="android"] .Cell {
+  padding-left: 16px;
+
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+html[platform="android"] .Cell--selected {
+  border-radius: 8px;
+  background-color: var(--bg_selected);
+  overflow: hidden;
+}
+
+html[platform="android"] .Cell__before {
+  padding: 8px 16px 8px 0px;
+}
+
+html[platform="android"] .Cell__in {
+  padding: 8px 16px 8px 0px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+html[platform="android"] .Cell--separator::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--separator_primary);
+}
+
+
+html[platform="android"] .Cell__children {}
+
+html[platform="android"] .Cell__description {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--text_secondary);
+}
+
+html[platform="android"] .Cell__after {
+  padding-left: 16px;
+}

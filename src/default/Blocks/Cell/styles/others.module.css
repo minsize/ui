@@ -1,0 +1,38 @@
+html[platform="others"] .Cell {
+  padding-left: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  overflow: hidden;
+}
+
+html[platform="others"] .Cell--selected {
+  border-radius: 10px;
+  background-color: var(--bg_selected);
+  overflow: hidden;
+}
+
+html[platform="others"] .Cell__before {
+  padding: 10px 10px 10px 0px;
+}
+
+
+html[platform="others"] .Cell__in {
+  padding: 10px 10px 10px 0px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+
+html[platform="others"] .Cell__children {}
+
+html[platform="others"] .Cell__description {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text_secondary);
+}
+
+html[platform="others"] .Cell__after {
+  padding-left: 10px;
+}

@@ -1,0 +1,42 @@
+/* default colors */
+:root {
+  --text_primary: #ffffff;
+  --text_secondary: #708499;
+  --separator_primary: #2b2f35;
+  --bg_selected: #1d2936;
+
+  --accent_color: #005FB8;
+  --accent_color--text: #FFFFFF;
+  --red_color: #b80000;
+  --red_color--text: #FFFFFF;
+
+  --green_color: #0cb800;
+  --green_color--text: #FFFFFF;
+
+  --opacity_merges: 0.34;
+
+  --opacity_disable: 0.64;
+
+  --radio_color: #AEAEB2;
+  --radio_color--disabled: #8E8E93;
+  --radio_color--selected: #007AFF;
+  --radio_color-hover: #007AFF;
+  --radio_color-active: #000000;
+
+
+  --bg_color: #17212b;
+  --text_primary: #ffffff;
+  --hint_color: #708499;
+  --link_color: #6ab3f3;
+  --button_color: #5288c1;
+  --button_text_color: #ffffff;
+  --secondary_bg_color: #232e3c;
+  --header_bg_color: #17212b;
+  --bottom_bar_bg_color: #FFFFFF;
+  --accent_text_color: #6ab2f2;
+  --section_bg_color: #17212b;
+  --section_header_text_color: #6ab3f3;
+  --section_separator_color: #FFFFFF;
+  --subtitle_text_color: #708499;
+  --destructive_text_color: #ec3942;
+}

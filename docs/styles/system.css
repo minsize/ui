@@ -1,0 +1,77 @@
+html {
+  height: 100%;
+}
+
+body,
+html {
+  touch-action: none !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --header-height: 50px;
+  --app-height: 100vh;
+  height: 10000px;
+}
+
+svg {
+  display: block;
+}
+
+div,
+span {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 0 !important;
+  height: 0 !important;
+  display: none;
+}
+
+* {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+@supports (padding-top: constant(safe-area-inset-top)) {
+  :root {
+    --safe-area-inset-top: constant(safe-area-inset-top);
+    --safe-area-inset-right: constant(safe-area-inset-right);
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+    --safe-area-inset-left: constant(safe-area-inset-left);
+  }
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  :root {
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+  }
+}
+
+:root {
+  --font-common: -apple-system, system-ui, Helvetica Neue, Roboto, sans-serif;
+}
+
+#tc-widget-root {
+  position: fixed;
+  z-index: 111;
+}
+
+#tc-widget-root tc-root>div>div {
+  padding-bottom: var(--safe-area-inset-bottom);
+}

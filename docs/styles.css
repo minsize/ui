@@ -1,0 +1,22 @@
+@import "./styles/system.css";
+@import "./styles/default.css";
+
+/*
+НИКАКИХ цветов ввиде rgb, black,red и т д, только hex
+*/
+
+* {
+
+  --font-common: -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    sans-serif,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    Segoe UI Symbol;
+  font-family: var(--font-common);
+}

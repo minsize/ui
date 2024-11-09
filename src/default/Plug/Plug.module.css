@@ -1,0 +1,98 @@
+.Plug {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.Plug__mode--modal {
+  height: var(--app-height, 400px);
+}
+
+.Plug__mode--lower,
+.Plug__mode--center {
+  height: 100%;
+}
+
+.Plug__mode--center {
+  height: 100%;
+  height: calc(var(--app-height) - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Plug__mode--error {
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .Plug__mode--lower .Plug__in {
+  flex: 1 1;
+} */
+
+.Plug__icon {
+  padding-bottom: 12px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Plug__title {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Plug__description {
+  padding-top: 2px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.Plug__header {
+  margin-bottom: 12px;
+}
+
+.Plug__children {
+  text-align: center;
+  color: var(--inverted-55);
+}
+
+.Plug__action {
+  margin-top: 24px;
+}
+
+.Plug__in {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Plug__action,
+.Plug__children,
+.Plug__header,
+.Plug__icon {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
