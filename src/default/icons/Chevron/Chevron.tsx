@@ -1,13 +1,13 @@
 import style from "./Chevron.module.css"
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 
-interface Chevron extends JSX.HTMLAttributes<SVGElement> {
+interface Chevron extends JSX.HTMLAttributes<SVGSVGElement> {
   type?: "up" | "down" | "left" | "right"
 }
 
 const Chevron: Component<Chevron> = (props) => {
   const merged = mergeProps({ type: "up" }, props)
-  const [local, others] = splitProps(props, ["type", "class", "classList"])
+  const [local, others] = splitProps(merged, ["type", "class", "classList"])
   return (
     <svg
       classList={{
@@ -25,9 +25,8 @@ const Chevron: Component<Chevron> = (props) => {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
+      {...others}
     >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M6 15l6 -6l6 6" />
     </svg>
   )

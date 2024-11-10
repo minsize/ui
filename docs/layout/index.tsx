@@ -2,8 +2,6 @@ import { type Component, type JSX, createSignal, ErrorBoundary } from "solid-js"
 import { Path, Root } from "root/src"
 
 import { useRouter, views } from "router"
-import Modal from "./modal"
-import Popout from "./popout"
 
 import Startup from "./struct/Startup/Startup"
 import Profile from "./struct/Profile/Profile"
@@ -25,7 +23,7 @@ const Layout: Component<Layout> = (props) => {
         return <></>
       }}
     >
-      <Root modal={<Modal />} popout={<Popout />} activeView={activeView()}>
+      <Root activeView={activeView()}>
         <Path nav={views.STARTUP} component={Startup} />
         <Path nav={views.PROFILE} component={Profile} />
       </Root>

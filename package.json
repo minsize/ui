@@ -7,7 +7,8 @@
         "build": "tsc --project config/tsconfig.json && vite build --config config/prod.config.ts",
         "bundle": "npx vite-bundle-visualizer -c ./config/prod.config.ts",
         "odr": "tsc --project config/tsconfig.json && vite build --config config/odr.config.ts",
-        "test": "vitest --config config/vitest.config.ts"
+        "test": "vitest --config config/vitest.config.ts",
+        "lib": "tsc --project config/tsconfig-build.json && vite build --config config/lib.config.ts"
     },
     "devDependencies": {
         "@types/node": "^20.11.24",
@@ -34,6 +35,7 @@
         "elum-state": "^0.8.4",
         "solid-devtools": "^0.30.1",
         "solid-testing-library": "^0.5.1",
+        "vite-plugin-dts": "^4.3.0",
         "vitest": "^2.1.4"
     }
 }
