@@ -1,7 +1,7 @@
-import { Component, splitProps } from "solid-js"
+import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 import { createStore } from "solid-js/store"
-import { JSX } from "solid-js/jsx-runtime"
 import { Dynamic } from "solid-js/web"
+import { leadingAndTrailing, throttle } from "@solid-primitives/scheduled"
 
 import style from "./Events.module.css"
 
@@ -10,18 +10,23 @@ export interface IEvents extends JSX.HTMLAttributes<HTMLElement> {
   disabled?: boolean
   href?: string
   target?: "_blank" | "_self" | "_parent" | "_top"
+  minHover?: number
+  minActive?: number
 }
 
 const isTouchSupport = window && "ontouchstart" in window
 
 const Events: Component<IEvents> = (props) => {
-  const [local, others] = splitProps(props, [
+  const merged = mergeProps({ minHover: 0, minActive: 300 }, props)
+  const [local, others] = splitProps(merged, [
     "class",
     "classList",
     "disabled",
     "type",
     "onClick",
     "href",
+    "minActive",
+    "minHover",
   ])
   const [store, setStore] = createStore({ hover: false, active: false })
 
@@ -32,40 +37,52 @@ const Events: Component<IEvents> = (props) => {
     return false
   }
 
+  const setActive =
+    local.minActive === 0
+      ? (status: boolean) => setStore("active", status)
+      : leadingAndTrailing(
+          throttle,
+          (status: boolean) => setStore("active", status),
+          local.minActive,
+        )
+  const setHover =
+    local.minHover === 0
+      ? (status: boolean) => setStore("hover", status)
+      : leadingAndTrailing(
+          throttle,
+          (status: boolean) => setStore("hover", status),
+          local.minActive,
+        )
+
   const onStart = () =>
-    !local.disabled &&
-    getClickable() &&
-    !store.active &&
-    setStore("active", true)
+    !local.disabled && getClickable() && !store.active && setActive(true)
 
   const onMouseMove = () =>
     !local.disabled &&
     getClickable() &&
     !isTouchSupport &&
     !store.hover &&
-    setStore("hover", true)
+    setHover(true)
 
   const onEnd = () => {
-    setStore({
-      hover: !!(
+    setHover(
+      !!(
         !local.disabled &&
         getClickable() &&
         !isTouchSupport &&
         store.hover &&
         store.active
       ),
-      active: false,
-    })
+    )
+    setActive(false)
   }
 
-  const onMouseLeave = () =>
-    !local.disabled &&
-    getClickable() &&
-    store.hover &&
-    setStore({
-      hover: false,
-      active: false,
-    })
+  const onMouseLeave = () => {
+    if (!local.disabled && getClickable() && store.hover) {
+      setHover(false)
+      setActive(false)
+    }
+  }
 
   const handleClick: JSX.EventHandlerUnion<HTMLElement, MouseEvent> = (
     event,

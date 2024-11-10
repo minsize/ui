@@ -2,10 +2,10 @@ import { createContext } from "solid-js"
 
 export const AccordionStore = createContext<{
   status?: () => boolean
-  onChange?: (status: boolean) => void
+  onChange?: () => void
 }>({})
 
 export const AccordionStoreList = createContext<{
-  status?: (key: string) => boolean
-  onChange?: (status: boolean) => void
+  status?: (uId: string) => boolean
+  onChange?: (uId: string) => boolean
 }>({})

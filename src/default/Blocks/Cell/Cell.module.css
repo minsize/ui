@@ -5,6 +5,7 @@
 @import "./styles/others.module.css";
 
 .Cell {
+  position: relative;
   color: var(--text_primary);
   transition: 0.3s;
 }
@@ -21,7 +22,9 @@
 }
 
 .Cell__content {
+  position: relative;
   width: 100%;
+  z-index: 2;
 }
 
 .Cell__before {
@@ -33,3 +36,24 @@
 .Cell__description {}
 
 .Cell__after {}
+
+.Cell__background {
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.Cell._hover .Cell__background {
+  background-color: var(--cell--hover);
+  opacity: 0.3;
+}
+
+.Cell._active .Cell__background {
+  background-color: var(--cell--hover);
+  opacity: 0.6;
+}

@@ -77,6 +77,55 @@ const Default: Component<Default> = (props) => {
           знает А кто его знает
         </Accordion.Content>
       </Accordion>
+      <Accordion.List
+        onChange={(uId, status) => {
+          console.log(uId, status)
+        }}
+      >
+        <Accordion>
+          <Accordion.Summary description={"А почему бы и нет"}>
+            Что такое безумие?
+          </Accordion.Summary>
+          <Accordion.Content>
+            А кто его знает А кто его знает А кто его знает А кто его знает А
+            кто его знает А кто его знает А кто его знает А кто его знает А кто
+            его знает А кто его знает
+          </Accordion.Content>
+        </Accordion>
+
+        <Accordion>
+          <Accordion.Summary description={"А почему бы и нет"}>
+            Что такое безумие?
+          </Accordion.Summary>
+          <Accordion.Content>
+            А кто его знает А кто его знает А кто его знает А кто его знает А
+            кто его знает А кто его знает А кто его знает А кто его знает А кто
+            его знает А кто его знает
+          </Accordion.Content>
+        </Accordion>
+
+        <Accordion>
+          <Accordion.Summary description={"А почему бы и нет"}>
+            Что такое безумие?
+          </Accordion.Summary>
+          <Accordion.Content>
+            А кто его знает А кто его знает А кто его знает А кто его знает А
+            кто его знает А кто его знает А кто его знает А кто его знает А кто
+            его знает А кто его знает
+          </Accordion.Content>
+        </Accordion>
+
+        <Accordion>
+          <Accordion.Summary description={"А почему бы и нет"}>
+            Что такое безумие?
+          </Accordion.Summary>
+          <Accordion.Content>
+            А кто его знает А кто его знает А кто его знает А кто его знает А
+            кто его знает А кто его знает А кто его знает А кто его знает А кто
+            его знает А кто его знает
+          </Accordion.Content>
+        </Accordion>
+      </Accordion.List>
       <Image
         src={
           "https://sun9-74.userapi.com/impg/fqRztNCdjYo4bvce_SnEznV8dGtj7Q_Np1afog/F8VO347qORI.jpg?size=1001x1001&quality=95&sign=921bd225fb93832d38ac9f9bf4791a31&type=album"

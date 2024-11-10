@@ -6,13 +6,7 @@ import {
 } from "../types"
 import { atom, getter, setter } from "elum-state/solid"
 
-import {
-  Accessor,
-  createEffect,
-  createSignal,
-  onMount,
-  untrack,
-} from "solid-js"
+import { Accessor, createEffect, createSignal, untrack } from "solid-js"
 import { globalSignal } from "elum-state/solid"
 
 export type SmartDataAtom<T, OPTIONS> = {
@@ -238,7 +232,7 @@ export const managerSmartData = <T, OPTIONS>(
     ...data,
     setError: (value: boolean) => _set("isError", value),
     /*
-      Установка статуса лоадера, если не указан будет астановлен автоматически
+      Установка статуса загрузки, если не указан будет установлен автоматически
     */
     setLoad: (value?: boolean) => _set("isLoad", value || !!!data?.data),
   }

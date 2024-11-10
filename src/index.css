@@ -16,8 +16,10 @@
   --green_color--text: #FFFFFF;
 
   --opacity_merges: 0.34;
-
   --opacity_disable: 0.64;
+
+  --cell--hover: #2c3947;
+  --cell--active: #2c3947;
 
   --radio_color: #AEAEB2;
   --radio_color--disabled: #8E8E93;

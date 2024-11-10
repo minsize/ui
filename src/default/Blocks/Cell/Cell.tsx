@@ -64,6 +64,7 @@ const Cell: ComponentCell = (props) => {
           </>
         )}
       </Align>
+      <span class={style.Cell__background} />
     </Events>
   )
 }

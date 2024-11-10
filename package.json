@@ -28,6 +28,7 @@
     "dependencies": {
         "@apiteam/twa-bridge": "^7.1.14",
         "@minsize/utils": "^0.0.5",
+        "@solid-primitives/scheduled": "^1.4.4",
         "@solidjs/testing-library": "^0.8.10",
         "@testing-library/jest-dom": "^6.6.3",
         "elum-state": "^0.8.4",

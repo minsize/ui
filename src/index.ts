@@ -18,4 +18,4 @@ export * from "./default/Forms"
 export * from "./default/templates"
 
 /* Icons */
-export * from "./default/icons"
+export * from "./default/Icons"

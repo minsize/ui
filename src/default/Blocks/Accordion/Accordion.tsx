@@ -1,16 +1,25 @@
 import style from "./Accordion.module.css"
-import { AccordionContent, AccordionSummary } from "./addons"
+import { AccordionContent, AccordionSummary, AccordionList } from "./addons"
 
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
-import { AccordionStore } from "./context"
+import {
+  type JSX,
+  type Component,
+  mergeProps,
+  splitProps,
+  useContext,
+  createUniqueId,
+  createEffect,
+  on,
+} from "solid-js"
+import { AccordionStore, AccordionStoreList } from "./context"
 import { createStore } from "solid-js/store"
 
 interface Accordion
   extends Omit<JSX.HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
-   * Используется для группировки нескольких списков
+   * Примечание: Используйте этот идентификатор только в контексте компонента Accordion.List.
    */
-  key?: string | string
+  key?: string
 
   onChange?: (status: boolean) => void
 }
@@ -18,6 +27,7 @@ interface Accordion
 type ComponentAccordion = Component<Accordion> & {
   Content: typeof AccordionContent
   Summary: typeof AccordionSummary
+  List: typeof AccordionList
 }
 
 type Store = {
@@ -25,19 +35,34 @@ type Store = {
 }
 
 const Accordion: ComponentAccordion = (props) => {
-  const merged = mergeProps({}, props)
+  const merged = mergeProps({ key: createUniqueId() }, props)
   const [local, others] = splitProps(merged, [
     "class",
     "classList",
     "children",
     "onChange",
+    "key",
   ])
+
+  const context = useContext(AccordionStoreList)
 
   const [store, setStore] = createStore<Store>({ status: false })
 
+  createEffect(
+    on(
+      () => context?.status?.(local.key),
+      (status) => {
+        if (typeof status === "boolean") {
+          setStore("status", status)
+        }
+      },
+    ),
+  )
+
   const handlerChange = () => {
-    const status = !!!store.status
+    const status = context?.onChange?.(local.key) ?? !!!store.status
     setStore("status", status)
+
     local.onChange && local.onChange(status)
   }
 
@@ -64,5 +89,6 @@ const Accordion: ComponentAccordion = (props) => {
 
 Accordion.Content = AccordionContent
 Accordion.Summary = AccordionSummary
+Accordion.List = AccordionList
 
 export default Accordion

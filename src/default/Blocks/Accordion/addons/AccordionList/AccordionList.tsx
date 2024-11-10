@@ -1,18 +1,16 @@
 import style from "./AccordionList.module.css"
-import { AccordionStore, AccordionStoreList } from "../../context"
+import { AccordionStoreList } from "../../context"
 
-import { Align, Cell, Events } from "ui"
-
-import { type JSX, type Component, splitProps, useContext } from "solid-js"
-import { createStore } from "solid-js/store"
-import { list } from "postcss"
+import { type JSX, type Component, splitProps } from "solid-js"
+import { createStore, produce } from "solid-js/store"
 
 interface AccordionList
   extends Omit<JSX.HTMLAttributes<HTMLElement>, "onChange"> {
-  onChange?: (status: boolean) => void
+  onChange?: (uId: string, status: boolean) => void
 }
 
 type Store = {
+  lastUId: string
   list: Record<string, boolean>
 }
 
@@ -25,15 +23,58 @@ const AccordionList: Component<AccordionList> = (props) => {
   ])
 
   const [store, setStore] = createStore<Store>({
+    lastUId: "",
     list: {},
   })
 
+  const handlerChange = (uId: string, status: boolean) => {
+    local.onChange && local.onChange(uId, status)
+  }
+
+  const onChange = (uId: string) => {
+    const list = { ...store.list }
+    const status = !list[uId]
+
+    // Object.keys(list).forEach((key) => {
+    //   if (list[key]) {
+    //     handlerChange(key, false)
+    //   }
+    //   list[key] = false
+    // })
+
+    if (store.lastUId !== uId) {
+      list[store.lastUId] = false
+      handlerChange(store.lastUId, false)
+    }
+
+    list[uId] = status
+    handlerChange(uId, status)
+
+    setStore(
+      produce((store) => {
+        store.list = list
+        store.lastUId = uId
+        return store
+      }),
+    )
+
+    return status
+  }
+
   const value = {
-    status: (key: string) => store.list[key],
+    status: (uId: string) => store.list[uId],
+    onChange: onChange,
   }
 
   return (
-    <section>
+    <section
+      class={style.AccordionList}
+      classList={{
+        [`${local.class}`]: !!local.class,
+        ...local.classList,
+      }}
+      {...others}
+    >
       <AccordionStoreList.Provider value={value}>
         {local.children}
       </AccordionStoreList.Provider>
