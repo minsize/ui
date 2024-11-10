@@ -1,0 +1,7 @@
+html[platform="iOS"] .AccordionContent__content {
+  padding: 8px 16px 8px 16px;
+
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 400;
+}

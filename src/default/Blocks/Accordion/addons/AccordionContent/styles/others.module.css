@@ -1,0 +1,6 @@
+html[platform="others"] .AccordionContent__content {
+  padding: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+}

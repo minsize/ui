@@ -11,6 +11,7 @@ import {
   Image,
   Spinner,
   Badge,
+  Accordion,
 } from "root/src"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
@@ -66,6 +67,16 @@ const Default: Component<Default> = (props) => {
 
   return (
     <Panel nav={props.nav}>
+      <Accordion>
+        <Accordion.Summary description={"А почему бы и нет"}>
+          Что такое безумие?
+        </Accordion.Summary>
+        <Accordion.Content>
+          А кто его знает А кто его знает А кто его знает А кто его знает А кто
+          его знает А кто его знает А кто его знает А кто его знает А кто его
+          знает А кто его знает
+        </Accordion.Content>
+      </Accordion>
       <Image
         src={
           "https://sun9-74.userapi.com/impg/fqRztNCdjYo4bvce_SnEznV8dGtj7Q_Np1afog/F8VO347qORI.jpg?size=1001x1001&quality=95&sign=921bd225fb93832d38ac9f9bf4791a31&type=album"

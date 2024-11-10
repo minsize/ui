@@ -1,0 +1,6 @@
+html[platform="windows"] .AccordionContent__content {
+  padding: 14px 12px 14px 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+}

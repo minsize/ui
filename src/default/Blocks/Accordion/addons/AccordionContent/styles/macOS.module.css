@@ -1,0 +1,6 @@
+html[platform="macOS"] .AccordionContent__content {
+  padding: 6px;
+
+  font-size: 17px;
+  font-weight: 500;
+}
