@@ -1,4 +1,30 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["src"]
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "useDefineForClassFields": true,
+    "baseUrl": "../src",
+    "outDir": "static",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "root/*": ["../*"],
+      "ui": ["../src/index"]
+    },
+    "typeRoots": ["../src/index.d.ts"],
+  },
+  "exclude": ["node_modules", "static"],
+  "types": ["*.d.ts", "@testing-library/jest-dom"],
+  "include": ["../src"]
 }

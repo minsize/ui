@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest"
 import { render } from "solid-testing-library"
-import Align from "./Align.jsx" // Путь к вашему компоненту
+import Align from "./Align.js" // Путь к вашему компоненту
 import style from "./Align.module.css" // Путь к вашим стилям
 import { Show } from "../index.js"
 

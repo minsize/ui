@@ -7,10 +7,10 @@ import {
   mergeProps,
   splitProps,
 } from "solid-js"
-import { Align, Show, Touch, useClickOutside } from "../index"
+import { Align, Touch, useClickOutside } from "../index"
 import { createStore, produce } from "solid-js/store"
 import { type GestureEvent } from "../Touch/Touch"
-import { clamp } from "engine"
+import { clamp } from "@minsize/utils"
 
 export interface Swipe extends JSX.HTMLAttributes<HTMLDivElement> {
   before?: JSX.Element

@@ -7,3 +7,4 @@ export { default as Ratio } from "./Ratio/Ratio"
 
 export { default as useClickOutside } from "./utils/useClickOutside"
 export { default as classList } from "./utils/classList"
+export { default as toArray } from "./utils/toArray"
