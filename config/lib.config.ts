@@ -13,16 +13,10 @@ const generator = classGenerator()
 
 const entry = resolve(__dirname, "../src")
 console.log({ entry }, { url: import.meta.url })
+
 export default defineConfig({
   css: {
-    modules: {
-      generateScopedName: (name) => {
-        if (name.startsWith("_")) {
-          return name
-        }
-        return generator()
-      },
-    },
+    modules: false,
   },
   plugins: [
     solidPlugin(),
@@ -31,7 +25,12 @@ export default defineConfig({
     dts({ include: [entry] }),
   ],
   build: {
+    cssCodeSplit: false,
     rollupOptions: {
+      output: {
+        // assetFileNames: "[name][extname]",
+        entryFileNames: "[name].js",
+      },
       external: ["solid-js", "solid-js/web", "solid-js/store"],
       input: Object.fromEntries(
         glob
@@ -50,6 +49,8 @@ export default defineConfig({
           ]),
       ),
     },
+    sourcemap: false,
+    emptyOutDir: true,
     copyPublicDir: false,
     lib: {
       entry: entry + "/index.ts",
