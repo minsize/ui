@@ -12,6 +12,7 @@ import {
   Spinner,
   Badge,
   Accordion,
+  Group,
 } from "root/src"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
@@ -67,20 +68,9 @@ const Default: Component<Default> = (props) => {
 
   return (
     <Panel nav={props.nav}>
-      <Accordion>
-        <Accordion.Summary description={"А почему бы и нет"}>
-          Что такое безумие?
-        </Accordion.Summary>
-        <Accordion.Content>
-          А кто его знает А кто его знает А кто его знает А кто его знает А кто
-          его знает А кто его знает А кто его знает А кто его знает А кто его
-          знает А кто его знает
-        </Accordion.Content>
-      </Accordion>
-      <Accordion.List
-        onChange={(uId, status) => {
-          console.log(uId, status)
-        }}
+      <Group
+        header={<Group.Header>Test Header</Group.Header>}
+        footer={<Group.Footer>Test Footer</Group.Footer>}
       >
         <Accordion>
           <Accordion.Summary description={"А почему бы и нет"}>
@@ -92,40 +82,61 @@ const Default: Component<Default> = (props) => {
             его знает А кто его знает
           </Accordion.Content>
         </Accordion>
+      </Group>
+      <Group
+        header={<Group.Header>Test Header</Group.Header>}
+        footer={<Group.Footer>Test Footer</Group.Footer>}
+      >
+        <Accordion.List
+          onChange={(uId, status) => {
+            console.log(uId, status)
+          }}
+        >
+          <Accordion>
+            <Accordion.Summary description={"А почему бы и нет"}>
+              Что такое безумие?
+            </Accordion.Summary>
+            <Accordion.Content>
+              А кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает
+            </Accordion.Content>
+          </Accordion>
 
-        <Accordion>
-          <Accordion.Summary description={"А почему бы и нет"}>
-            Что такое безумие?
-          </Accordion.Summary>
-          <Accordion.Content>
-            А кто его знает А кто его знает А кто его знает А кто его знает А
-            кто его знает А кто его знает А кто его знает А кто его знает А кто
-            его знает А кто его знает
-          </Accordion.Content>
-        </Accordion>
+          <Accordion>
+            <Accordion.Summary description={"А почему бы и нет"}>
+              Что такое безумие?
+            </Accordion.Summary>
+            <Accordion.Content>
+              А кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает
+            </Accordion.Content>
+          </Accordion>
 
-        <Accordion>
-          <Accordion.Summary description={"А почему бы и нет"}>
-            Что такое безумие?
-          </Accordion.Summary>
-          <Accordion.Content>
-            А кто его знает А кто его знает А кто его знает А кто его знает А
-            кто его знает А кто его знает А кто его знает А кто его знает А кто
-            его знает А кто его знает
-          </Accordion.Content>
-        </Accordion>
+          <Accordion>
+            <Accordion.Summary description={"А почему бы и нет"}>
+              Что такое безумие?
+            </Accordion.Summary>
+            <Accordion.Content>
+              А кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает
+            </Accordion.Content>
+          </Accordion>
 
-        <Accordion>
-          <Accordion.Summary description={"А почему бы и нет"}>
-            Что такое безумие?
-          </Accordion.Summary>
-          <Accordion.Content>
-            А кто его знает А кто его знает А кто его знает А кто его знает А
-            кто его знает А кто его знает А кто его знает А кто его знает А кто
-            его знает А кто его знает
-          </Accordion.Content>
-        </Accordion>
-      </Accordion.List>
+          <Accordion>
+            <Accordion.Summary description={"А почему бы и нет"}>
+              Что такое безумие?
+            </Accordion.Summary>
+            <Accordion.Content>
+              А кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает
+            </Accordion.Content>
+          </Accordion>
+        </Accordion.List>
+      </Group>
       <Image
         src={
           "https://sun9-74.userapi.com/impg/fqRztNCdjYo4bvce_SnEznV8dGtj7Q_Np1afog/F8VO347qORI.jpg?size=1001x1001&quality=95&sign=921bd225fb93832d38ac9f9bf4791a31&type=album"

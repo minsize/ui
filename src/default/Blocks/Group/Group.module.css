@@ -1,0 +1,15 @@
+@import "./styles/iOS.module.css";
+@import "./styles/android.module.css";
+@import "./styles/windows.module.css";
+@import "./styles/macOS.module.css";
+@import "./styles/others.module.css";
+
+.Group {
+  padding: 16px;
+}
+
+.Group__in {
+  border-radius: 10px;
+  background-color: var(--section_bg_color);
+  overflow: hidden;
+}

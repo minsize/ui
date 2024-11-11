@@ -25,7 +25,7 @@
 
 
   --bg_color: #17212b;
-  --text_primary: #ffffff;
+  /* --text_primary: #ffffff;
   --hint_color: #708499;
   --link_color: #6ab3f3;
   --button_color: #5288c1;
@@ -38,5 +38,5 @@
   --section_header_text_color: #6ab3f3;
   --section_separator_color: #FFFFFF;
   --subtitle_text_color: #708499;
-  --destructive_text_color: #ec3942;
+  --destructive_text_color: #ec3942; */
 }
