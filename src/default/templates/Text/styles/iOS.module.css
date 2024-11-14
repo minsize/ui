@@ -43,3 +43,18 @@ html[platform="iOS"] .Text--iOS__weight--600 {
 html[platform="iOS"] .Text--iOS__weight--700 {
   font-weight: 700;
 }
+
+/* Aligns */
+html[platform="iOS"] .Text--iOS__align--start {
+  text-align: left;
+  text-align: start
+}
+
+html[platform="iOS"] .Text--iOS__align--center {
+  text-align: center
+}
+
+html[platform="iOS"] .Text--iOS__align--end {
+  text-align: right;
+  text-align: end
+}

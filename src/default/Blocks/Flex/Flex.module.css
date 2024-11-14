@@ -29,11 +29,23 @@
 }
 
 .Flex__justifyContent--center {
-  justify-items: center;
+  justify-content: center;
 }
 
 .Flex__justifyContent--end {
-  justify-items: flex-start;
+  justify-content: flex-start;
+}
+
+.Flex__justifyContent--space-around {
+  justify-content: space-around;
+}
+
+.Flex__justifyContent--space-between {
+  justify-content: space-between;
+}
+
+.Flex__justifyContent--space-evenly {
+  justify-content: space-evenly;
 }
 
 /* Direction */

@@ -1,14 +1,24 @@
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
-import { createStore } from "solid-js/store"
-import { Dynamic } from "solid-js/web"
-import { leadingAndTrailing, throttle } from "@solid-primitives/scheduled"
-
 import style from "./Events.module.css"
 
-export interface IEvents extends JSX.HTMLAttributes<HTMLElement> {
-  type?: string
+import {
+  type JSX,
+  type Component,
+  type ValidComponent,
+  mergeProps,
+  splitProps,
+  Switch,
+  Match,
+  children,
+} from "solid-js"
+import { createStore } from "solid-js/store"
+import { Dynamic, type DynamicProps } from "solid-js/web"
+import { leadingAndTrailing, throttle } from "@solid-primitives/scheduled"
+
+export interface IEvents<T extends ValidComponent>
+  extends JSX.HTMLAttributes<DynamicProps<T>> {
+  component?: T | ((props: JSX.HTMLAttributes<HTMLElement>) => JSX.Element)
   disabled?: boolean
-  href?: string
+  href?: JSX.HTMLAttributes<DynamicProps<"">>
   target?: "_blank" | "_self" | "_parent" | "_top"
   minHover?: number
   minActive?: number
@@ -16,22 +26,26 @@ export interface IEvents extends JSX.HTMLAttributes<HTMLElement> {
 
 const isTouchSupport = window && "ontouchstart" in window
 
-const Events: Component<IEvents> = (props) => {
-  const merged = mergeProps({ minHover: 0, minActive: 300 }, props)
+const Events = <T extends ValidComponent>(props: IEvents<T>): JSX.Element => {
+  const merged = mergeProps(
+    { component: "div", minHover: 0, minActive: 300 },
+    props,
+  )
   const [local, others] = splitProps(merged, [
     "class",
     "classList",
     "disabled",
-    "type",
+    "component",
     "onClick",
     "href",
     "minActive",
     "minHover",
+    "children",
   ])
   const [store, setStore] = createStore({ hover: false, active: false })
 
   const getClickable = () => {
-    const type = local.href ? "a" : local.type || "div"
+    const type = local.href ? "a" : local.component || "div"
     if (type === "a" && local.href !== undefined) return true
     if (type !== "a" && local.onClick !== undefined) return true
     return false
@@ -89,32 +103,45 @@ const Events: Component<IEvents> = (props) => {
   ) => {
     if (typeof local.onClick === "function" && !local.disabled) {
       event.stopPropagation()
-      local.onClick(event)
+      local.onClick(event as any)
     }
   }
 
+  const _props = {
+    class: local.class,
+    classList: {
+      [style.notallocate]: true,
+      _disabled: local.disabled,
+      _hover: store.hover,
+      _active: store.active,
+      ...local.classList,
+    },
+    onTouchStart: onStart,
+    onTouchEnd: onEnd,
+    onTouchMove: onMouseMove,
+    onMouseMove: onMouseMove,
+    onMouseLeave: onMouseLeave,
+    onMouseDown: onStart,
+    onMouseUp: onEnd,
+    onClick: handleClick,
+    children: local.children,
+  }
+
   return (
-    <Dynamic
-      component={local.href ? "a" : local.type || "div"}
-      class={local.class}
-      classList={{
-        [style.notallocate]: true,
-        _disabled: local.disabled,
-        _hover: store.hover,
-        _active: store.active,
-        ...local.classList,
-      }}
-      onTouchStart={onStart}
-      onTouchEnd={onEnd}
-      onTouchMove={onMouseMove}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      onMouseDown={onStart}
-      onMouseUp={onEnd}
-      onClick={handleClick}
-      href={local.href}
-      {...others}
-    />
+    <Switch
+      fallback={
+        typeof local.component === "function" && local.component(_props)
+      }
+    >
+      <Match when={typeof local.component !== "function"}>
+        <Dynamic
+          component={local.href ? "a" : local.component || "div"}
+          {..._props}
+          {...({ href: local.href } as any)}
+          {...others}
+        />
+      </Match>
+    </Switch>
   )
 }
 

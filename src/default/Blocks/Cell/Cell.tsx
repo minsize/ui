@@ -5,8 +5,10 @@ import { SubTitle, Title } from "./Fonts"
 import { Align, Events, Flex, Show } from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
+import { DynamicProps } from "solid-js/web"
 
-interface Cell extends Omit<JSX.HTMLAttributes<HTMLElement>, "title"> {
+interface Cell
+  extends Omit<JSX.HTMLAttributes<DynamicProps<"article">>, "title"> {
   /**
    * Элемент, который будет отображаться перед основным содержимым ячейки.
    */
@@ -81,7 +83,7 @@ const Cell: ComponentCell = (props) => {
       }}
       {...others}
     >
-      <Align class={style.Cell__content}>
+      <Align component={"article"} class={style.Cell__content}>
         <Align.Before when={!!local.before}>
           <Flex
             alignItems={"center"}
@@ -92,7 +94,7 @@ const Cell: ComponentCell = (props) => {
             {local.before}
           </Flex>
         </Align.Before>
-        <Align.Children>
+        <Align.Children class={style.Cell__in}>
           <Show
             component={"div"}
             class={style.Cell__content}

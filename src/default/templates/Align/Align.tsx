@@ -2,25 +2,27 @@ import style from "./Align.module.css"
 import { Before, Children, After } from "./addons"
 import { Flex } from "ui"
 
-import { type JSX, type Component, splitProps } from "solid-js"
+import { type JSX, mergeProps, splitProps, ValidComponent } from "solid-js"
 import { DynamicProps } from "solid-js/web"
 
-interface Align extends JSX.HTMLAttributes<DynamicProps<"article">> {}
-
-type ComponentAlign = Component<Align> & {
-  Before: typeof Before
-  Children: typeof Children
-  After: typeof After
+interface Align<T extends ValidComponent>
+  extends JSX.HTMLAttributes<DynamicProps<T>> {
+  /**
+   * Компонент, который будет использоваться для рендеринга Flexbox.
+   * По умолчанию используется `span`.
+   */
+  component?: T
 }
 
-const Align: ComponentAlign = (props) => {
-  const [local, others] = splitProps(props, ["class", "classList", "children"])
+const Align = <T extends ValidComponent>(props: Align<T>): JSX.Element => {
+  const merged = mergeProps({ component: "span" }, props) as Align<T>
+  const [local, others] = splitProps(merged, ["class", "classList", "children"])
 
   return (
     <Flex
-      component={"article"}
       alignItems={"center"}
       justifyContent={"center"}
+      direction={"row"}
       class={style.Align}
       classList={{
         ...local.classList,
@@ -34,9 +36,7 @@ const Align: ComponentAlign = (props) => {
 }
 
 Align.Before = Before
-
 Align.Children = Children
-
 Align.After = After
 
 export default Align

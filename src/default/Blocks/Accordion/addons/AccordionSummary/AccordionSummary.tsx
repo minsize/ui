@@ -10,8 +10,9 @@ import {
   useContext,
   mergeProps,
 } from "solid-js"
+import { DynamicProps } from "solid-js/web"
 
-interface AccordionSummary extends JSX.HTMLAttributes<HTMLElement> {
+interface AccordionSummary extends JSX.HTMLAttributes<DynamicProps<"article">> {
   /**
    * Элемент, который будет отображаться перед основным содержимым ячейки.
    */

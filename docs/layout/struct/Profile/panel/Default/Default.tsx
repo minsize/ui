@@ -14,9 +14,11 @@ import {
   Accordion,
   Group,
   Plug,
+  Flex,
 } from "root/src"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
+import { IconElumTeam } from "source"
 
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {
   nav: string
@@ -69,10 +71,25 @@ const Default: Component<Default> = (props) => {
 
   return (
     <Panel nav={props.nav}>
-      {/* <Plug mode={"center"} icon={"1"} title={"3"} subtitle={"4"}>
-        5
-      </Plug> */}
-      <Group
+      <Plug full>
+        <Plug.Container>
+          <Plug.Title>Title</Plug.Title>
+          <Plug.SubTitle>SubTitle</Plug.SubTitle>
+        </Plug.Container>
+        <Plug.Icon>
+          <IconElumTeam color={"white"} height={28} />
+        </Plug.Icon>
+        <Plug.Action>
+          <button>Тут Кнопка</button>
+        </Plug.Action>
+      </Plug>
+
+      {/* <Cell>
+        <Cell.SubTitle>SubTitle</Cell.SubTitle>
+        <Cell.Title>Title</Cell.Title>
+      </Cell> */}
+
+      {/* <Group
         header={<Group.Header>Test Header</Group.Header>}
         footer={<Group.Footer>Test Footer</Group.Footer>}
       >
@@ -269,7 +286,7 @@ const Default: Component<Default> = (props) => {
             </Swipe>
           )}
         </For>
-      </Cell.List>
+      </Cell.List> */}
     </Panel>
   )
 }

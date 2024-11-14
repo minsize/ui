@@ -7,6 +7,7 @@ export type TextObject = {
   color: "accent" | "primary" | "secondary"
   size: "small" | "medium" | "large"
   weight: "400" | "500" | "600" | "700"
+  align?: "start" | "center" | "end"
 }
 
 export type TextProps = {
@@ -50,11 +51,12 @@ const Text: Component<Text> = (props) => {
               ? (local[platform] as Platform)
               : platform
 
-          const { color, size, weight } = local[key] as TextObject
+          const { color, size, weight, align } = local[key] as TextObject
 
           acb[style[`Text--${platform}__color--${color}`]] = !!color
           acb[style[`Text--${platform}__size--${size}`]] = !!size
           acb[style[`Text--${platform}__weight--${weight}`]] = !!weight
+          acb[style[`Text--${platform}__align--${align}`]] = !!align
           return acb
         }, {} as Record<string, boolean>),
 

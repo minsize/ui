@@ -16,7 +16,13 @@ interface Flex<T extends ValidComponent>
   /**
    * Выравнивание элементов по горизонтальной оси.
    */
-  justifyContent?: "start" | "center" | "end"
+  justifyContent?:
+    | "start"
+    | "center"
+    | "end"
+    | "space-around"
+    | "space-between"
+    | "space-evenly"
   /**
    * Направление Flexbox (по горизонтали или вертикали).
    */

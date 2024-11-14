@@ -12,7 +12,7 @@ const Children: Component<Children> = (props) => {
   return (
     <Show
       component={"div"}
-      class={style.children}
+      class={style.Children}
       classList={{
         ...local.classList,
         [`${local.class}`]: !!local.class,
