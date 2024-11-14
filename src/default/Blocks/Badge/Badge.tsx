@@ -2,8 +2,9 @@ import style from "./Badge.module.css"
 import { Align } from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
+import { DynamicProps } from "solid-js/web"
 
-interface Badge extends JSX.HTMLAttributes<HTMLElement> {
+interface Badge extends JSX.HTMLAttributes<DynamicProps<"span">> {
   /**
    * Элемент, который будет отображаться перед основным содержимым значка.
    */
@@ -65,13 +66,9 @@ const Badge: Component<Badge> = (props) => {
       }}
       {...others}
     >
-      {({ Before, Children, After }) => (
-        <>
-          <Before class={style.Badge__before}>{local.before}</Before>
-          <Children class={style.Badge__in}>{local.children}</Children>
-          <After class={style.Badge__after}>{local.after}</After>
-        </>
-      )}
+      <Align.Before class={style.Badge__before} children={local.before} />
+      <Align.Children class={style.Badge__in} children={local.children} />
+      <Align.After class={style.Badge__after} children={local.after} />
     </Align>
   )
 }

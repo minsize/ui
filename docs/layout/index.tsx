@@ -13,21 +13,21 @@ const Layout: Component<Layout> = (props) => {
   const [fc, inc] = createSignal(0)
 
   return (
-    <ErrorBoundary
-      fallback={(err, reset) => {
-        setTimeout(() => {
-          if (fc() > 10) window.location.reload()
-          reset()
-          inc((e) => e + 1)
-        }, 100)
-        return <></>
-      }}
-    >
-      <Root activeView={activeView()}>
-        <Path nav={views.STARTUP} component={Startup} />
-        <Path nav={views.PROFILE} component={Profile} />
-      </Root>
-    </ErrorBoundary>
+    // <ErrorBoundary
+    //   fallback={(err, reset) => {
+    //     setTimeout(() => {
+    //       if (fc() > 10) window.location.reload()
+    //       reset()
+    //       inc((e) => e + 1)
+    //     }, 100)
+    //     return <></>
+    //   }}
+    // >
+    <Root activeView={activeView()}>
+      <Path nav={views.STARTUP} component={Startup} />
+      <Path nav={views.PROFILE} component={Profile} />
+    </Root>
+    //</ErrorBoundary>
   )
 }
 

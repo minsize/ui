@@ -155,19 +155,17 @@ const Swipe: Component<Swipe> = (props) => {
           transform: `translateX(${store.swipeX}px)`,
         }}
       >
-        {({ Before, Children, After }) => (
-          <>
-            <Before ref={refBefore! as any} class={style.Swipe__before}>
-              {local.before}
-            </Before>
+        <Align.Before ref={refBefore! as any} class={style.Swipe__before}>
+          {local.before}
+        </Align.Before>
 
-            <Children class={style.Swipe__children}>{local.children}</Children>
+        <Align.Children class={style.Swipe__children}>
+          {local.children}
+        </Align.Children>
 
-            <After ref={refAfter! as any} class={style.Swipe__after}>
-              {local.after}
-            </After>
-          </>
-        )}
+        <Align.After ref={refAfter! as any} class={style.Swipe__after}>
+          {local.after}
+        </Align.After>
       </Align>
     </Touch>
   )

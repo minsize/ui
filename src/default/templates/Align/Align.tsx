@@ -1,50 +1,20 @@
-import { DynamicProps } from "solid-js/web"
-import { Show, Flex } from "ui"
 import style from "./Align.module.css"
+import { Before, Children, After } from "./addons"
+import { Flex } from "ui"
 
-import { type JSX, type Component, splitProps, ValidComponent } from "solid-js"
+import { type JSX, type Component, splitProps } from "solid-js"
+import { DynamicProps } from "solid-js/web"
 
-interface CreateElement<T extends ValidComponent>
-  extends JSX.HTMLAttributes<DynamicProps<T>> {
-  when?: boolean
+interface Align extends JSX.HTMLAttributes<DynamicProps<"article">> {}
+
+type ComponentAlign = Component<Align> & {
+  Before: typeof Before
+  Children: typeof Children
+  After: typeof After
 }
 
-interface Align
-  extends Omit<JSX.HTMLAttributes<DynamicProps<"article">>, "children"> {
-  children: ({
-    Before,
-    Children,
-    After,
-  }: {
-    Before: Component<CreateElement<"span">>
-    Children: Component<CreateElement<"div">>
-    After: Component<CreateElement<"span">>
-  }) => JSX.Element
-}
-
-const Align: Component<Align> = (props) => {
+const Align: ComponentAlign = (props) => {
   const [local, others] = splitProps(props, ["class", "classList", "children"])
-
-  const CreateElement =
-    <T extends ValidComponent>(
-      component: T,
-      className: string,
-    ): Component<JSX.HTMLAttributes<DynamicProps<T>>> =>
-    (props) => {
-      const [local, others] = splitProps(props, ["class", "classList"])
-
-      return (
-        <Show
-          component={component}
-          class={className}
-          classList={{
-            ...local.classList,
-            [`${local.class}`]: !!local.class,
-          }}
-          {...others}
-        />
-      )
-    }
 
   return (
     <Flex
@@ -58,13 +28,15 @@ const Align: Component<Align> = (props) => {
       }}
       {...others}
     >
-      {local.children({
-        Before: CreateElement("span", style.Align__before),
-        Children: CreateElement("div", style.Align__children),
-        After: CreateElement("span", style.Align__after),
-      })}
+      {local.children}
     </Flex>
   )
 }
+
+Align.Before = Before
+
+Align.Children = Children
+
+Align.After = After
 
 export default Align

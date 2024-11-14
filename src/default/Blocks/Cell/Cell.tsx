@@ -4,13 +4,7 @@ import { SubTitle, Title } from "./Fonts"
 
 import { Align, Events, Flex, Show } from "ui"
 
-import {
-  type JSX,
-  type Component,
-  splitProps,
-  mergeProps,
-  children,
-} from "solid-js"
+import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 
 interface Cell extends Omit<JSX.HTMLAttributes<HTMLElement>, "title"> {
   /**
@@ -88,37 +82,33 @@ const Cell: ComponentCell = (props) => {
       {...others}
     >
       <Align class={style.Cell__content}>
-        {({ Before, Children, After }) => (
-          <>
-            <Before when={!!local.before}>
-              <Flex
-                alignItems={"center"}
-                justifyContent={"center"}
-                component={"span"}
-                class={style.Cell__before}
-              >
-                {local.before}
-              </Flex>
-            </Before>
-            <Children class={style.Cell__in}>
-              <Show
-                component={"div"}
-                class={style.Cell__content}
-                children={local.children}
-              />
-              <After when={!!local.after}>
-                <Flex
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  component={"span"}
-                  class={style.Cell__after}
-                >
-                  {local.after}
-                </Flex>
-              </After>
-            </Children>
-          </>
-        )}
+        <Align.Before when={!!local.before}>
+          <Flex
+            alignItems={"center"}
+            justifyContent={"center"}
+            component={"span"}
+            class={style.Cell__before}
+          >
+            {local.before}
+          </Flex>
+        </Align.Before>
+        <Align.Children>
+          <Show
+            component={"div"}
+            class={style.Cell__content}
+            children={local.children}
+          />
+          <Align.After when={!!local.after}>
+            <Flex
+              alignItems={"center"}
+              justifyContent={"center"}
+              component={"span"}
+              class={style.Cell__after}
+            >
+              {local.after}
+            </Flex>
+          </Align.After>
+        </Align.Children>
       </Align>
       <span class={style.Cell__background} />
     </Events>
