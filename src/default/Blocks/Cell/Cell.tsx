@@ -2,7 +2,7 @@ import style from "./Cell.module.css"
 import { CellList } from "./addons"
 import { SubTitle, Title } from "./Fonts"
 
-import { Align, Events, Show } from "ui"
+import { Align, Events, Flex, Show } from "ui"
 
 import {
   type JSX,
@@ -90,14 +90,32 @@ const Cell: ComponentCell = (props) => {
       <Align class={style.Cell__content}>
         {({ Before, Children, After }) => (
           <>
-            <Before class={style.Cell__before} children={local.before} />
+            <Before when={!!local.before}>
+              <Flex
+                alignItems={"center"}
+                justifyContent={"center"}
+                component={"span"}
+                class={style.Cell__before}
+              >
+                {local.before}
+              </Flex>
+            </Before>
             <Children class={style.Cell__in}>
-              <div class={style.Cell__content}>
-                {local.children}
-                {/* <Show class={style.Cell__title} children={local.children} />
-                <Show class={style.Cell__subtitle} children={local.subtitle} /> */}
-              </div>
-              <After class={style.Cell__after} children={local.after} />
+              <Show
+                component={"div"}
+                class={style.Cell__content}
+                children={local.children}
+              />
+              <After when={!!local.after}>
+                <Flex
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  component={"span"}
+                  class={style.Cell__after}
+                >
+                  {local.after}
+                </Flex>
+              </After>
             </Children>
           </>
         )}

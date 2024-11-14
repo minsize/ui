@@ -1,14 +1,12 @@
 .Align {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .Align__before {}
 
 .Align__children {
   position: relative;
-  width: 100%;
+  width   : 100%;
 }
 
 .Align__after {}

@@ -13,6 +13,7 @@ import {
   Badge,
   Accordion,
   Group,
+  Plug,
 } from "root/src"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
@@ -68,6 +69,9 @@ const Default: Component<Default> = (props) => {
 
   return (
     <Panel nav={props.nav}>
+      {/* <Plug mode={"center"} icon={"1"} title={"3"} subtitle={"4"}>
+        5
+      </Plug> */}
       <Group
         header={<Group.Header>Test Header</Group.Header>}
         footer={<Group.Footer>Test Footer</Group.Footer>}

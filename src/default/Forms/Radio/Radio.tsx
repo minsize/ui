@@ -1,12 +1,23 @@
 import style from "./Radio.module.css"
-
-import { Events, Show } from "root/src/default/templates"
+import { Events } from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 
 interface Radio extends JSX.HTMLAttributes<HTMLInputElement> {
+  /**
+   * Указывает, является ли радиокнопка выбранной.
+   */
   checked?: boolean
+  /**
+   * Обработчик изменения состояния радиокнопки.
+   * Принимает два аргумента:
+   * - `prev`: Предыдущее состояние радиокнопки (true или false).
+   * - `next`: Новое состояние радиокнопки (true или false).
+   */
   onChecked?: (prev: boolean, next: boolean) => void
+  /**
+   * Указывает, является ли радиокнопка отключенной.
+   */
   disabled?: boolean
 }
 

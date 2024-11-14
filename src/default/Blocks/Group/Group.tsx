@@ -6,11 +6,13 @@ import { Footer, Header } from "./Fonts"
 
 interface Group extends JSX.HTMLAttributes<HTMLElement> {
   /**
-   *todo Рекомендация: Используйте компонент: Group.Header
+   * Заголовок группы.
+   * Рекомендуем использовать компонент: `Group.Header`
    */
   header?: JSX.Element
   /**
-   *todo Рекомендация: Используйте компонент: Group.Footer
+   * Подвал группы.
+   * Рекомендуем использовать компонент: `Group.Footer`
    */
   footer?: JSX.Element
 }

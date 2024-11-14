@@ -4,12 +4,33 @@ import { Align } from "ui"
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 
 interface Badge extends JSX.HTMLAttributes<HTMLElement> {
+  /**
+   * Элемент, который будет отображаться перед основным содержимым значка.
+   */
   before?: JSX.Element
+  /**
+   * Элемент, который будет отображаться после основного содержимого значка.
+   */
   after?: JSX.Element
-
+  /**
+   * Определяет внешний вид значка.
+   */
   appearance?: "accent" | "green" | "red"
+  /**
+   * Определяет стиль отображения бейджа.
+   *
+   * - **filled**: Бейдж заполнен цветом, без границ.
+   * - **merges**: Бейдж сливается с фоном, создавая эффект "заливки".
+   * - **outline**: Бейдж отображается с контуром (обводкой), без заливки.
+   */
   mode?: "filled" | "merges" | "outline"
+  /**
+   * Определяет размер значка.
+   */
   size?: "small" | "medium" | "large"
+  /**
+   * Определяет тип содержимого значка.
+   */
   type?: "text" | "icon"
 }
 

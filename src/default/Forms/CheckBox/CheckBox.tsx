@@ -6,8 +6,20 @@ import { Events } from "root/src/default/templates"
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 
 interface CheckBox extends JSX.HTMLAttributes<HTMLInputElement> {
+  /**
+   * Указывает, является ли чекбокс отмеченным.
+   */
   checked?: boolean
+  /**
+   * Обработчик изменения состояния чекбокса.
+   * Принимает два аргумента:
+   * - `prev`: Предыдущее состояние чекбокса (true или false).
+   * - `next`: Новое состояние чекбокса (true или false).
+   */
   onChecked?: (prev: boolean, next: boolean) => void
+  /**
+   * Указывает, является ли чекбокс отключенным.
+   */
   disabled?: boolean
 }
 
