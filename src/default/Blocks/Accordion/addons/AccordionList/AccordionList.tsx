@@ -6,6 +6,14 @@ import { createStore, produce } from "solid-js/store"
 
 interface AccordionList
   extends Omit<JSX.HTMLAttributes<HTMLElement>, "onChange"> {
+  /**
+   * Обработчик изменения состояния элемента Accordion в списке.
+   *
+   * Вызывается при изменении состояния любого элемента Accordion в списке.
+   *
+   * @param uId - Уникальный идентификатор элемента Accordion, состояние которого изменилось.
+   * @param status - Текущее состояние элемента Accordion (true - раскрыт, false - свернут).
+   */
   onChange?: (uId: string, status: boolean) => void
 }
 

@@ -17,10 +17,19 @@ import { createStore } from "solid-js/store"
 interface Accordion
   extends Omit<JSX.HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
+   * Уникальный идентификатор элемента Accordion.
+   *
    * Примечание: Используйте этот идентификатор только в контексте компонента Accordion.List.
    */
   key?: string
 
+  /**
+   * Обработчик изменения состояния элемента Accordion.
+   *
+   * Вызывается при изменении состояния элемента (раскрытие/свертывание).
+   *
+   * @param status - Текущее состояние элемента Accordion (true - раскрыт, false - свернут).
+   */
   onChange?: (status: boolean) => void
 }
 

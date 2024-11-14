@@ -7,6 +7,9 @@ import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
 
 interface Plug extends Omit<JSX.HTMLAttributes<DynamicProps<"div">>, "title"> {
+  /**
+   * Определяет, должен ли элемент отображаться в полноэкранном режиме.
+   */
   full?: boolean
 }
 

@@ -18,7 +18,7 @@ export interface IEvents<T extends ValidComponent>
   extends JSX.HTMLAttributes<DynamicProps<T>> {
   component?: T | ((props: JSX.HTMLAttributes<HTMLElement>) => JSX.Element)
   disabled?: boolean
-  href?: JSX.HTMLAttributes<DynamicProps<"">>
+  href?: string
   target?: "_blank" | "_self" | "_parent" | "_top"
   minHover?: number
   minActive?: number
