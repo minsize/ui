@@ -4,9 +4,21 @@ import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 export type Platform = "iOS" | "android" | "macOS" | "windows" | "others"
 
 export type TextObject = {
-  color: "accent" | "primary" | "secondary"
-  size: "small" | "medium" | "large"
+  /**
+   * Цвет текста.
+   */
+  color: "accent" | "primary" | "secondary" | "inherit"
+  /**
+   * Размер текста.
+   */
+  size: "small" | "medium" | "large" | "x-large" | "xx-large"
+  /**
+   * Жирность шрифта.
+   */
   weight: "400" | "500" | "600" | "700"
+  /**
+   * Выравнивание текста.
+   */
   align?: "start" | "center" | "end"
 }
 

@@ -27,6 +27,16 @@ html[platform="iOS"] .Text--iOS__size--large {
   line-height: var(--font_height--large);
 }
 
+html[platform="iOS"] .Text--iOS__size--x-large {
+  font-size  : var(--font_size--x-large);
+  line-height: var(--font_height--x-large);
+}
+
+html[platform="iOS"] .Text--iOS__size--xx-large {
+  font-size  : var(--font_size--xx-large);
+  line-height: var(--font_height--xx-large);
+}
+
 /* Weight */
 html[platform="iOS"] .Text--iOS__weight--400 {
   font-weight: 400;

@@ -9,10 +9,12 @@
 
   --link_color: #005FB8;
 
-  --accent_color      : #005FB8;
-  --accent_color--text: #FFFFFF;
-  --red_color         : #b80000;
-  --red_color--text   : #FFFFFF;
+  --primary_color      : #FFFFFF;
+  --primary_color--text: #000000;
+  --accent_color       : #005FB8;
+  --accent_color--text : #FFFFFF;
+  --red_color          : #b80000;
+  --red_color--text    : #FFFFFF;
 
   --green_color      : #0cb800;
   --green_color--text: #FFFFFF;
@@ -40,6 +42,12 @@ html[platform="iOS"] {
 
   --font_size--large  : 16px;
   --font_height--large: 20px;
+
+  --font_size--x-large  : 18px;
+  --font_height--x-large: 22px;
+
+  --font_size--xx-large  : 20px;
+  --font_height--xx-large: 24px;
 }
 
 html[platform="android"] {
@@ -51,4 +59,10 @@ html[platform="android"] {
 
   --font_size--large  : 18px;
   --font_height--large: 22px;
+
+  --font_size--x-large  : 20px;
+  --font_height--x-large: 24px;
+
+  --font_size--xx-large  : 22px;
+  --font_height--xx-large: 26px;
 }

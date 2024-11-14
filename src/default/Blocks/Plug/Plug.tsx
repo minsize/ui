@@ -33,6 +33,7 @@ const Plug: ComponentPlug = (props) => {
   return (
     <Flex
       component={"div"}
+      class={style.Plug}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
@@ -41,7 +42,6 @@ const Plug: ComponentPlug = (props) => {
       }}
       direction={"column"}
       justifyContent={"center"}
-      class={style.Plug}
       {...others}
     >
       {local.children}

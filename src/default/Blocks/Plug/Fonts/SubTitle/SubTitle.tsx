@@ -17,7 +17,7 @@ const SubTitle: Component<SubTitle> = (props) => {
         ...local.classList,
       }}
       iOS={{
-        size: "medium",
+        size: "large",
         weight: "400",
         color: "secondary",
         align: "center",

@@ -1,28 +1,27 @@
-import style from "./Title.module.css"
+import style from "./SubTitle.module.css"
 import { Text } from "ui"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 
-interface Title extends JSX.HTMLAttributes<HTMLSpanElement> {}
+interface SubTitle extends JSX.HTMLAttributes<HTMLSpanElement> {}
 
-const Title: Component<Title> = (props) => {
+const SubTitle: Component<SubTitle> = (props) => {
   const merged = mergeProps({}, props)
   const [local, others] = splitProps(merged, ["class", "classList", "children"])
 
   return (
     <Text
-      class={style.Title}
+      class={style.SubTitle}
       classList={{
-        [`${local.class}`]: !!local.class,
         ...local.classList,
+        [`${local.class}`]: !!local.class,
       }}
       iOS={{
-        size: "xx-large",
-        weight: "500",
-        color: "primary",
-        align: "center",
+        size: "small",
+        weight: "400",
+        color: "inherit",
       }}
-      android={"iOS"}
+      android="iOS"
       macOS={"iOS"}
       windows={"iOS"}
       others={"iOS"}
@@ -33,4 +32,4 @@ const Title: Component<Title> = (props) => {
   )
 }
 
-export default Title
+export default SubTitle

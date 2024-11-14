@@ -6,3 +6,4 @@ export { default as Link } from "./Link/Link"
 export { default as Accordion } from "./Accordion/Accordion"
 export { default as Group } from './Group/Group';
 export { default as Flex } from './Flex/Flex';
+export { default as Button } from './Button/Button';

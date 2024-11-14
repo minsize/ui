@@ -15,6 +15,8 @@ import {
   Group,
   Plug,
   Flex,
+  Button,
+  IconChevron,
 } from "root/src"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
@@ -71,18 +73,54 @@ const Default: Component<Default> = (props) => {
 
   return (
     <Panel nav={props.nav}>
-      <Plug full>
+      <Cell>
+        <Cell.SubTitle>SubTitle</Cell.SubTitle>
+        <Cell.Title>Title</Cell.Title>
+      </Cell>
+
+      <Cell
+        after={
+          <Button stretched appearance={"primary"}>
+            <Button.Icon>
+              <IconChevron type={"left"} />
+            </Button.Icon>
+            <Button.Container>
+              <Button.Title>Title</Button.Title>
+              <Button.SubTitle>SubTitle asf fas</Button.SubTitle>
+            </Button.Container>
+            <Button.Icon>
+              <IconChevron type={"right"} />
+            </Button.Icon>
+          </Button>
+        }
+      >
+        <Cell.SubTitle>SubTitle</Cell.SubTitle>
+        <Cell.Title>Title</Cell.Title>
+      </Cell>
+      <Button appearance={"accent"} mode={"outline"}>
+        <Button.Icon>
+          <IconChevron type={"left"} />
+        </Button.Icon>
+        <Button.Container>
+          <Button.Title>Title</Button.Title>
+          <Button.SubTitle>SubTitle asf fas</Button.SubTitle>
+        </Button.Container>
+        <Button.Icon>
+          <IconChevron type={"right"} />
+        </Button.Icon>
+      </Button>
+      {/* <Plug full>
         <Plug.Container>
+          <Plug.Icon>
+            <IconElumTeam color={"white"} height={28} />
+          </Plug.Icon>
           <Plug.Title>Title</Plug.Title>
           <Plug.SubTitle>SubTitle</Plug.SubTitle>
         </Plug.Container>
-        <Plug.Icon>
-          <IconElumTeam color={"white"} height={28} />
-        </Plug.Icon>
         <Plug.Action>
           <button>Тут Кнопка</button>
         </Plug.Action>
-      </Plug>
+      </Plug> */}
 
       {/* <Cell>
         <Cell.SubTitle>SubTitle</Cell.SubTitle>

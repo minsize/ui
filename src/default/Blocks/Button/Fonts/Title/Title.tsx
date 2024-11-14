@@ -13,16 +13,15 @@ const Title: Component<Title> = (props) => {
     <Text
       class={style.Title}
       classList={{
-        [`${local.class}`]: !!local.class,
         ...local.classList,
+        [`${local.class}`]: !!local.class,
       }}
       iOS={{
-        size: "xx-large",
+        size: "medium",
         weight: "500",
-        color: "primary",
-        align: "center",
+        color: "inherit",
       }}
-      android={"iOS"}
+      android="iOS"
       macOS={"iOS"}
       windows={"iOS"}
       others={"iOS"}

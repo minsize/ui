@@ -6,4 +6,5 @@
 
 .Text {
   display: block;
+  color  : inherit;
 }

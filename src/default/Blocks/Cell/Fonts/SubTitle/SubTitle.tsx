@@ -11,6 +11,11 @@ const SubTitle: Component<SubTitle> = (props) => {
   return (
     <Show when={!!local.children} native>
       <Text
+        class={style.SubTitle}
+        classList={{
+          ...local.classList,
+          [`${local.class}`]: !!local.class,
+        }}
         iOS={{
           size: "small",
           weight: "400",

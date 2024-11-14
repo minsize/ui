@@ -4,6 +4,10 @@ import { Events, IEvents } from "ui"
 import { type JSX, mergeProps, splitProps, ValidComponent } from "solid-js"
 
 interface Link<T extends ValidComponent> extends IEvents<T> {
+  /**
+   * Компонент, который будет использоваться для рендеринга Flexbox.
+   * По умолчанию используется `a` при href или `button`.
+   */
   component?: T
 }
 

@@ -11,6 +11,11 @@ const Title: Component<Title> = (props) => {
   return (
     <Show when={!!local.children} native>
       <Text
+        class={style.Title}
+        classList={{
+          ...local.classList,
+          [`${local.class}`]: !!local.class,
+        }}
         iOS={{
           size: "medium",
           weight: "400",

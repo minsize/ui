@@ -1,0 +1,61 @@
+@import "./styles/iOS.module.css";
+@import "./styles/android.module.css";
+@import "./styles/windows.module.css";
+@import "./styles/macOS.module.css";
+@import "./styles/others.module.css";
+
+.Button {
+  position     : relative;
+  appearance   : none;
+  background   : transparent;
+  border       : none;
+  outline      : none;
+  /* overflow  : hidden; */
+  box-sizing   : border-box;
+
+  padding: var(--button__padding-vertical) var(--button__padding-horizontal);
+}
+
+.Button--stretched {
+  width: 100%;
+}
+
+.Button__in {
+  position: relative;
+  z-index : 2;
+  gap     : var(--button__gap);
+}
+
+/* Appearance */
+.Button__appearance--accent {}
+
+.Button__appearance--primary {}
+
+.Button__appearance--secondary {}
+
+/* Size */
+.Button__size--small {}
+
+.Button__size--medium {}
+
+.Button__size--large {}
+
+/* Size */
+.Button__mode--filled {}
+
+.Button__mode--outline {}
+
+.Button__mode--merges {}
+
+.Button__background {
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  z-index         : 1;
+  background-color: var(--button_background);
+  border-radius   : inherit;
+
+  transition: 0.3;
+}
