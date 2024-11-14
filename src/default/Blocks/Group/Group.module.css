@@ -7,9 +7,3 @@
 .Group {
   padding: 16px;
 }
-
-.Group__in {
-  border-radius: 10px;
-  background-color: var(--section_bg_color);
-  overflow: hidden;
-}

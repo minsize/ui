@@ -4,16 +4,17 @@
 ```jsx
 const Example = () => {
   return (
-    <Group
-      header={<Group.Header>Header</Group.Header>}
-      footer={<Group.Footer>Footer</Group.Footer>}
-    >
-      <Cell.List>
+    <Group full>
+      <Group.Header>Header</Plug.Header>
+      <Group.Container>
         <Cell>Павел Дуров</Cell>
         <Cell>Илон Маск</Cell>
         <Cell>Петя Камушкин</Cell>
-      </Cell.List>
-    </Group>
+      </Group.Container>
+      <Group.Footer>
+        Footer
+      </Group.Footer>
+    </Plug>
   )
 }
 ```

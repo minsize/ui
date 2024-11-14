@@ -89,38 +89,36 @@ const Default: Component<Default> = (props) => {
         <Cell.Title>Title</Cell.Title>
       </Cell> */}
 
-      {/* <Group
-        header={<Group.Header>Test Header</Group.Header>}
-        footer={<Group.Footer>Test Footer</Group.Footer>}
-      >
-        <Accordion>
-          <Accordion.Summary>
-            <Accordion.Summary.Title>
-              Что такое безумие?
-            </Accordion.Summary.Title>
-            <Accordion.Summary.SubTitle>
-              А почему бы и нет
-            </Accordion.Summary.SubTitle>
-          </Accordion.Summary>
+      <Group>
+        <Group.Header>Test Header</Group.Header>
+        <Group.Container>
+          <Accordion>
+            <Accordion.Summary>
+              <Accordion.Summary.Title>
+                Что такое безумие?
+              </Accordion.Summary.Title>
+              <Accordion.Summary.SubTitle>
+                А почему бы и нет
+              </Accordion.Summary.SubTitle>
+            </Accordion.Summary>
 
-          <Accordion.Content>
-            <Accordion.Content.Title>
-              А кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает
-            </Accordion.Content.Title>
-            <Accordion.Content.SubTitle>
-              А кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает
-            </Accordion.Content.SubTitle>
-          </Accordion.Content>
-        </Accordion>
+            <Accordion.Content>
+              <Accordion.Content.Title>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.Title>
+              <Accordion.Content.SubTitle>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.SubTitle>
+            </Accordion.Content>
+          </Accordion>
+        </Group.Container>
+        <Group.Footer>Test Footer</Group.Footer>
       </Group>
-      <Group
-        header={<Group.Header>Test Header</Group.Header>}
-        footer={<Group.Footer>Test Footer</Group.Footer>}
-      >
+      <Group>
         <Accordion.List
           onChange={(uId, status) => {
             console.log(uId, status)
@@ -286,7 +284,7 @@ const Default: Component<Default> = (props) => {
             </Swipe>
           )}
         </For>
-      </Cell.List> */}
+      </Cell.List>
     </Panel>
   )
 }

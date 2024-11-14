@@ -1,36 +1,20 @@
 import style from "./Group.module.css"
-import { Show } from "ui"
-
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
+import { Container } from "./addons"
 import { Footer, Header } from "./Fonts"
 
-interface Group extends JSX.HTMLAttributes<HTMLElement> {
-  /**
-   * Заголовок группы.
-   * Рекомендуем использовать компонент: `Group.Header`
-   */
-  header?: JSX.Element
-  /**
-   * Подвал группы.
-   * Рекомендуем использовать компонент: `Group.Footer`
-   */
-  footer?: JSX.Element
-}
+import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
+
+interface Group extends JSX.HTMLAttributes<HTMLElement> {}
 
 interface ComponentGroup extends Component<Group> {
   Header: typeof Header
   Footer: typeof Footer
+  Container: typeof Container
 }
 
 const Group: ComponentGroup = (props) => {
   const merged = mergeProps({}, props)
-  const [local, others] = splitProps(merged, [
-    "class",
-    "classList",
-    "children",
-    "header",
-    "footer",
-  ])
+  const [local, others] = splitProps(merged, ["class", "classList", "children"])
 
   return (
     <section
@@ -41,18 +25,13 @@ const Group: ComponentGroup = (props) => {
       }}
       {...others}
     >
-      <Show when={!!local.header} native>
-        {local.header}
-      </Show>
-      <div class={style.Group__in}>{local.children}</div>
-      <Show when={!!local.footer} native>
-        {local.footer}
-      </Show>
+      {local.children}
     </section>
   )
 }
 
 Group.Header = Header
 Group.Footer = Footer
+Group.Container = Container
 
 export default Group
