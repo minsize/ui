@@ -9,6 +9,14 @@ export type TextObject = {
   weight: "400" | "500" | "600" | "700"
 }
 
+export type TextProps = {
+  iOS: TextObject | Omit<Platform, "iOS">
+  android: TextObject | Omit<Platform, "android">
+  macOS: TextObject | Omit<Platform, "macOS">
+  windows: TextObject | Omit<Platform, "windows">
+  others: TextObject | Omit<Platform, "others">
+}
+
 interface Text extends JSX.HTMLAttributes<HTMLSpanElement> {
   iOS: TextObject | Omit<Platform, "iOS">
   android: TextObject | Omit<Platform, "android">

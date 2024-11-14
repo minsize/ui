@@ -2,7 +2,7 @@ import style from "./Group.module.css"
 import { Show } from "ui"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
-import { GroupFooter, GroupHeader } from "./addons"
+import { Footer, Header } from "./Fonts"
 
 interface Group extends JSX.HTMLAttributes<HTMLElement> {
   /**
@@ -16,8 +16,8 @@ interface Group extends JSX.HTMLAttributes<HTMLElement> {
 }
 
 interface ComponentGroup extends Component<Group> {
-  Header: typeof GroupHeader
-  Footer: typeof GroupFooter
+  Header: typeof Header
+  Footer: typeof Footer
 }
 
 const Group: ComponentGroup = (props) => {
@@ -50,7 +50,7 @@ const Group: ComponentGroup = (props) => {
   )
 }
 
-Group.Header = GroupHeader
-Group.Footer = GroupFooter
+Group.Header = Header
+Group.Footer = Footer
 
 export default Group

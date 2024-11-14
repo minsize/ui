@@ -1,25 +1,65 @@
 import style from "./Cell.module.css"
 import { CellList } from "./addons"
+import { SubTitle, Title } from "./Fonts"
 
-import { Align, Events, Show } from "root/src/default/templates"
+import { Align, Events, Show } from "ui"
 
-import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
+import {
+  type JSX,
+  type Component,
+  splitProps,
+  mergeProps,
+  children,
+} from "solid-js"
 
-interface Cell extends JSX.HTMLAttributes<HTMLElement> {
-  before?: JSX.Element
-  after?: JSX.Element
-  description?: JSX.Element
-  separator?: boolean
-  disabled?: boolean
-
+interface Cell extends Omit<JSX.HTMLAttributes<HTMLElement>, "title"> {
   /**
-   * Если блок должен быть активным то указываем true
+   * Элемент, который будет отображаться перед основным содержимым ячейки.
+   */
+  before?: JSX.Element
+  /**
+   * Элемент, который будет отображаться после основного содержимого ячейки.
+   */
+  after?: JSX.Element
+  /**
+   * Заголовок ячейки.
+   * Рекомендуем использовать компонент: `Cell.Title`
+   */
+  children?: JSX.Element
+  /**
+   * Дополнительный текст (подзаголовок), который будет отображаться под основным текстом ячейки.
+   *
+   * Рекомендуем использовать компонент: `Cell.SubTitle`
+   *
+   * @deprecated
+   */
+  subtitle?: JSX.Element
+  /**
+   * Указывает, должен ли быть отображен разделитель под ячейкой.
+   */
+  separator?: boolean
+  /**
+   * Указывает, является ли ячейка неактивной.
+   */
+  disabled?: boolean
+  /**
+   * Указывает, должна ли ячейка быть выделена (активна).
    */
   selected?: boolean
+  /**
+   * !НЕ ГОТОВ
+   * Управляет видимостью иконки шеврона `›`
+   *
+   * - `auto` - добавляет шеврон справа только для платформы `ios`;
+   * - `always` - всегда показывает шеврон.
+   */
+  expandable?: "auto" | "always"
 }
 
 type ComponentCell = Component<Cell> & {
   List: typeof CellList
+  Title: typeof Title
+  SubTitle: typeof SubTitle
 }
 
 const Cell: ComponentCell = (props) => {
@@ -27,10 +67,10 @@ const Cell: ComponentCell = (props) => {
   const [local, others] = splitProps(merged, [
     "class",
     "classList",
-    "children",
     "before",
     "after",
-    "description",
+    "children",
+    "subtitle",
     "separator",
     "selected",
   ])
@@ -53,11 +93,9 @@ const Cell: ComponentCell = (props) => {
             <Before class={style.Cell__before} children={local.before} />
             <Children class={style.Cell__in}>
               <div class={style.Cell__content}>
-                <Show class={style.Cell__children} children={local.children} />
-                <Show
-                  class={style.Cell__description}
-                  children={local.description}
-                />
+                {local.children}
+                {/* <Show class={style.Cell__title} children={local.children} />
+                <Show class={style.Cell__subtitle} children={local.subtitle} /> */}
               </div>
               <After class={style.Cell__after} children={local.after} />
             </Children>
@@ -70,15 +108,7 @@ const Cell: ComponentCell = (props) => {
 }
 
 Cell.List = CellList
+Cell.Title = Title
+Cell.SubTitle = SubTitle
 
 export default Cell
-
-const Example = () => {
-  return (
-    <Cell.List>
-      <Cell>Павел Дуров</Cell>
-      <Cell>Илон Маск</Cell>
-      <Cell>Петя Камушкин</Cell>
-    </Cell.List>
-  )
-}

@@ -12,22 +12,45 @@ import {
 } from "solid-js"
 
 interface AccordionSummary extends JSX.HTMLAttributes<HTMLElement> {
+  /**
+   * Элемент, который будет отображаться перед основным содержимым ячейки.
+   */
   before?: JSX.Element
-  description?: JSX.Element
+  /**
+   * Заголовок ячейки.
+   * Рекомендуем использовать компонент: `Accordion.Summary.Title`
+   */
+  children?: JSX.Element
+  /**
+   * Дополнительный текст (подзаголовок), который будет отображаться под основным текстом ячейки.
+   *
+   * Рекомендуем использовать компонент: `Accordion.Summary.SubTitle`
+   *
+   * @deprecated
+   */
+  subtitle?: JSX.Element
+  /**
+   * Указывает, является ли ячейка неактивной.
+   */
   disabled?: boolean
+  /**
+   * Указывает, должен ли быть отображен разделитель под ячейкой.
+   */
   separator?: boolean
 }
 
-const AccordionSummary: Component<AccordionSummary> = (props) => {
+type ComponentAccordionSummary = Component<AccordionSummary> & {
+  Title: typeof Cell.Title
+  SubTitle: typeof Cell.SubTitle
+}
+
+const AccordionSummary: ComponentAccordionSummary = (props) => {
   const merged = mergeProps({ separator: false }, props)
   const [local, others] = splitProps(merged, [
     "class",
     "classList",
     "children",
-    "before",
-    "description",
     "disabled",
-    "separator",
   ])
 
   const context = useContext(AccordionStore)
@@ -40,10 +63,6 @@ const AccordionSummary: Component<AccordionSummary> = (props) => {
     <Cell
       class={style.AccordionSummary}
       onClick={handlerClick}
-      before={local.before}
-      description={local.description}
-      disabled={local.disabled}
-      separator={local.separator}
       after={
         <span>
           {local.disabled ? (
@@ -56,10 +75,15 @@ const AccordionSummary: Component<AccordionSummary> = (props) => {
           )}
         </span>
       }
+      selected={context.status?.()}
+      {...others}
     >
       {local.children}
     </Cell>
   )
 }
+
+AccordionSummary.Title = Cell.Title
+AccordionSummary.SubTitle = Cell.SubTitle
 
 export default AccordionSummary

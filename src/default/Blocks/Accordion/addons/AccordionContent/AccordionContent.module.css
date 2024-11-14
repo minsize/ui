@@ -6,10 +6,14 @@
 
 .AccordionContent {
   transition: 0.2s;
-  position: relative;
-  overflow: hidden;
-  color: var(--text_secondary);
+  position  : relative;
+  overflow  : hidden;
+  color     : var(--text_secondary);
   box-sizing: border-box;
+}
+
+.AccordionContent__content {
+  display: block;
 }
 
 .AccordionContent__height--inherit {

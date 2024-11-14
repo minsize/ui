@@ -5,17 +5,19 @@
 @import "./styles/others.module.css";
 
 .Cell {
-  position: relative;
-  color: var(--text_primary);
+  position  : relative;
+  color     : var(--text_primary);
   transition: 0.3s;
 }
 
 .Cell__in {
-  display: flex;
+  display    : flex;
   align-items: center;
 }
 
+
 .Cell__in--separator::after {}
+
 
 .Cell._disabled {
   opacity: var(--opacity_disable);
@@ -23,37 +25,43 @@
 
 .Cell__content {
   position: relative;
-  width: 100%;
-  z-index: 2;
+  width   : 100%;
+  z-index : 2;
 }
 
 .Cell__before {
   position: relative;
 }
 
-.Cell__children {}
+.Cell__title {}
 
-.Cell__description {}
+.Cell__subtitle {}
 
 .Cell__after {}
 
 .Cell__background {
   transition: 0.3s;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  opacity: 0;
-  z-index: 1;
+  position  : absolute;
+  left      : 0;
+  right     : 0;
+  top       : 0;
+  bottom    : 0;
+  opacity   : 0;
+  z-index   : 1;
 }
 
 .Cell._hover .Cell__background {
   background-color: var(--cell--hover);
-  opacity: 0.3;
+  opacity         : 0.3;
 }
 
 .Cell._active .Cell__background {
-  background-color: var(--cell--hover);
-  opacity: 0.6;
+  background-color: var(--cell--active);
+  opacity         : 0.6;
+}
+
+.Cell--selected>.Cell__background {
+  background-color: var(--cell--select);
+  overflow        : hidden;
+  opacity         : 1;
 }

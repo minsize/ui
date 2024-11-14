@@ -1,14 +1,10 @@
 html[platform="macOS"] .Cell {
   padding-left: 6px;
-
-  font-size: 17px;
-  font-weight: 500;
 }
 
-html[platform="macOS"] .Cell--selected {
+html[platform="macOS"] .Cell--selected>.Cell__background {
   border-radius: 13px;
-  background-color: var(--accent_color);
-  overflow: hidden;
+  overflow     : hidden;
 }
 
 html[platform="macOS"] .Cell__before {
@@ -16,28 +12,24 @@ html[platform="macOS"] .Cell__before {
 }
 
 html[platform="macOS"] .Cell__in {
-  padding: 6px 6px 6px 0px;
+  padding   : 6px 6px 6px 0px;
   min-height: 44px;
   box-sizing: border-box;
 }
 
 html[platform="macOS"] .Cell--separator>.Cell__content>.Cell__in::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
+  position        : absolute;
+  content         : "";
+  left            : 0;
+  right           : 0;
+  bottom          : 0;
+  height          : 1px;
   background-color: var(--separator_primary);
 }
 
-html[platform="macOS"] .Cell__children {}
+html[platform="macOS"] .Cell__title {}
 
-html[platform="macOS"] .Cell__description {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--text_secondary);
-}
+html[platform="macOS"] .Cell__subtitle {}
 
 html[platform="macOS"] .Cell__after {
   padding-left: 8px;

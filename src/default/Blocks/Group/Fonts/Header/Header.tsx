@@ -1,13 +1,13 @@
-import style from "./GroupHeader.module.css"
+import style from "./Header.module.css"
 import { Text } from "ui"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 
-interface GroupHeader extends JSX.HTMLAttributes<HTMLSpanElement> {
+interface Header extends JSX.HTMLAttributes<HTMLSpanElement> {
   mode?: "accent" | "primary"
 }
 
-const GroupHeader: Component<GroupHeader> = (props) => {
+const Header: Component<Header> = (props) => {
   const merged = mergeProps({ mode: "accent" }, props)
   const [local, others] = splitProps(merged, [
     "class",
@@ -18,12 +18,11 @@ const GroupHeader: Component<GroupHeader> = (props) => {
 
   return (
     <Text
-      class={style.GroupHeader}
+      class={style.Header}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
       }}
-      {...others}
       iOS={{
         color: local.mode === "accent" ? "primary" : "secondary",
         weight: "500",
@@ -37,10 +36,11 @@ const GroupHeader: Component<GroupHeader> = (props) => {
       macOS={"iOS"}
       windows={"iOS"}
       others={"iOS"}
+      {...others}
     >
       {local.children}
     </Text>
   )
 }
 
-export default GroupHeader
+export default Header

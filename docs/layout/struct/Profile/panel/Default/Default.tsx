@@ -73,13 +73,26 @@ const Default: Component<Default> = (props) => {
         footer={<Group.Footer>Test Footer</Group.Footer>}
       >
         <Accordion>
-          <Accordion.Summary description={"А почему бы и нет"}>
-            Что такое безумие?
+          <Accordion.Summary>
+            <Accordion.Summary.Title>
+              Что такое безумие?
+            </Accordion.Summary.Title>
+            <Accordion.Summary.SubTitle>
+              А почему бы и нет
+            </Accordion.Summary.SubTitle>
           </Accordion.Summary>
+
           <Accordion.Content>
-            А кто его знает А кто его знает А кто его знает А кто его знает А
-            кто его знает А кто его знает А кто его знает А кто его знает А кто
-            его знает А кто его знает
+            <Accordion.Content.Title>
+              А кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает
+            </Accordion.Content.Title>
+            <Accordion.Content.SubTitle>
+              А кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает А кто его знает А кто его знает А
+              кто его знает А кто его знает
+            </Accordion.Content.SubTitle>
           </Accordion.Content>
         </Accordion>
       </Group>
@@ -93,46 +106,72 @@ const Default: Component<Default> = (props) => {
           }}
         >
           <Accordion>
-            <Accordion.Summary description={"А почему бы и нет"}>
-              Что такое безумие?
+            <Accordion.Summary>
+              <Accordion.Summary.Title>
+                Что такое безумие?
+              </Accordion.Summary.Title>
+              <Accordion.Summary.SubTitle>
+                А почему бы и нет
+              </Accordion.Summary.SubTitle>
             </Accordion.Summary>
+
             <Accordion.Content>
-              А кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает
+              <Accordion.Content.Title>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.Title>
+              <Accordion.Content.SubTitle>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.SubTitle>
             </Accordion.Content>
           </Accordion>
-
           <Accordion>
-            <Accordion.Summary description={"А почему бы и нет"}>
-              Что такое безумие?
+            <Accordion.Summary>
+              <Accordion.Summary.Title>
+                Что такое безумие?
+              </Accordion.Summary.Title>
+              <Accordion.Summary.SubTitle>
+                А почему бы и нет
+              </Accordion.Summary.SubTitle>
             </Accordion.Summary>
+
             <Accordion.Content>
-              А кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает
+              <Accordion.Content.Title>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.Title>
+              <Accordion.Content.SubTitle>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.SubTitle>
             </Accordion.Content>
           </Accordion>
-
           <Accordion>
-            <Accordion.Summary description={"А почему бы и нет"}>
-              Что такое безумие?
+            <Accordion.Summary>
+              <Accordion.Summary.Title>
+                Что такое безумие?
+              </Accordion.Summary.Title>
+              <Accordion.Summary.SubTitle>
+                А почему бы и нет
+              </Accordion.Summary.SubTitle>
             </Accordion.Summary>
-            <Accordion.Content>
-              А кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает
-            </Accordion.Content>
-          </Accordion>
 
-          <Accordion>
-            <Accordion.Summary description={"А почему бы и нет"}>
-              Что такое безумие?
-            </Accordion.Summary>
             <Accordion.Content>
-              А кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает А кто его знает А кто его знает А
-              кто его знает А кто его знает
+              <Accordion.Content.Title>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.Title>
+              <Accordion.Content.SubTitle>
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает А кто его знает А кто его знает
+                А кто его знает А кто его знает
+              </Accordion.Content.SubTitle>
             </Accordion.Content>
           </Accordion>
         </Accordion.List>

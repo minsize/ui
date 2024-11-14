@@ -1,22 +1,26 @@
-import style from "./GroupFooter.module.css"
+import style from "./Footer.module.css"
 import { Text } from "ui"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 
-interface GroupFooter extends JSX.HTMLAttributes<HTMLSpanElement> {}
+interface Footer extends JSX.HTMLAttributes<HTMLSpanElement> {}
 
-const GroupFooter: Component<GroupFooter> = (props) => {
-  const merged = mergeProps({}, props)
-  const [local, others] = splitProps(merged, ["class", "classList", "children"])
+const Footer: Component<Footer> = (props) => {
+  const merged = mergeProps({ mode: "accent" }, props)
+  const [local, others] = splitProps(merged, [
+    "class",
+    "classList",
+    "children",
+    "mode",
+  ])
 
   return (
     <Text
-      class={style.GroupFooter}
+      class={style.Footer}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
       }}
-      {...others}
       iOS={{
         color: "secondary",
         weight: "400",
@@ -26,10 +30,11 @@ const GroupFooter: Component<GroupFooter> = (props) => {
       macOS={"iOS"}
       windows={"iOS"}
       others={"iOS"}
+      {...others}
     >
       {local.children}
     </Text>
   )
 }
 
-export default GroupFooter
+export default Footer

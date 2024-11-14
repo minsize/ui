@@ -13,18 +13,18 @@ html[platform="iOS"] .Text--iOS__color--secondary {
 
 /* Size */
 html[platform="iOS"] .Text--iOS__size--small {
-  font-size: 12px;
-  line-height: var(--line_height_12);
+  font-size  : var(--font_size--small);
+  line-height: var(--font_height--small);
 }
 
 html[platform="iOS"] .Text--iOS__size--medium {
-  font-size: 14px;
-  line-height: var(--line_height_14);
+  font-size  : var(--font_size--medium);
+  line-height: var(--font_height--medium);
 }
 
 html[platform="iOS"] .Text--iOS__size--large {
-  font-size: 16px;
-  line-height: var(--line_height_16);
+  font-size  : var(--font_size--large);
+  line-height: var(--font_height--large);
 }
 
 /* Weight */
