@@ -1,19 +1,29 @@
 import style from "./Flex.module.css"
-import {
-  type JSX,
-  type Component,
-  type ValidComponent,
-  mergeProps,
-  splitProps,
-} from "solid-js"
+import { type JSX, type ValidComponent, mergeProps, splitProps } from "solid-js"
 import { Dynamic, type DynamicProps } from "solid-js/web"
 
 interface Flex<T extends ValidComponent>
   extends JSX.HTMLAttributes<DynamicProps<T>> {
+  /**
+   * Компонент, который будет использоваться для рендеринга Flexbox.
+   * По умолчанию используется `div`.
+   */
   component?: T
+  /**
+   * Выравнивание элементов по вертикальной оси.
+   */
   alignItems?: "start" | "center" | "end" | "baseline" | "stretch"
+  /**
+   * Выравнивание элементов по горизонтальной оси.
+   */
   justifyContent?: "start" | "center" | "end"
+  /**
+   * Направление Flexbox (по горизонтали или вертикали).
+   */
   direction?: "row" | "column"
+  /**
+   * Определяет, должен ли порядок элементов быть обратный.
+   */
   reverse?: boolean
 }
 
