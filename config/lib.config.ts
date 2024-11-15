@@ -15,9 +15,9 @@ const entry = resolve(__dirname, "../src")
 console.log({ entry }, { url: import.meta.url })
 
 export default defineConfig({
-  css: {
-    modules: false,
-  },
+  // css: {
+  //   modules: false,
+  // },
   plugins: [
     solidPlugin(),
     tsconfigPaths(),
@@ -30,6 +30,10 @@ export default defineConfig({
       output: {
         // assetFileNames: "[name][extname]",
         entryFileNames: "[name].js",
+        assetFileNames: ({ name }) => {
+          const [[, ext]] = Array.from((name || "").matchAll(/.([0-9-a-z]+)$/g))
+          return `${ext}/[hash].${ext}`
+        },
       },
       external: ["solid-js", "solid-js/web", "solid-js/store"],
       input: Object.fromEntries(

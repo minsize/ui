@@ -4,7 +4,7 @@ import { Events, type IEvents } from "ui"
 
 import { type Component, splitProps, mergeProps } from "solid-js"
 
-interface ImageOverlay extends IEvents {
+interface ImageOverlay extends IEvents<"button"> {
   visibility?: "always" | "hover"
   theme?: "dark" | "light"
 }
@@ -29,7 +29,7 @@ const ImageOverlay: Component<ImageOverlay> = (props) => {
 
   return (
     <Events
-      type={"button"}
+      component={"button"}
       class={style.ImageOverlay}
       classList={{
         [style[`ImageOverlay__visibility--${local.visibility}`]]:

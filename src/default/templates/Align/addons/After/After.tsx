@@ -5,7 +5,7 @@ import { type JSX, type Component, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
 
 interface After extends JSX.HTMLAttributes<DynamicProps<"span">> {
-  when?: Boolean
+  when?: boolean
 }
 
 const After: Component<After> = (props) => {

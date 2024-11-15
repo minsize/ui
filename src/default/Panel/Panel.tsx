@@ -1,3 +1,5 @@
+import style from "./Panel.module.css"
+
 import {
   Component,
   createEffect,
@@ -6,8 +8,6 @@ import {
   splitProps,
 } from "solid-js"
 import { JSX } from "solid-js/jsx-runtime"
-
-import style from "./Panel.module.css"
 
 interface Panel extends JSX.HTMLAttributes<HTMLDivElement> {
   nav: string
