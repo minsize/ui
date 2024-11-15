@@ -1,10 +1,10 @@
-import style from "./Badge.module.css"
-import { Align } from "ui"
+import { styles } from "./styles"
+import { type HTMLAttributes, Align, useStyle } from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
-import { DynamicProps } from "solid-js/web"
+import { type DynamicProps } from "solid-js/web"
 
-interface Badge extends JSX.HTMLAttributes<DynamicProps<"span">> {
+interface Badge extends HTMLAttributes<DynamicProps<"span">> {
   /**
    * Элемент, который будет отображаться перед основным содержимым значка.
    */
@@ -36,6 +36,7 @@ interface Badge extends JSX.HTMLAttributes<DynamicProps<"span">> {
 }
 
 const Badge: Component<Badge> = (props) => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps(
     { appearance: "accent", mode: "filled", size: "medium", type: "text" },
     props,
@@ -50,6 +51,7 @@ const Badge: Component<Badge> = (props) => {
     "mode",
     "size",
     "type",
+    "platform",
   ])
 
   return (

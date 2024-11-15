@@ -54,3 +54,13 @@
 | [Align.Before](/src/default/templates/Align/addons/Before)                          | &#9989;  | &#9989;  | &#9989;  | &#9989;  | &#9989;  | &#9989;  |
 | [Align.Children](/src/default/templates/Align/addons/Children)                      | &#9989;  | &#9989;  | &#9989;  | &#9989;  | &#9989;  | &#9989;  |
 | [Align.After](/src/default/templates/Align/addons/After)                            | &#9989;  | &#9989;  | &#9989;  | &#9989;  | &#9989;  | &#9989;  |
+
+
+## Что нужно сделать
+
+- Input
+- TextArea
+- Select - Выпадающий список
+- Компонент для перетаскивания Cell 
+- Компонент для загрузки фотографий
+  

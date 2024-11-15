@@ -1,12 +1,13 @@
-import style from "./Button.module.css"
-import { Events, Flex } from "ui"
+import { styles } from "./styles"
 import { Icon, Container } from "./addons"
 import { SubTitle, Title } from "./Fonts"
+
+import { type HTMLAttributes, Events, Flex, useStyle } from "ui"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
 
-interface Button extends JSX.HTMLAttributes<DynamicProps<"button">> {
+interface Button extends HTMLAttributes<DynamicProps<"button">> {
   /**
    * Цвет кнопки.
    */
@@ -45,6 +46,7 @@ type ComponentButton = Component<Button> & {
 }
 
 const Button: ComponentButton = (props) => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps(
     {
       appearance: "accent",
@@ -61,6 +63,7 @@ const Button: ComponentButton = (props) => {
     "size",
     "mode",
     "stretched",
+    "platform",
   ])
 
   return (

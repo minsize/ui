@@ -84,7 +84,7 @@ const Default: Component<Default> = (props) => {
             </Button.Icon>
             <Button.Container>
               <Button.Title>Title</Button.Title>
-              <Button.SubTitle>SubTitle asf fas</Button.SubTitle>
+              <Button.SubTitle>SubTitle</Button.SubTitle>
             </Button.Container>
             <Button.Icon>
               <IconChevron type={"right"} />
