@@ -1,8 +1,9 @@
-import { Ratio } from "root/src/default/templates"
 import style from "./Grid.module.css"
+import { generateColor } from "./libs"
+
+import { Ratio } from "ui"
 
 import { type Component, For, type JSX, splitProps } from "solid-js"
-import { generateColor } from "./libs"
 
 interface Grid
   extends Omit<JSX.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {

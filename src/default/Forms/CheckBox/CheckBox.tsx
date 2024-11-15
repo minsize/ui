@@ -1,7 +1,6 @@
-import { IconCheck } from "root/src"
 import style from "./CheckBox.module.css"
 
-import { Events } from "root/src/default/templates"
+import { IconCheck, Events } from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 

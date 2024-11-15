@@ -4,7 +4,7 @@ import { getPercentage, getPosition } from "./libs"
 import { type Component, type JSX, createEffect, splitProps } from "solid-js"
 import { createStore } from "solid-js/store"
 
-import { type GestureEvent, Touch, Ratio } from "root/src"
+import { type GestureEvent, Touch, Ratio } from "ui"
 
 import { clamp, HSVtoRGB, RGBtoHSV } from "@minsize/utils"
 
