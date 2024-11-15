@@ -8,9 +8,8 @@ export { default as Ratio } from "./Ratio/Ratio"
 export { default as useClickOutside } from "./utils/useClickOutside"
 export { default as classList } from "./utils/classList"
 export { default as toArray } from "./utils/toArray"
-export {
-  default as Text,
-  type Platform,
-  type TextObject,
-  type TextProps,
-} from "./Text/Text"
+export { default as usePlatform, classPlatform } from "./utils/usePlatform"
+export { default as createStyle } from "./utils/createStyle"
+export { default as useStyle } from "./utils/useStyle"
+
+export { default as Text, type TextProps } from "./Text/Text"

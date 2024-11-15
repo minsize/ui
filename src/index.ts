@@ -19,3 +19,6 @@ export * from "./default/templates"
 
 /* Icons */
 export * from "./default/Icons"
+
+/* Types */
+export * from "./types/index"

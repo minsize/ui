@@ -2,13 +2,11 @@ import style from "./Events.module.css"
 
 import {
   type JSX,
-  type Component,
   type ValidComponent,
   mergeProps,
   splitProps,
   Switch,
   Match,
-  children,
 } from "solid-js"
 import { createStore } from "solid-js/store"
 import { Dynamic, type DynamicProps } from "solid-js/web"
@@ -22,6 +20,7 @@ export interface IEvents<T extends ValidComponent>
   target?: "_blank" | "_self" | "_parent" | "_top"
   minHover?: number
   minActive?: number
+  platform?: string
 }
 
 const isTouchSupport = window && "ontouchstart" in window
@@ -107,7 +106,7 @@ const Events = <T extends ValidComponent>(props: IEvents<T>): JSX.Element => {
     }
   }
 
-  const _props = {
+  const _props = () => ({
     class: local.class,
     classList: {
       [style.notallocate]: true,
@@ -125,18 +124,18 @@ const Events = <T extends ValidComponent>(props: IEvents<T>): JSX.Element => {
     onMouseUp: onEnd,
     onClick: handleClick,
     children: local.children,
-  }
+  })
 
   return (
     <Switch
       fallback={
-        typeof local.component === "function" && local.component(_props)
+        typeof local.component === "function" && local.component(_props())
       }
     >
       <Match when={typeof local.component !== "function"}>
         <Dynamic
           component={local.href ? "a" : local.component || "div"}
-          {..._props}
+          {..._props()}
           {...({ href: local.href } as any)}
           {...others}
         />

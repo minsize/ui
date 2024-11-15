@@ -1,28 +1,28 @@
-html[platform="others"] .Cell {
+.Cell {
   padding-left: 10px;
 }
 
-html[platform="others"] .Cell--selected>.Cell__background {
+.Cell--selected>.Cell__background {
   border-radius: 10px;
   overflow     : hidden;
 }
 
-html[platform="others"] .Cell__before {
+.Cell__before {
   padding: 10px 10px 10px 0px;
 }
 
 
-html[platform="others"] .Cell__in {
+.Cell__in {
   padding   : 10px 10px 10px 0px;
   min-height: 44px;
   box-sizing: border-box;
 }
 
 
-html[platform="others"] .Cell__title {}
+.Cell__title {}
 
-html[platform="others"] .Cell__subtitle {}
+.Cell__subtitle {}
 
-html[platform="others"] .Cell__after {
+.Cell__after {
   padding-left: 10px;
 }

@@ -9,7 +9,7 @@ import {
   onMount,
 } from "solid-js"
 import { createStore } from "solid-js/store"
-import { toArray } from "ui"
+import { usePlatform, toArray } from "ui"
 
 import style from "./Root.module.css"
 
@@ -49,17 +49,10 @@ const Root: Component<Root> = (props) => {
     show: false,
   })
 
-  onMount(() => {
-    let platform = "others"
-    if (/iPhone|iPad|iPod|Mac OS|Macintosh/i.test(navigator.userAgent)) {
-      platform = "iOS"
-    } else if (/Android|Linux/i.test(navigator.userAgent)) {
-      platform = "android"
-    }
+  const platform = usePlatform()
 
-    document.documentElement.classList.add(platform)
-
-    document.documentElement.setAttribute("platform", platform)
+  createEffect(() => {
+    document.documentElement.setAttribute("platform", platform())
   })
 
   createEffect(() => {

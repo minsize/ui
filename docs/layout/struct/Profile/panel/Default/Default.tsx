@@ -13,14 +13,11 @@ import {
   Badge,
   Accordion,
   Group,
-  Plug,
-  Flex,
   Button,
   IconChevron,
 } from "root/src"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
-import { IconElumTeam } from "source"
 
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {
   nav: string
@@ -79,6 +76,7 @@ const Default: Component<Default> = (props) => {
       </Cell>
 
       <Cell
+        platform={"windows"}
         after={
           <Button stretched appearance={"primary"}>
             <Button.Icon>

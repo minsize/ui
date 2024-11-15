@@ -1,23 +1,13 @@
-html[platform="android"] .Cell {
+.Cell {
   padding-left: 16px;
 }
 
-html[platform="android"] .Cell--selected>.Cell__background {
+.Cell--selected>.Cell__background {
   border-radius: 8px;
   overflow     : hidden;
 }
 
-html[platform="android"] .Cell__before {
-  padding: 8px 16px 8px 0px;
-}
-
-html[platform="android"] .Cell__in {
-  padding   : 8px 16px 8px 0px;
-  min-height: 44px;
-  box-sizing: border-box;
-}
-
-html[platform="android"] .Cell--separator::after {
+.Cell--separator::after {
   position        : absolute;
   content         : "";
   left            : 0;
@@ -27,11 +17,21 @@ html[platform="android"] .Cell--separator::after {
   background-color: var(--separator_primary);
 }
 
+.Cell__before {
+  padding: 8px 16px 8px 0px;
+}
 
-html[platform="android"] .Cell__title {}
+.Cell__in {
+  padding   : 8px 16px 8px 0px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
 
-html[platform="android"] .Cell__subtitle {}
 
-html[platform="android"] .Cell__after {
+.Cell__title {}
+
+.Cell__subtitle {}
+
+.Cell__after {
   padding-left: 16px;
 }

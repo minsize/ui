@@ -1,14 +1,13 @@
-import style from "./Cell.module.css"
+import { styles } from "./styles"
 import { CellList } from "./addons"
 import { SubTitle, Title } from "./Fonts"
 
-import { Align, Events, Flex, Show } from "ui"
+import { type HTMLAttributes, Align, Events, Flex, Show, useStyle } from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
-import { DynamicProps } from "solid-js/web"
+import { type DynamicProps } from "solid-js/web"
 
-interface Cell
-  extends Omit<JSX.HTMLAttributes<DynamicProps<"article">>, "title"> {
+interface Cell extends Omit<HTMLAttributes<DynamicProps<"article">>, "title"> {
   /**
    * Элемент, который будет отображаться перед основным содержимым ячейки.
    */
@@ -59,6 +58,8 @@ type ComponentCell = Component<Cell> & {
 }
 
 const Cell: ComponentCell = (props) => {
+  const style = useStyle(styles, props.platform)
+
   const merged = mergeProps({ separator: true }, props)
   const [local, others] = splitProps(merged, [
     "class",
@@ -69,6 +70,7 @@ const Cell: ComponentCell = (props) => {
     "subtitle",
     "separator",
     "selected",
+    "platform",
   ])
 
   return (

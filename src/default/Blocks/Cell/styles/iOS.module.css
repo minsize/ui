@@ -1,23 +1,13 @@
-html[platform="iOS"] .Cell {
+.Cell {
   padding-left: 16px;
 }
 
-html[platform="iOS"] .Cell--selected>.Cell__background {
+.Cell--selected>.Cell__background {
   border-radius: 13px;
   overflow     : hidden;
 }
 
-html[platform="iOS"] .Cell__before {
-  padding: 8px 8px 8px 0px;
-}
-
-html[platform="iOS"] .Cell__in {
-  padding   : 8px 16px 8px 0px;
-  min-height: 44px;
-  box-sizing: border-box;
-}
-
-html[platform="iOS"] .Cell--separator>.Cell__content>.Cell__in::after {
+.Cell--separator>.Cell__content>.Cell__in::after {
   position        : absolute;
   content         : "";
   left            : 0;
@@ -27,10 +17,20 @@ html[platform="iOS"] .Cell--separator>.Cell__content>.Cell__in::after {
   background-color: var(--separator_primary);
 }
 
-html[platform="iOS"] .Cell__title {}
+.Cell__before {
+  padding: 8px 8px 8px 0px;
+}
 
-html[platform="iOS"] .Cell__subtitle {}
+.Cell__in {
+  padding   : 8px 16px 8px 0px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
 
-html[platform="iOS"] .Cell__after {
+.Cell__title {}
+
+.Cell__subtitle {}
+
+.Cell__after {
   padding-left: 8px;
 }

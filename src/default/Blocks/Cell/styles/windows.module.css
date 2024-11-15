@@ -1,17 +1,17 @@
-html[platform="windows"] .Cell {
+.Cell {
   padding-left: 12px;
 }
 
-html[platform="windows"] .Cell--selected>.Cell__background {
+.Cell--selected>.Cell__background {
   border-radius: 4px;
   overflow     : hidden;
 }
 
-html[platform="windows"] .Cell__before {
+.Cell__before {
   padding: 14px 12px 14px 0px;
 }
 
-html[platform="windows"] .Cell__before::after {
+.Cell__before::after {
   content         : " ";
   position        : absolute;
   left            : -12px;
@@ -23,21 +23,21 @@ html[platform="windows"] .Cell__before::after {
   transition      : 0.3s;
 }
 
-html[platform="windows"] .Cell--selected>.Cell__content>.Cell__before::after {
+.Cell--selected>.Cell__content>.Cell__before::after {
   background-color: var(--accent_color);
 }
 
-html[platform="windows"] .Cell__in {
+.Cell__in {
   padding   : 14px 12px 14px 0px;
   min-height: 44px;
   box-sizing: border-box;
 }
 
 
-html[platform="windows"] .Cell__title {}
+.Cell__title {}
 
-html[platform="windows"] .Cell__subtitle {}
+.Cell__subtitle {}
 
-html[platform="windows"] .Cell__after {
+.Cell__after {
   padding-left: 12px;
 }
