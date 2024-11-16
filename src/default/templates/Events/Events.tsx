@@ -110,6 +110,7 @@ const Events = <T extends ValidComponent>(props: IEvents<T>): JSX.Element => {
     class: local.class,
     classList: {
       [style.notallocate]: true,
+      [style[`Events--pointer`]]: !!local.onClick || !!local.href,
       _disabled: local.disabled,
       _hover: store.hover,
       _active: store.active,
