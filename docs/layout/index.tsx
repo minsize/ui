@@ -1,5 +1,5 @@
 import { type Component, type JSX, createSignal, ErrorBoundary } from "solid-js"
-import { Path, Root } from "root/src"
+import { Path, Root } from "ui"
 
 import { useRouter, views } from "router"
 

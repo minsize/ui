@@ -1,3 +1,6 @@
+/* Templates */
+export * from "./default/templates"
+
 export { default as Panel } from "./default/Panel/Panel"
 export { default as Path } from "./default/Path/Path"
 export { default as Root } from "./default/Root/Root"
@@ -13,9 +16,6 @@ export * from "./default/Blocks"
 
 /* Inputs */
 export * from "./default/Forms"
-
-/* Templates */
-export * from "./default/templates"
 
 /* Icons */
 export * from "./default/Icons"

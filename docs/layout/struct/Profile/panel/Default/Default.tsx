@@ -15,7 +15,8 @@ import {
   Group,
   Button,
   IconChevron,
-} from "root/src"
+  Select,
+} from "ui"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
 
@@ -74,7 +75,7 @@ const Default: Component<Default> = (props) => {
         <Cell.SubTitle>SubTitle</Cell.SubTitle>
         <Cell.Title>Title</Cell.Title>
       </Cell>
-
+      <Select>asf</Select>
       <Cell
         platform={"windows"}
         after={

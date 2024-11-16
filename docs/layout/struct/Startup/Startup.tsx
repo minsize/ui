@@ -1,5 +1,5 @@
 import { type Component, type JSX, splitProps } from "solid-js"
-import { Path, View } from "root/src"
+import { Path, View } from "ui"
 
 import { panels, useRouterPanel } from "router"
 
