@@ -74,6 +74,21 @@ const Default: Component<Default> = (props) => {
   return (
     <Panel nav={props.nav}>
       <WriteBar />
+
+      <Accordion.List>
+        <Accordion>
+          <Accordion.Summary>Test</Accordion.Summary>
+          <Accordion.Content>
+            Какой-тот оооочень длинный контент.
+          </Accordion.Content>
+        </Accordion>
+        <Accordion>
+          <Accordion.Summary>Test</Accordion.Summary>
+          <Accordion.Content>
+            Какой-тот оооочень длинный контент.
+          </Accordion.Content>
+        </Accordion>
+      </Accordion.List>
     </Panel>
   )
 }
