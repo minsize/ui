@@ -3,14 +3,10 @@ import { Accessor, createSignal } from "solid-js"
 
 const [signal, setSignal] = createSignal<Platform>("iOS")
 
-const getPlatform = () => {
-  /**
-   * Platform--iOS
-   * Platform--android
-   * Platform--macOS
-   * Platform--windows
-   * Platform--others
-   */
+/**
+ * Функция для определения и установки платформы на основе userAgent.
+ */
+const setPlatform = () => {
   let platform: Platform = "others"
   if (/iPhone|iPad|iPod|Mac OS|Macintosh/i.test(navigator.userAgent)) {
     platform = "iOS"
@@ -19,17 +15,21 @@ const getPlatform = () => {
   }
   setSignal(platform)
 }
-getPlatform()
-window.addEventListener("resize", getPlatform)
 
+/**
+ * Первоначальная установка платформы.
+ */
+setPlatform()
+
+/**
+ * Добавляем обработчик события resize, чтобы переопределять платформу при изменении размера окна.
+ */
+window.addEventListener("resize", setPlatform)
+
+/**
+ * Хук для получения текущей платформы.
+ */
 const usePlatform = (platform?: Platform): Accessor<Platform> =>
   platform ? () => platform : signal
-
-export const classPlatform = (
-  style: CSSModuleClasses,
-  platform?: Platform,
-) => ({
-  [style[`${platform || signal()}`]]: true,
-})
 
 export default usePlatform

@@ -4,7 +4,7 @@ import { SubTitle, Title } from "./Fonts"
 
 import { type HTMLAttributes, Events, Flex, useStyle } from "ui"
 
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
+import { type Component, mergeProps, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
 
 interface Button extends HTMLAttributes<DynamicProps<"button">> {
