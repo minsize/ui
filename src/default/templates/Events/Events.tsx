@@ -39,7 +39,6 @@ const Events = <T extends ValidComponent>(props: IEvents<T>): JSX.Element => {
     "href",
     "minActive",
     "minHover",
-    "children",
   ])
   const [store, setStore] = createStore({ hover: false, active: false })
 
@@ -106,42 +105,36 @@ const Events = <T extends ValidComponent>(props: IEvents<T>): JSX.Element => {
     }
   }
 
-  const _props = () => ({
-    class: local.class,
-    classList: {
-      [style.notallocate]: true,
-      [style[`Events--pointer`]]: !!local.onClick || !!local.href,
-      _disabled: local.disabled,
-      _hover: store.hover,
-      _active: store.active,
-      ...local.classList,
-    },
+  const mouseEvent = {
+    onMouseDown: onStart,
+    onMouseMove: onMouseMove,
+    onMouseUp: onEnd,
+    onMouseLeave: onMouseLeave,
+  }
+
+  const touchEvent = {
     onTouchStart: onStart,
     onTouchEnd: onEnd,
     onTouchMove: onMouseMove,
-    onMouseMove: onMouseMove,
-    onMouseLeave: onMouseLeave,
-    onMouseDown: onStart,
-    onMouseUp: onEnd,
-    onClick: handleClick,
-    children: local.children,
-  })
+  }
 
   return (
-    <Switch
-      fallback={
-        typeof local.component === "function" && local.component(_props())
-      }
-    >
-      <Match when={typeof local.component !== "function"}>
-        <Dynamic
-          component={local.href ? "a" : local.component || "div"}
-          {..._props()}
-          {...({ href: local.href } as any)}
-          {...others}
-        />
-      </Match>
-    </Switch>
+    <Dynamic
+      component={local.href ? "a" : local.component || "div"}
+      class={local.class}
+      classList={{
+        [style.notallocate]: true,
+        [style[`Events--pointer`]]: !!local.onClick || !!local.href,
+        _disabled: local.disabled,
+        _hover: store.hover,
+        _active: store.active,
+        ...local.classList,
+      }}
+      {...(isTouchSupport ? touchEvent : mouseEvent)}
+      onClick={handleClick}
+      {...({ href: local.href } as any)}
+      {...others}
+    />
   )
 }
 
