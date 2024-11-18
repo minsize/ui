@@ -4,9 +4,10 @@ export { default as Badge } from "./Badge/Badge"
 export { default as Cell } from "./Cell/Cell"
 export { default as Link } from "./Link/Link"
 export { default as Accordion } from "./Accordion/Accordion"
-export { default as Group } from './Group/Group';
-export { default as Flex } from './Flex/Flex';
-export { default as Button } from './Button/Button';
-export { default as WriteBar } from './WriteBar/WriteBar';
-export { default as Textarea } from './Textarea/Textarea';
-export { default as Separator } from './Separator/Separator';
+export { default as Group } from "./Group/Group"
+export { default as Flex } from "./Flex/Flex"
+export { default as Button } from "./Button/Button"
+export { default as Field } from "./Field/Field"
+export { default as WriteBar } from "./WriteBar/WriteBar"
+export { type ITextarea } from "./Field/addons"
+export { default as Separator } from "./Separator/Separator"

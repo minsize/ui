@@ -1,17 +1,16 @@
-import { createStore } from "solid-js/store"
 import style from "./Textarea.module.css"
+import { useComputedBlockStyles, type HTMLAttributes } from "ui"
+
 import {
   type JSX,
   type Component,
   mergeProps,
   splitProps,
-  createEffect,
   onMount,
-  on,
 } from "solid-js"
 
-interface Textarea
-  extends Omit<JSX.HTMLAttributes<HTMLTextAreaElement>, "onInput"> {
+export interface ITextarea
+  extends Omit<HTMLAttributes<HTMLTextAreaElement>, "onInput"> {
   /**
    * Автоматическое растягивание textarea
    */
@@ -36,8 +35,11 @@ interface Textarea
   placeholder?: string
 }
 
-const Textarea: Component<Textarea> = (props) => {
-  const merged = mergeProps({ grow: true, resize: true }, props)
+const Textarea: Component<ITextarea> = (props) => {
+  const merged = mergeProps(
+    { grow: true, resize: false, maxHeight: "150px" },
+    props,
+  )
   const [local, others] = splitProps(merged, [
     "class",
     "classList",
@@ -49,17 +51,28 @@ const Textarea: Component<Textarea> = (props) => {
     "placeholder",
     "resize",
   ])
+
   let ref: HTMLTextAreaElement
+  const styles = useComputedBlockStyles(() => ref, props.platform)
 
   const onResize = () => {
     if (local.grow) {
       if (ref && ref.offsetParent) {
-        ref.style.height = ""
+        ref.style.height = "0px"
         ref.style.height = ref.scrollHeight + "px"
+
+        const lineHeight = Number(styles.lineHeight?.replace("px", ""))
+
+        if (ref.scrollTop + ref.clientHeight + lineHeight >= ref.scrollHeight) {
+          ref.scrollTop = ref.scrollHeight
+        }
+
         local.onResize && local.onResize(ref)
       }
     }
   }
+
+  onMount(onResize)
 
   const onInput: JSX.InputEventHandlerUnion<HTMLTextAreaElement, InputEvent> = (
     event,
@@ -75,15 +88,15 @@ const Textarea: Component<Textarea> = (props) => {
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
+
+        [style[`Textarea--resize`]]: local.resize,
       }}
       onInput={onInput}
       style={{
         "max-height": local.maxHeight,
       }}
       {...others}
-    >
-      {local.children}
-    </textarea>
+    />
   )
 }
 

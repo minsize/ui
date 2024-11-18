@@ -19,6 +19,7 @@ import {
   Textarea,
   WriteBar,
   Separator,
+  Field,
 } from "ui"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
@@ -74,8 +75,6 @@ const Default: Component<Default> = (props) => {
 
   return (
     <Panel nav={props.nav}>
-      <WriteBar />
-
       <Accordion.List>
         <Accordion>
           <Accordion.Summary>Test</Accordion.Summary>
@@ -105,6 +104,17 @@ const Default: Component<Default> = (props) => {
           </Accordion.Content>
         </Accordion>
       </Accordion.List>
+      <WriteBar>
+        <WriteBar.Icon>
+          <IconChevron type={"left"} />
+        </WriteBar.Icon>
+        <WriteBar.Field>
+          <WriteBar.Field.Textarea>test</WriteBar.Field.Textarea>
+        </WriteBar.Field>
+        <WriteBar.Icon>
+          <IconChevron type={"right"} />
+        </WriteBar.Icon>
+      </WriteBar>
     </Panel>
   )
 }
