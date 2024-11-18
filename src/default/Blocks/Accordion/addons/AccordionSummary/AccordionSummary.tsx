@@ -1,7 +1,7 @@
 import style from "./AccordionSummary.module.css"
 import { AccordionStore } from "../../context"
 
-import { Cell, IconChevron } from "ui"
+import { type HTMLAttributes, Cell, IconChevron } from "ui"
 
 import {
   type JSX,
@@ -12,7 +12,7 @@ import {
 } from "solid-js"
 import { DynamicProps } from "solid-js/web"
 
-interface AccordionSummary extends JSX.HTMLAttributes<DynamicProps<"article">> {
+interface AccordionSummary extends HTMLAttributes<DynamicProps<"article">> {
   /**
    * Элемент, который будет отображаться перед основным содержимым ячейки.
    */

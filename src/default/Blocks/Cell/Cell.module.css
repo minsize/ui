@@ -9,10 +9,6 @@
   align-items: center;
 }
 
-
-.Cell__in--separator::after {}
-
-
 .Cell._disabled {
   opacity: var(--opacity_disable);
 }
@@ -58,4 +54,11 @@
   background-color: var(--cell--select);
   overflow        : hidden;
   opacity         : 1;
+}
+
+.Cell__separator {
+  position: absolute !important;
+  bottom  : 0;
+  left    : 0;
+  right   : 0;
 }

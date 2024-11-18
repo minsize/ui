@@ -7,16 +7,6 @@
   overflow     : hidden;
 }
 
-.Cell--separator::after {
-  position        : absolute;
-  content         : "";
-  left            : 0;
-  right           : 0;
-  bottom          : 0;
-  height          : 1px;
-  background-color: var(--separator_primary);
-}
-
 .Cell__before {
   padding: 8px 16px 8px 0px;
 }

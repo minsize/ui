@@ -2,7 +2,16 @@ import { styles } from "./styles"
 import { CellList } from "./addons"
 import { SubTitle, Title } from "./Fonts"
 
-import { type HTMLAttributes, Align, Events, Flex, Show, useStyle } from "ui"
+import {
+  type HTMLAttributes,
+  Align,
+  Events,
+  Flex,
+  Separator,
+  Show,
+  usePlatform,
+  useStyle,
+} from "ui"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
@@ -59,6 +68,7 @@ type ComponentCell = Component<Cell> & {
 
 const Cell: ComponentCell = (props) => {
   const style = useStyle(styles, props.platform)
+  const platform = usePlatform(props.platform)
 
   const merged = mergeProps({ separator: true }, props)
   const [local, others] = splitProps(merged, [
@@ -73,6 +83,16 @@ const Cell: ComponentCell = (props) => {
     "platform",
   ])
 
+  const CellSeparator: Component<{ when: boolean }> = (props) => (
+    <Show when={props.when && local.separator}>
+      <Separator
+        class={style.Cell__separator}
+        color={"secondary"}
+        size={"full"}
+      />
+    </Show>
+  )
+
   return (
     <Events
       class={style.Cell}
@@ -80,7 +100,6 @@ const Cell: ComponentCell = (props) => {
         ...local.classList,
         [`${local.class}`]: !!local.class,
 
-        [style[`Cell--separator`]]: local.separator,
         [style[`Cell--selected`]]: local.selected,
       }}
       {...others}
@@ -96,6 +115,7 @@ const Cell: ComponentCell = (props) => {
             {local.before}
           </Flex>
         </Align.Before>
+
         <Align.Children class={style.Cell__in}>
           <Show
             component={"div"}
@@ -112,8 +132,12 @@ const Cell: ComponentCell = (props) => {
               {local.after}
             </Flex>
           </Align.After>
+          <CellSeparator when={["iOS", "macOS"].indexOf(platform()) !== -1} />
         </Align.Children>
       </Align>
+      <CellSeparator
+        when={["android", "windows", "others"].indexOf(platform()) !== -1}
+      />
       <span class={style.Cell__background} />
     </Events>
   )
