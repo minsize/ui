@@ -25,3 +25,9 @@
 .Textarea--resize {
   resize: both
 }
+
+.Textarea::placeholder {
+  color      : var(--text_secondary);
+  font-size  : inherit;
+  line-height: inherit;
+}

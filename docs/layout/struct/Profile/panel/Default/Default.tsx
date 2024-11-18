@@ -109,7 +109,9 @@ const Default: Component<Default> = (props) => {
           <IconChevron type={"left"} />
         </WriteBar.Icon>
         <WriteBar.Field>
-          <WriteBar.Field.Textarea>test</WriteBar.Field.Textarea>
+          <WriteBar.Field.Textarea placeholder={"test"}>
+            test
+          </WriteBar.Field.Textarea>
         </WriteBar.Field>
         <WriteBar.Icon>
           <IconChevron type={"right"} />

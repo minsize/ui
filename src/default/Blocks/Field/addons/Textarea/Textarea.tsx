@@ -48,7 +48,6 @@ const Textarea: Component<ITextarea> = (props) => {
     "maxHeight",
     "onResize",
     "onInput",
-    "placeholder",
     "resize",
   ])
 
