@@ -1,4 +1,11 @@
-import { createSignal, For, type Component, type JSX } from "solid-js"
+import {
+  createSignal,
+  For,
+  onCleanup,
+  onMount,
+  type Component,
+  type JSX,
+} from "solid-js"
 
 import {
   Cell,
@@ -23,6 +30,7 @@ import {
 } from "ui"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
+import { pages, panels, pushPage, replacePage } from "router"
 
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {
   nav: string
@@ -73,6 +81,9 @@ const Default: Component<Default> = (props) => {
     setColor(color)
   }
 
+  onMount(() => console.log("mount", props.nav))
+  onCleanup(() => console.log("cleanup", props.nav))
+
   return (
     <Panel nav={props.nav}>
       <Accordion.List>
@@ -117,6 +128,27 @@ const Default: Component<Default> = (props) => {
           <IconChevron type={"right"} />
         </WriteBar.Icon>
       </WriteBar>
+      <Button
+        onClick={() => {
+          pushPage({
+            pageId:
+              props.nav === panels.PROFILE
+                ? pages.PROFILE_3
+                : props.nav === panels.PROFILE_3
+                ? pages.PROFILE_2
+                : pages.PROFILE,
+          })
+        }}
+      >
+        <Button.Container>
+          {props.nav === panels.PROFILE
+            ? pages.PROFILE_3
+            : props.nav === panels.PROFILE_3
+            ? pages.PROFILE_2
+            : pages.PROFILE}
+          <Button.SubTitle>{props.nav}</Button.SubTitle>
+        </Button.Container>
+      </Button>
     </Panel>
   )
 }

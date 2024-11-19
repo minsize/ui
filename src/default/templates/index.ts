@@ -12,3 +12,4 @@ export { default as usePlatform } from "./utils/usePlatform"
 export { default as createStyle } from "./utils/createStyle"
 export { default as useStyle } from "./utils/useStyle"
 export { default as useComputedBlockStyles } from "./utils/useComputedBlockStyles"
+export { default as LayoutManager } from './LayoutManager/LayoutManager';
