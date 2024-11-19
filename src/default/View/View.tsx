@@ -1,6 +1,6 @@
 import {
-  JSX,
-  Component,
+  type JSX,
+  type Component,
   splitProps,
   children,
   createEffect,

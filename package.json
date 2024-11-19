@@ -45,6 +45,7 @@
     "@solidjs/testing-library": "^0.8.10",
     "@storybook/builder-vite": "^8.4.4",
     "@testing-library/jest-dom": "^6.6.3",
+    "@types/mdx": "^2.0.13",
     "elum-state": "^0.8.4",
     "solid-devtools": "^0.30.1",
     "solid-testing-library": "^0.5.1",
