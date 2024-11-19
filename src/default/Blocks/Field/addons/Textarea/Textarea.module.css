@@ -18,7 +18,7 @@
   font-size  : var(--font_size--medium);
   line-height: var(--font_height--medium);
 
-  background-color: var(--bg_input);
+  background-color: transparent;
   overflow        : hidden;
 }
 

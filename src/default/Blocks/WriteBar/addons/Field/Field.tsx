@@ -1,15 +1,22 @@
-import style from "./Field.module.css"
-import { Field as ElField } from "ui"
+import { styles } from "./styles"
 
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
+import {
+  type HTMLAttributes,
+  Field as ElField,
+  usePlatform,
+  useStyle,
+} from "ui"
 
-interface Field extends JSX.HTMLAttributes<HTMLDivElement> {}
+import { type Component, createEffect, mergeProps, splitProps } from "solid-js"
+
+interface Field extends HTMLAttributes<HTMLDivElement> {}
 
 type ComponentField = Component<Field> & {
   Textarea: typeof ElField.Textarea
 }
 
 const Field: ComponentField = (props) => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps({}, props)
   const [local, others] = splitProps(merged, ["class", "classList"])
 

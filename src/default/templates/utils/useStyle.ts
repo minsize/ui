@@ -1,3 +1,5 @@
+import { createEffect, on } from "solid-js"
+import { createStore } from "solid-js/store"
 import { usePlatform, type Platform } from "ui"
 
 /**
@@ -8,7 +10,15 @@ const useStyle = (
   customPlatform?: Platform,
 ) => {
   const platform = usePlatform(customPlatform)
-  return styles[platform()]
+  const [store, setStore] = createStore({ ...styles[platform()] })
+
+  createEffect(
+    on(platform, (platform) => {
+      setStore({ ...styles[platform] })
+    }),
+  )
+
+  return store
 }
 
 export default useStyle
