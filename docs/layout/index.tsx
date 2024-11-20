@@ -26,6 +26,7 @@ const Layout: Component<Layout> = (props) => {
     <Root activeView={activeView()}>
       <Path nav={views.STARTUP} component={Startup} />
       <Path nav={views.PROFILE} component={Profile} />
+      <Path nav={views.PROFILE_2} component={Profile} />
     </Root>
     //</ErrorBoundary>
   )

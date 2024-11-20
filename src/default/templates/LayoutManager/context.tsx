@@ -8,6 +8,7 @@ export const LayoutManagerStore = createContext<{
       }
     | undefined
   onAnimationEnd?: (type: "first" | "last") => void
+  getAnim?: () => boolean
   styleIndex?: (type: "first" | "last") =>
     | {
         [k: string]: boolean | undefined

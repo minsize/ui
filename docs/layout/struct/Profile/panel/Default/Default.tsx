@@ -3,6 +3,7 @@ import {
   For,
   onCleanup,
   onMount,
+  Show,
   type Component,
   type JSX,
 } from "solid-js"
@@ -30,7 +31,7 @@ import {
 } from "ui"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
-import { pages, panels, pushPage, replacePage } from "router"
+import { pages, panels, pushPage, replacePage, useRouter, views } from "router"
 
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {
   nav: string
@@ -69,6 +70,7 @@ const apps = [
 ]
 
 const Default: Component<Default> = (props) => {
+  const activeView = useRouter("view")
   const [selected, setSelected] = createSignal(1)
 
   const [checked, setChecked] = createSignal(false)
@@ -81,8 +83,8 @@ const Default: Component<Default> = (props) => {
     setColor(color)
   }
 
-  onMount(() => console.log("mount", props.nav))
-  onCleanup(() => console.log("cleanup", props.nav))
+  // onMount(() => console.log("mount", props.nav))
+  // onCleanup(() => console.log("cleanup", props.nav))
 
   return (
     <Panel nav={props.nav}>
@@ -128,25 +130,35 @@ const Default: Component<Default> = (props) => {
           <IconChevron type={"right"} />
         </WriteBar.Icon>
       </WriteBar>
+      {/* <Spinner color={"secondary"} size={"regular"} /> */}
+      <Show when={activeView() === views.PROFILE_2}>
+        <Button
+          onClick={() => {
+            pushPage({
+              pageId:
+                props.nav === panels.PROFILE_2
+                  ? pages.PROFILE_3
+                  : pages.PROFILE_2,
+            })
+          }}
+        >
+          <Button.Container>
+            {props.nav === panels.PROFILE_2 ? pages.PROFILE_3 : pages.PROFILE_2}
+            <Button.SubTitle>PANELS</Button.SubTitle>
+          </Button.Container>
+        </Button>
+      </Show>
       <Button
         onClick={() => {
           pushPage({
             pageId:
-              props.nav === panels.PROFILE
-                ? pages.PROFILE_3
-                : props.nav === panels.PROFILE_3
-                ? pages.PROFILE_2
-                : pages.PROFILE,
+              props.nav === panels.PROFILE ? pages.PROFILE_2 : pages.PROFILE,
           })
         }}
       >
         <Button.Container>
-          {props.nav === panels.PROFILE
-            ? pages.PROFILE_3
-            : props.nav === panels.PROFILE_3
-            ? pages.PROFILE_2
-            : pages.PROFILE}
-          <Button.SubTitle>{props.nav}</Button.SubTitle>
+          {props.nav === panels.PROFILE ? pages.PROFILE_2 : pages.PROFILE}
+          <Button.SubTitle>VIEWS</Button.SubTitle>
         </Button.Container>
       </Button>
     </Panel>

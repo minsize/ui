@@ -6,13 +6,24 @@
 }
 
 
-.View__Container {
+.View__Container,
+.View--to-next::before,
+.View--to-back::before {
   position  : absolute;
   left      : 0;
   right     : 0;
   top       : 0;
   bottom    : 0;
   background: var(--bg_color);
+}
+
+.View--to-next::before,
+.View--to-back::before {
+  content         : " ";
+  opacity         : 0;
+  z-index         : 2;
+  pointer-events  : none;
+  background-color: var(--bg_layout_shadow);
 }
 
 .View--index-1 {
@@ -22,8 +33,6 @@
 .View--index-2 {
   z-index: 2;
 }
-
-
 
 
 .View--to-next>.View--first {
@@ -36,6 +45,10 @@
   animation        : _toLeft .4s ease forwards;
 }
 
+.View--to-next::before {
+  animation: _upShadow .41s ease forwards;
+}
+
 
 .View--to-back>.View--first {
   -webkit-animation: _fromLeft .4s ease forwards;
@@ -45,6 +58,10 @@
 .View--to-back>.View--last {
   -webkit-animation: _backAnimation .4s ease forwards;
   animation        : _backAnimation .4s ease forwards;
+}
+
+.View--to-back::before {
+  animation: _downShadow .41s ease forwards;
 }
 
 @keyframes _nextAnimation {
@@ -84,5 +101,25 @@
 
   to {
     transform: translateX(0%)
+  }
+}
+
+@keyframes _upShadow {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes _downShadow {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
   }
 }

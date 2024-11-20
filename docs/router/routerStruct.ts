@@ -7,6 +7,7 @@ export enum views {
   STARTUP = "view_startup",
   APP = "view_app",
   PROFILE = "view_profile",
+  PROFILE_2 = "view_profile_2",
 }
 
 export enum panels {
@@ -36,6 +37,11 @@ export const routerStruct: RouterStruct = [
     viewId: views.PROFILE,
     panels: {
       [pages.PROFILE]: panels.PROFILE,
+    },
+  },
+  {
+    viewId: views.PROFILE_2,
+    panels: {
       [pages.PROFILE_2]: panels.PROFILE_2,
       [pages.PROFILE_3]: panels.PROFILE_3,
     },

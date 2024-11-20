@@ -12,11 +12,12 @@ import {
   children,
   createEffect,
   on,
+  createUniqueId,
 } from "solid-js"
 import { createStore } from "solid-js/store"
 
 interface LayoutManager extends JSX.HTMLAttributes<HTMLDivElement> {
-  activePanel: string
+  active: string
   elements: JSX.Element
   children: JSX.Element
 
@@ -42,6 +43,10 @@ interface Store {
   last: string | undefined
   first: string
   anim: boolean
+  animEnd: {
+    first: boolean
+    last: boolean
+  }
 }
 
 const LayoutManager: ComponentLayoutManager = (props) => {
@@ -51,7 +56,7 @@ const LayoutManager: ComponentLayoutManager = (props) => {
     "classList",
     "children",
     "elements",
-    "activePanel",
+    "active",
     "styles",
   ])
 
@@ -63,21 +68,29 @@ const LayoutManager: ComponentLayoutManager = (props) => {
     last: "",
     first: "",
     anim: false,
+    animEnd: {
+      first: false,
+      last: false,
+    },
   })
 
   createEffect(
     on(
-      () => local.activePanel,
-      (activePanel) => {
+      () => local.active,
+      (active) => {
         const isLastTypeFirst = store.lastType === "first"
-        if (store[isLastTypeFirst ? "last" : "first"] === activePanel) return
+        if (store[isLastTypeFirst ? "last" : "first"] === active) return
 
         setStore({
           lastType: isLastTypeFirst ? "last" : "first",
           firstVisible: true,
           lastVisible: true,
-          [isLastTypeFirst ? "first" : "last"]: activePanel,
-          anim: true,
+          [isLastTypeFirst ? "first" : "last"]: active,
+          anim: !!active && !!store[!isLastTypeFirst ? "first" : "last"],
+          animEnd: {
+            first: false,
+            last: false,
+          },
         })
       },
     ),
@@ -100,12 +113,19 @@ const LayoutManager: ComponentLayoutManager = (props) => {
   const getChild = (type: "first" | "last") =>
     getVisible(type) ? panels.find((x) => x.nav === store[type]) : undefined
 
+  const getAnim = () => store.anim
+
+  const id = createUniqueId()
+
   const onAnimationEnd = (type: "last" | "first") => {
-    if (store.lastType === type) return
-    setStore({
-      [store.lastType === "first" ? "firstVisible" : "lastVisible"]: false,
-      anim: false,
-    })
+    setStore("animEnd", type, true)
+
+    if (store.animEnd.first && store.animEnd.last) {
+      setStore({
+        [store.lastType === "first" ? "firstVisible" : "lastVisible"]: false,
+        anim: false,
+      })
+    }
   }
 
   const styleIndex = (type: "last" | "first") => {
@@ -141,6 +161,7 @@ const LayoutManager: ComponentLayoutManager = (props) => {
           getChild,
           onAnimationEnd,
           styleIndex,
+          getAnim,
         }}
       >
         {local.children}

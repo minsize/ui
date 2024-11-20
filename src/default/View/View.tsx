@@ -24,7 +24,7 @@ const View: Component<View> = (props) => {
         [`${local.class}`]: !!local.class,
         ...local.classList,
       }}
-      activePanel={local.activePanel}
+      active={local.activePanel}
       elements={local.children}
       styles={{
         firstIndex: style[`View--index-1`],

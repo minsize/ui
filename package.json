@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@apiteam/twa-bridge": "^7.1.14",
+    "@minsize/mutex": "^0.0.6",
     "@minsize/utils": "^0.0.5",
     "@solid-primitives/scheduled": "^1.4.4",
     "@solidjs/testing-library": "^0.8.10",

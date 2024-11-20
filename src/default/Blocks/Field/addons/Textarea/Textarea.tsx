@@ -52,7 +52,11 @@ const Textarea: Component<ITextarea> = (props) => {
   ])
 
   let ref: HTMLTextAreaElement
-  const styles = useComputedBlockStyles(() => ref, props.platform)
+  const styles = useComputedBlockStyles({
+    ref: () => ref,
+    platform: props.platform,
+    onUpdate: () => ref,
+  })
 
   const onResize = () => {
     if (local.grow) {
