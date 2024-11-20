@@ -1,5 +1,5 @@
-import style from "./View.module.css"
-import { type HTMLAttributes, LayoutManager } from "ui"
+import { styles } from "./styles"
+import { type HTMLAttributes, LayoutManager, useStyle } from "ui"
 
 import { type Component, splitProps } from "solid-js"
 
@@ -9,12 +9,14 @@ interface View extends HTMLAttributes<HTMLDivElement> {
 }
 
 const View: Component<View> = (props) => {
+  const style = useStyle(styles, props.platform)
   const [local, others] = splitProps(props, [
-    "nav",
     "class",
-    "activePanel",
     "classList",
+    "platform",
     "children",
+    "nav",
+    "activePanel",
   ])
 
   return (
