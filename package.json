@@ -6,7 +6,7 @@
     "start": "vite --config config/dev.config.ts",
     "preview": "vite preview --config config/prod.config.ts --port 18300",
     "build": "tsc --project config/tsconfig.json && vite build --config config/prod.config.ts",
-    "bundle": "npx vite-bundle-visualizer -c ./config/prod.config.ts",
+    "bundle": "npx vite-bundle-visualizer --open -t sunburst -c ./config/prod.config.ts",
     "odr": "tsc --project config/tsconfig.json && vite build --config config/odr.config.ts",
     "test": "vitest --config config/vitest.config.ts",
     "lib": "tsc --project config/tsconfig-build.json && vite build --config config/lib.config.ts",

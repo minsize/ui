@@ -1,70 +1,70 @@
 /* Color */
-html[platform="iOS"] .Text--iOS__color--accent {
+.Text__color--accent {
   color: var(--accent_color);
 }
 
-html[platform="iOS"] .Text--iOS__color--primary {
+.Text__color--primary {
   color: var(--text_primary);
 }
 
-html[platform="iOS"] .Text--iOS__color--secondary {
+.Text__color--secondary {
   color: var(--text_secondary);
 }
 
 /* Size */
-html[platform="iOS"] .Text--iOS__size--small {
+.Text__size--small {
   font-size  : var(--font_size--small);
   line-height: var(--font_height--small);
 }
 
-html[platform="iOS"] .Text--iOS__size--medium {
+.Text__size--medium {
   font-size  : var(--font_size--medium);
   line-height: var(--font_height--medium);
 }
 
-html[platform="iOS"] .Text--iOS__size--large {
+.Text__size--large {
   font-size  : var(--font_size--large);
   line-height: var(--font_height--large);
 }
 
-html[platform="iOS"] .Text--iOS__size--x-large {
+.Text__size--x-large {
   font-size  : var(--font_size--x-large);
   line-height: var(--font_height--x-large);
 }
 
-html[platform="iOS"] .Text--iOS__size--xx-large {
+.Text__size--xx-large {
   font-size  : var(--font_size--xx-large);
   line-height: var(--font_height--xx-large);
 }
 
 /* Weight */
-html[platform="iOS"] .Text--iOS__weight--400 {
+.Text__weight--400 {
   font-weight: 400;
 }
 
-html[platform="iOS"] .Text--iOS__weight--500 {
+.Text__weight--500 {
   font-weight: 500;
 }
 
-html[platform="iOS"] .Text--iOS__weight--600 {
+.Text__weight--600 {
   font-weight: 600;
 }
 
-html[platform="iOS"] .Text--iOS__weight--700 {
+.Text__weight--700 {
   font-weight: 700;
 }
 
 /* Aligns */
-html[platform="iOS"] .Text--iOS__align--start {
+.Text__align--start {
   text-align: left;
   text-align: start
 }
 
-html[platform="iOS"] .Text--iOS__align--center {
+.Text__align--center {
   text-align: center
 }
 
-html[platform="iOS"] .Text--iOS__align--end {
+.Text__align--end {
   text-align: right;
   text-align: end
 }

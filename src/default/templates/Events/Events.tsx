@@ -1,15 +1,8 @@
 import style from "./Events.module.css"
 
-import {
-  type JSX,
-  type ValidComponent,
-  mergeProps,
-  splitProps,
-  Switch,
-  Match,
-} from "solid-js"
+import { type JSX, type ValidComponent, mergeProps, splitProps } from "solid-js"
 import { createStore } from "solid-js/store"
-import { Dynamic, type DynamicProps } from "solid-js/web"
+import { type DynamicProps, Dynamic } from "solid-js/web"
 import { leadingAndTrailing, throttle } from "@solid-primitives/scheduled"
 
 export interface IEvents<T extends ValidComponent>

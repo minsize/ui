@@ -1,6 +1,9 @@
 /* Templates */
 export * from "./default/templates"
 
+/* Typography */
+export * from "./default/Typography"
+
 export { default as Panel } from "./default/Panel/Panel"
 export { default as Path } from "./default/Path/Path"
 export { default as Root } from "./default/Root/Root"

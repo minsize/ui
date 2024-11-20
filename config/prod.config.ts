@@ -20,16 +20,17 @@ const output: OutputOptions | OutputOptions[] = {
     const [[, ext]] = Array.from((name || "").matchAll(/.([0-9-a-z]+)$/g))
     return `${ext}/[hash].${ext}`
   },
-  experimentalMinChunkSize: 25_000,
+
+  // experimentalMinChunkSize: 25_000,
 }
 
 export default defineConfig({
+  // resolve: {
+  //   alias: {
+  //     ui: "/src",
+  //   },
+  // },
   base: "/static/",
-  worker: {
-    rollupOptions: {
-      output: output,
-    },
-  },
   publicDir: "public",
   esbuild: {
     pure: ["console.log"],

@@ -1,4 +1,4 @@
-import { createStyle } from "ui"
+import { createStyle, type TextProps } from "ui"
 
 import styleDefault from "../Button.module.css"
 import iOS from "./iOS.module.css"
@@ -13,4 +13,35 @@ export const styles = createStyle(styleDefault, {
   macOS,
   windows,
   others,
+})
+
+type TypographyType = "title" | "subTitle"
+
+export const generateTypography = (
+  props: Record<TypographyType, TextProps>,
+): Record<TypographyType, TextProps> => ({
+  title: {
+    iOS: {
+      size: "medium",
+      weight: "500",
+      color: "inherit",
+    },
+    android: "iOS",
+    macOS: "iOS",
+    windows: "iOS",
+    others: "iOS",
+    ...props.title,
+  },
+  subTitle: {
+    iOS: {
+      size: "small",
+      weight: "400",
+      color: "inherit",
+    },
+    android: "iOS",
+    macOS: "iOS",
+    windows: "iOS",
+    others: "iOS",
+    ...props.subTitle,
+  },
 })

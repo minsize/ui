@@ -1,8 +1,7 @@
-import { styles } from "./styles"
+import { styles, generateTypography } from "./styles"
 import { Icon, Container } from "./addons"
-import { SubTitle, Title } from "./Fonts"
 
-import { type HTMLAttributes, Events, Flex, useStyle } from "ui"
+import { type HTMLAttributes, Events, Flex, TextContext, useStyle } from "ui"
 
 import { type Component, mergeProps, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
@@ -41,8 +40,6 @@ interface Button extends HTMLAttributes<DynamicProps<"button">> {
 type ComponentButton = Component<Button> & {
   Container: typeof Container
   Icon: typeof Icon
-  Title: typeof Title
-  SubTitle: typeof SubTitle
 }
 
 const Button: ComponentButton = (props) => {
@@ -67,30 +64,40 @@ const Button: ComponentButton = (props) => {
   ])
 
   return (
-    <Events
-      class={style.Button}
-      classList={{
-        [`${local.class}`]: !!local.class,
-        ...local.classList,
-
-        [style[`Button__appearance--${local.appearance}`]]: !!local.appearance,
-        [style[`Button__size--${local.size}`]]: !!local.size,
-        [style[`Button__mode--${local.mode}`]]: !!local.mode,
-        [style[`Button--stretched`]]: local.stretched,
-      }}
-      {...others}
+    <TextContext.Provider
+      value={generateTypography({
+        title: {
+          class: style[`Button__title`],
+        },
+        subTitle: {
+          class: style[`Button__subtitle`],
+        },
+      })}
     >
-      <Flex component={"div"} class={style.Button__in}>
-        {local.children}
-      </Flex>
-      <span class={style.Button__background} />
-    </Events>
+      <Events
+        class={style.Button}
+        classList={{
+          [`${local.class}`]: !!local.class,
+          ...local.classList,
+
+          [style[`Button__appearance--${local.appearance}`]]:
+            !!local.appearance,
+          [style[`Button__size--${local.size}`]]: !!local.size,
+          [style[`Button__mode--${local.mode}`]]: !!local.mode,
+          [style[`Button--stretched`]]: local.stretched,
+        }}
+        {...others}
+      >
+        <Flex component={"div"} class={style.Button__in}>
+          {local.children}
+        </Flex>
+        <span class={style.Button__background} />
+      </Events>
+    </TextContext.Provider>
   )
 }
 
 Button.Container = Container
 Button.Icon = Icon
-Button.Title = Title
-Button.SubTitle = SubTitle
 
 export default Button

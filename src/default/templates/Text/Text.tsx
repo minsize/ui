@@ -1,5 +1,7 @@
-import style from "./Text.module.css"
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
+import { styles } from "./styles"
+import { type HTMLAttributes, usePlatform, useStyle } from "ui"
+
+import { type Component, mergeProps, splitProps } from "solid-js"
 
 export type Platform = "iOS" | "android" | "macOS" | "windows" | "others"
 
@@ -22,15 +24,15 @@ export type TextObject = {
   align?: "start" | "center" | "end"
 }
 
-export type TextProps = {
-  iOS: TextObject | Omit<Platform, "iOS">
-  android: TextObject | Omit<Platform, "android">
-  macOS: TextObject | Omit<Platform, "macOS">
-  windows: TextObject | Omit<Platform, "windows">
-  others: TextObject | Omit<Platform, "others">
+export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
+  iOS?: TextObject | Omit<Platform, "iOS">
+  android?: TextObject | Omit<Platform, "android">
+  macOS?: TextObject | Omit<Platform, "macOS">
+  windows?: TextObject | Omit<Platform, "windows">
+  others?: TextObject | Omit<Platform, "others">
 }
 
-interface Text extends JSX.HTMLAttributes<HTMLSpanElement> {
+interface Text extends HTMLAttributes<HTMLSpanElement> {
   iOS: TextObject | Omit<Platform, "iOS">
   android: TextObject | Omit<Platform, "android">
   macOS: TextObject | Omit<Platform, "macOS">
@@ -39,6 +41,9 @@ interface Text extends JSX.HTMLAttributes<HTMLSpanElement> {
 }
 
 const Text: Component<Text> = (props) => {
+  const platform = usePlatform(props.platform)
+  const style = useStyle(styles, props.platform)
+
   const merged = mergeProps({}, props)
   const [local, others] = splitProps(merged, [
     "class",
@@ -49,28 +54,30 @@ const Text: Component<Text> = (props) => {
     "macOS",
     "windows",
     "others",
+    "platform",
   ])
+
+  const getStyles = () => {
+    const key =
+      typeof local[platform()] === "string"
+        ? (local[platform()] as Platform)
+        : platform()
+
+    const { color, size, weight, align } = local[key] as TextObject
+
+    return {
+      [style[`Text__color--${color}`]]: !!color,
+      [style[`Text__size--${size}`]]: !!size,
+      [style[`Text__weight--${weight}`]]: !!weight,
+      [style[`Text__align--${align}`]]: !!align,
+    }
+  }
 
   return (
     <span
       class={style.Text}
       classList={{
-        ...(
-          ["iOS", "android", "macOS", "windows", "others"] as Platform[]
-        ).reduce((acb, platform) => {
-          const key =
-            typeof local[platform] === "string"
-              ? (local[platform] as Platform)
-              : platform
-
-          const { color, size, weight, align } = local[key] as TextObject
-
-          acb[style[`Text--${platform}__color--${color}`]] = !!color
-          acb[style[`Text--${platform}__size--${size}`]] = !!size
-          acb[style[`Text--${platform}__weight--${weight}`]] = !!weight
-          acb[style[`Text--${platform}__align--${align}`]] = !!align
-          return acb
-        }, {} as Record<string, boolean>),
+        ...getStyles(),
 
         [`${local.class}`]: !!local.class,
         ...local.classList,

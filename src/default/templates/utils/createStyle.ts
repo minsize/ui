@@ -1,8 +1,6 @@
 import { type Platform } from "ui"
 
-const mergeObjectsWithSum = (
-  styles: [CSSModuleClasses, CSSModuleClasses],
-): CSSModuleClasses => {
+export const mergeObjectsWithSum = <T extends unknown>(styles: [T, T]): T => {
   const result: {
     [key: string]: string
   } = {}
@@ -17,7 +15,7 @@ const mergeObjectsWithSum = (
     }
   }
 
-  return result
+  return result as T
 }
 
 const createStyle = (

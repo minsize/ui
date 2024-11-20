@@ -28,6 +28,7 @@ import {
   WriteBar,
   Separator,
   Field,
+  Title,
 } from "ui"
 import Swipe from "root/src/default/templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
@@ -143,8 +144,12 @@ const Default: Component<Default> = (props) => {
           }}
         >
           <Button.Container>
-            {props.nav === panels.PROFILE_2 ? pages.PROFILE_3 : pages.PROFILE_2}
-            <Button.SubTitle>PANELS</Button.SubTitle>
+            <Title>
+              {props.nav === panels.PROFILE_2
+                ? pages.PROFILE_3
+                : pages.PROFILE_2}
+            </Title>
+            {/* <Button.SubTitle>PANELS</Button.SubTitle> */}
           </Button.Container>
         </Button>
       </Show>
@@ -157,8 +162,10 @@ const Default: Component<Default> = (props) => {
         }}
       >
         <Button.Container>
-          {props.nav === panels.PROFILE ? pages.PROFILE_2 : pages.PROFILE}
-          <Button.SubTitle>VIEWS</Button.SubTitle>
+          <Title>
+            {props.nav === panels.PROFILE ? pages.PROFILE_2 : pages.PROFILE}
+          </Title>
+          {/* <Button.SubTitle>VIEWS</Button.SubTitle> */}
         </Button.Container>
       </Button>
     </Panel>

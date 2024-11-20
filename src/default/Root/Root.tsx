@@ -1,14 +1,7 @@
 import style from "./Root.module.css"
 
-import { type JSX, type Component, splitProps } from "solid-js"
-import { type HTMLAttributes, LayoutManager } from "ui"
-
-interface Store {
-  back: string | undefined
-  active: string
-  anim: boolean
-  show: boolean
-}
+import { type JSX, type Component, splitProps, createEffect } from "solid-js"
+import { type HTMLAttributes, LayoutManager, usePlatform } from "ui"
 
 interface Root extends HTMLAttributes<HTMLDivElement> {
   activeView: string
@@ -24,6 +17,7 @@ const Root: Component<Root> = (props) => {
   const [local, others] = splitProps(props, [
     "class",
     "classList",
+    "platform",
     "activeView",
     "children",
     "modal",
@@ -31,11 +25,11 @@ const Root: Component<Root> = (props) => {
     "header",
   ])
 
-  // const platform = usePlatform()
+  const platform = usePlatform(props.platform)
 
-  // createEffect(() => {
-  //   document.documentElement.setAttribute("platform", platform())
-  // })
+  createEffect(() => {
+    document.documentElement.setAttribute("platform", platform())
+  })
 
   return (
     <LayoutManager
