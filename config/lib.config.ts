@@ -18,6 +18,9 @@ export default defineConfig({
   // css: {
   //   modules: false,
   // },
+  resolve: {
+    alias: [{ find: "ui", replacement: "/src" }],
+  },
   plugins: [
     solidPlugin(),
     tsconfigPaths(),
@@ -28,6 +31,8 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       output: {
+        format: "es",
+        inlineDynamicImports: false,
         // assetFileNames: "[name][extname]",
         entryFileNames: "[name].js",
         assetFileNames: ({ name }) => {

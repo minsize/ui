@@ -1,7 +1,9 @@
 import style from "./AccordionSummary.module.css"
 import { AccordionStore } from "../../context"
 
-import { type HTMLAttributes, Cell, IconChevron } from "ui"
+import { type HTMLAttributes } from "@ui/Types"
+import Cell from "@src/default/Blocks/Cell/Cell"
+import IconChevron from "@src/default/Icons/Chevron/Chevron"
 
 import {
   type JSX,
@@ -40,12 +42,7 @@ interface AccordionSummary extends HTMLAttributes<DynamicProps<"article">> {
   separator?: boolean
 }
 
-type ComponentAccordionSummary = Component<AccordionSummary> & {
-  Title: typeof Cell.Title
-  SubTitle: typeof Cell.SubTitle
-}
-
-const AccordionSummary: ComponentAccordionSummary = (props) => {
+const AccordionSummary: Component<AccordionSummary> = (props) => {
   const merged = mergeProps({ separator: false }, props)
   const [local, others] = splitProps(merged, [
     "class",
@@ -83,8 +80,5 @@ const AccordionSummary: ComponentAccordionSummary = (props) => {
     </Cell>
   )
 }
-
-AccordionSummary.Title = Cell.Title
-AccordionSummary.SubTitle = Cell.SubTitle
 
 export default AccordionSummary

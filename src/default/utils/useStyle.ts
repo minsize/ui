@@ -1,12 +1,14 @@
+import { type Platform } from "@ui/Types"
+import usePlatform from "@src/default/utils/usePlatform"
+
 import { createEffect, on } from "solid-js"
 import { createStore } from "solid-js/store"
-import { usePlatform, type Platform } from "ui"
 
 /**
  * Хук для выбора стилей в зависимости от платформы.
  */
-const useStyle = (
-  styles: Record<Platform, CSSModuleClasses>,
+const useStyle = <T extends CSSModuleClasses>(
+  styles: Record<Platform, T>,
   customPlatform?: Platform,
 ) => {
   const platform = usePlatform(customPlatform)

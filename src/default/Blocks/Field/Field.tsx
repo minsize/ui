@@ -1,17 +1,26 @@
-import style from "./Field.module.css"
+import { styles } from "./styles"
 import { Textarea } from "./addons"
+
+import { type HTMLAttributes } from "@ui/Types"
+import useStyle from "@src/default/utils/useStyle"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 
-interface Field extends JSX.HTMLAttributes<HTMLDivElement> {}
+interface Field extends HTMLAttributes<HTMLDivElement> {}
 
 type ComponentField = Component<Field> & {
   Textarea: typeof Textarea
 }
 
 const Field: ComponentField = (props) => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps({}, props)
-  const [local, others] = splitProps(merged, ["class", "classList", "children"])
+  const [local, others] = splitProps(merged, [
+    "platform",
+    "class",
+    "classList",
+    "children",
+  ])
 
   return (
     <div

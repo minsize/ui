@@ -1,6 +1,5 @@
 import style from "./AccordionContent.module.css"
 import { AccordionStore } from "../../context"
-import { Cell } from "ui"
 
 import {
   type JSX,
@@ -20,12 +19,7 @@ type Store = {
   anim: boolean
 }
 
-type ComponentAccordionContent = Component<AccordionContent> & {
-  Title: typeof Cell.Title
-  SubTitle: typeof Cell.SubTitle
-}
-
-const AccordionContent: ComponentAccordionContent = (props) => {
+const AccordionContent: Component<AccordionContent> = (props) => {
   const [local, others] = splitProps(props, ["class", "classList", "children"])
 
   const context = useContext(AccordionStore)
@@ -89,8 +83,5 @@ const AccordionContent: ComponentAccordionContent = (props) => {
     </div>
   )
 }
-
-AccordionContent.Title = Cell.Title
-AccordionContent.SubTitle = Cell.SubTitle
 
 export default AccordionContent

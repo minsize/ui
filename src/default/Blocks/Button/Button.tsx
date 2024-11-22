@@ -1,7 +1,16 @@
 import { styles, generateTypography } from "./styles"
 import { Icon, Container } from "./addons"
 
-import { type HTMLAttributes, Events, Flex, TextContext, useStyle } from "ui"
+/* UI */
+import { type HTMLAttributes } from "@ui/Types"
+
+import Flex from "@src/default/Blocks/Flex/Flex"
+
+import Events from "@src/default/Templates/Events/Events"
+import TextContext from "@src/default/Templates/Text/context"
+
+import useStyle from "@src/default/utils/useStyle"
+/* UI */
 
 import { type Component, mergeProps, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"

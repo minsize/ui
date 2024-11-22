@@ -1,4 +1,5 @@
-import { type Platform, usePlatform } from "ui"
+import { type Platform } from "@ui/Types"
+import { usePlatform } from "@ui/Utils"
 
 import { createEffect, on } from "solid-js"
 import { createStore } from "solid-js/store"

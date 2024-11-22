@@ -7,17 +7,26 @@
 .Badge {
   position: relative;
   overflow: hidden;
-  color: var(--badge_text);
+  color   : var(--badge_text);
 }
 
 .Badge__in {
   position: relative;
-  z-index: 2;
+  z-index : 2;
 }
 
 .Badge__before,
 .Badge__after {
   z-index: 2;
+}
+
+.Badge__title {
+  color: var(--badge_text)
+}
+
+.Badge__subtitle {
+  color  : var(--badge_text);
+  opacity: 0.8;
 }
 
 /* Type */
@@ -34,13 +43,13 @@
 
 /* Mode */
 .Badge::before {
-  content: " ";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  z-index         : 1;
   background-color: var(--badge_background);
 }
 
@@ -70,20 +79,19 @@
 /* Appearance */
 .Badge__appearance--accent {
   --badge_background: var(--accent_color);
-  --badge_text: var(--accent_color--text);
+  --badge_text      : var(--accent_color--text);
 }
 
 .Badge__appearance--green {
   --badge_background: var(--green_color);
-  --badge_text: var(--green_color--text);
+  --badge_text      : var(--green_color--text);
 }
 
 
 .Badge__appearance--red {
   --badge_background: var(--red_color);
-  --badge_text: var(--red_color--text);
+  --badge_text      : var(--red_color--text);
 }
-
 
 /* Mode */
 .Badge__mode--filled {}
@@ -94,7 +102,7 @@
 
 .Badge__mode--outline {
   border: solid 1px var(--badge_background);
-  color: var(--badge_background);
+  color : var(--badge_background);
 }
 
 .Badge__mode--outline::before {

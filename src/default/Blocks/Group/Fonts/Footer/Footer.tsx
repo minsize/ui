@@ -1,5 +1,6 @@
 import style from "./Footer.module.css"
-import { Text } from "ui"
+
+import Text from "@src/default/Templates/Text/Text"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 

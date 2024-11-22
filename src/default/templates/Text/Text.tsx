@@ -1,36 +1,10 @@
 import { styles } from "./styles"
-import { type HTMLAttributes, usePlatform, useStyle } from "ui"
+
+import { type HTMLAttributes, type Platform, type TextObject } from "@ui/Types"
+import usePlatform from "@src/default/utils/usePlatform"
+import useStyle from "@src/default/utils/useStyle"
 
 import { type Component, mergeProps, splitProps } from "solid-js"
-
-export type Platform = "iOS" | "android" | "macOS" | "windows" | "others"
-
-export type TextObject = {
-  /**
-   * Цвет текста.
-   */
-  color: "accent" | "primary" | "secondary" | "inherit"
-  /**
-   * Размер текста.
-   */
-  size: "small" | "medium" | "large" | "x-large" | "xx-large"
-  /**
-   * Жирность шрифта.
-   */
-  weight: "400" | "500" | "600" | "700"
-  /**
-   * Выравнивание текста.
-   */
-  align?: "start" | "center" | "end"
-}
-
-export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
-  iOS?: TextObject | Omit<Platform, "iOS">
-  android?: TextObject | Omit<Platform, "android">
-  macOS?: TextObject | Omit<Platform, "macOS">
-  windows?: TextObject | Omit<Platform, "windows">
-  others?: TextObject | Omit<Platform, "others">
-}
 
 interface Text extends HTMLAttributes<HTMLSpanElement> {
   iOS: TextObject | Omit<Platform, "iOS">

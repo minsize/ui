@@ -1,10 +1,21 @@
-import { type TextProps } from "ui"
+import { type TextProps } from "@ui/Types"
 
 import { createContext } from "solid-js"
 
-type Context = {
-  title: TextProps
-  subTitle: TextProps
-}
+type Context =
+  | {
+      title: TextProps
+      subTitle: TextProps
+    }
+  | {
+      title: TextProps
+      subTitle?: TextProps
+    }
+  | {
+      title?: TextProps
+      subTitle: TextProps
+    }
 
-export const TextContext = createContext<Context>()
+const TextContext = createContext<Context>()
+
+export default TextContext

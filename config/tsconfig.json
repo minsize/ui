@@ -16,7 +16,8 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "root/*": ["../*"],
-      "ui": ["../src/index"]
+      "@src/*": ["../src/*"],
+      "@ui/Types": ["../src/Types/index.ts"]
     }
   },
   "exclude": ["node_modules", "static"],

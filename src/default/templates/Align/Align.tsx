@@ -1,6 +1,6 @@
 import style from "./Align.module.css"
 import { Before, Children, After } from "./addons"
-import { Flex } from "ui"
+import { Flex } from "@ui/Blocks"
 
 import { type JSX, mergeProps, splitProps, ValidComponent } from "solid-js"
 import { DynamicProps } from "solid-js/web"

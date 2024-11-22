@@ -34,14 +34,14 @@ const Title: Component<Title> = (props) => {
 
   return (
     <Text
-      class={style.Test}
+      class={style.Title}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
       }}
       {...others}
       {...(context?.title
-        ? context.title
+        ? (context.title as any)
         : modes[local.mode as NonNullable<Title["mode"]>])}
     >
       {local.children}

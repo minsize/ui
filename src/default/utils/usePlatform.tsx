@@ -1,4 +1,4 @@
-import { Platform } from "ui"
+import { Platform } from "@ui/Types"
 import { Accessor, createSignal } from "solid-js"
 
 const [signal, setSignal] = createSignal<Platform>("iOS")

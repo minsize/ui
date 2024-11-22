@@ -30,7 +30,7 @@ import {
   Field,
   Title,
 } from "ui"
-import Swipe from "root/src/default/templates/Swipe/Swipe"
+import Swipe from "root/src/default/Templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
 import { pages, panels, pushPage, replacePage, useRouter, views } from "router"
 

@@ -1,5 +1,11 @@
-import { styles } from "./styles"
-import { type HTMLAttributes, Align, useStyle } from "ui"
+import { styles, generateTypography } from "./styles"
+
+/* UI */
+import { type HTMLAttributes } from "@ui/Types"
+import useStyle from "@src/default/utils/useStyle"
+import Align from "@src/default/Templates/Align/Align"
+import TextContext from "@src/default/Templates/Text/context"
+/* UI */
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
@@ -35,6 +41,13 @@ interface Badge extends HTMLAttributes<DynamicProps<"span">> {
   type?: "text" | "icon"
 }
 
+const getSizeTitle = (type: NonNullable<Badge["size"]>) =>
+  ({
+    small: "small",
+    medium: "medium",
+    large: "large",
+  }[type] as "small" | "medium" | "large")
+
 const Badge: Component<Badge> = (props) => {
   const style = useStyle(styles, props.platform)
   const merged = mergeProps(
@@ -55,23 +68,36 @@ const Badge: Component<Badge> = (props) => {
   ])
 
   return (
-    <Align
-      class={style.Badge}
-      classList={{
-        [style[`Badge__appearance--${local.appearance}`]]: !!local.appearance,
-        [style[`Badge__mode--${local.mode}`]]: !!local.mode,
-        [style[`Badge__size--${local.size}`]]: !!local.size,
-        [style[`Badge__type--${local.type}`]]: !!local.type,
-
-        [`${local.class}`]: !!local.class,
-        ...local.classList,
-      }}
-      {...others}
+    <TextContext.Provider
+      value={generateTypography({
+        title: {
+          class: style[`Badge__title`],
+          iOS: {
+            size: getSizeTitle(local.size as NonNullable<Badge["size"]>),
+            weight: "500",
+            color: "inherit",
+          },
+        },
+      })}
     >
-      <Align.Before class={style.Badge__before} children={local.before} />
-      <Align.Children class={style.Badge__in} children={local.children} />
-      <Align.After class={style.Badge__after} children={local.after} />
-    </Align>
+      <Align
+        class={style.Badge}
+        classList={{
+          [style[`Badge__appearance--${local.appearance}`]]: !!local.appearance,
+          [style[`Badge__mode--${local.mode}`]]: !!local.mode,
+          [style[`Badge__size--${local.size}`]]: !!local.size,
+          [style[`Badge__type--${local.type}`]]: !!local.type,
+
+          [`${local.class}`]: !!local.class,
+          ...local.classList,
+        }}
+        {...others}
+      >
+        <Align.Before class={style.Badge__before} children={local.before} />
+        <Align.Children class={style.Badge__in} children={local.children} />
+        <Align.After class={style.Badge__after} children={local.after} />
+      </Align>
+    </TextContext.Provider>
   )
 }
 

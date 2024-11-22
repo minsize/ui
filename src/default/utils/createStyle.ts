@@ -1,4 +1,4 @@
-import { type Platform } from "ui"
+import { type Platform } from "@ui/Types"
 
 export const mergeObjectsWithSum = <T extends unknown>(styles: [T, T]): T => {
   const result: {
@@ -18,18 +18,18 @@ export const mergeObjectsWithSum = <T extends unknown>(styles: [T, T]): T => {
   return result as T
 }
 
-const createStyle = (
-  standard: CSSModuleClasses,
-  styles: Record<Platform, CSSModuleClasses>,
+const createStyle = <T extends CSSModuleClasses>(
+  standard: T,
+  styles: Record<Platform, T>,
 ) => {
-  let platformStyles: Partial<Record<Platform, CSSModuleClasses>> = {}
+  let platformStyles: Partial<Record<Platform, T>> = {}
 
   for (const key in styles) {
     const platform = key as Platform
     platformStyles[platform] = mergeObjectsWithSum([standard, styles[platform]])
   }
 
-  return platformStyles as NonNullable<Record<Platform, CSSModuleClasses>>
+  return platformStyles as NonNullable<Record<Platform, T>>
 }
 
 export default createStyle

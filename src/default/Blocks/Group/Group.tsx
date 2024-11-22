@@ -1,10 +1,13 @@
-import style from "./Group.module.css"
+import { styles } from "./styles"
 import { Container } from "./addons"
 import { Footer, Header } from "./Fonts"
 
-import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
+import { type HTMLAttributes } from "@ui/Types"
+import useStyle from "@src/default/utils/useStyle"
 
-interface Group extends JSX.HTMLAttributes<HTMLElement> {}
+import { type Component, mergeProps, splitProps } from "solid-js"
+
+interface Group extends HTMLAttributes<HTMLElement> {}
 
 interface ComponentGroup extends Component<Group> {
   Header: typeof Header
@@ -13,8 +16,14 @@ interface ComponentGroup extends Component<Group> {
 }
 
 const Group: ComponentGroup = (props) => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps({}, props)
-  const [local, others] = splitProps(merged, ["class", "classList", "children"])
+  const [local, others] = splitProps(merged, [
+    "platform",
+    "class",
+    "classList",
+    "children",
+  ])
 
   return (
     <section

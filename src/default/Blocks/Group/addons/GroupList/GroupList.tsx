@@ -9,7 +9,7 @@ const GroupList: Component<GroupList> = (props) => {
 
   return (
     <div
-      class={style.Test}
+      class={style.GroupList}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
@@ -21,4 +21,4 @@ const GroupList: Component<GroupList> = (props) => {
   )
 }
 
-export default GroupList;
+export default GroupList

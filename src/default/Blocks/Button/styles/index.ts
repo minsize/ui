@@ -1,4 +1,5 @@
-import { createStyle, type TextProps } from "ui"
+import createStyle from "@src/default/utils/createStyle"
+import { type TextProps } from "@src/default/Templates/Text/Text"
 
 import styleDefault from "../Button.module.css"
 import iOS from "./iOS.module.css"

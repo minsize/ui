@@ -7,9 +7,13 @@ import { compilerOptions } from "./tsconfig.json"
 import classGenerator from "./plugins/classGenerator"
 import solidSVG from "./plugins/solidSVG"
 
+import { fileURLToPath } from "url"
+
 import tsconfigPaths from "vite-tsconfig-paths"
 import solidPlugin from "vite-plugin-solid"
 import injectEntryChunk from "./plugins/injectEntryChunk"
+
+import transformImportsPlugin from "./plugins/transformImportsPlugin"
 
 const generator = classGenerator()
 
@@ -24,12 +28,9 @@ const output: OutputOptions | OutputOptions[] = {
   // experimentalMinChunkSize: 25_000,
 }
 
+console.log({ f: `${path.resolve(__dirname, "../src")}/` })
+
 export default defineConfig({
-  // resolve: {
-  //   alias: {
-  //     ui: "/src",
-  //   },
-  // },
   base: "/static/",
   publicDir: "public",
   esbuild: {
@@ -63,6 +64,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    // transformImportsPlugin({ baseDir: process.cwd() }),
     // eruda(),
     tsconfigPaths(),
     solidPlugin(),
