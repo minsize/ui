@@ -8,28 +8,7 @@ import {
   type JSX,
 } from "solid-js"
 
-import {
-  Cell,
-  CheckBox,
-  Grid,
-  Hue,
-  Panel,
-  Picker,
-  Radio,
-  Image,
-  Spinner,
-  Badge,
-  Accordion,
-  Group,
-  Button,
-  IconChevron,
-  Select,
-  Textarea,
-  WriteBar,
-  Separator,
-  Field,
-  Title,
-} from "ui"
+import { Panel, Accordion, Button, Cell, Title, SubTitle } from "@src/index"
 import Swipe from "root/src/default/Templates/Swipe/Swipe"
 import { RGBtoHSV } from "@minsize/utils"
 import { pages, panels, pushPage, replacePage, useRouter, views } from "router"
@@ -91,46 +70,49 @@ const Default: Component<Default> = (props) => {
     <Panel nav={props.nav}>
       <Accordion.List>
         <Accordion>
-          <Accordion.Summary>Test</Accordion.Summary>
+          <Accordion.Summary>
+            <Title>Tasks</Title>
+          </Accordion.Summary>
           <Accordion.Content>
-            Какой-тот оооочень длинный контент.
+            <Cell.List>
+              <Cell
+                before={
+                  <span
+                    style={{
+                      display: "flex",
+                      width: "28px",
+                      height: "28px",
+                    }}
+                  />
+                }
+              >
+                <Title>Role</Title>
+              </Cell>
+              <Cell
+                before={
+                  <span
+                    style={{
+                      display: "flex",
+                      width: "28px",
+                      height: "28px",
+                    }}
+                  />
+                }
+              >
+                <Title>Role 2</Title>
+              </Cell>
+            </Cell.List>
           </Accordion.Content>
         </Accordion>
         <Accordion>
-          <Accordion.Summary>Test</Accordion.Summary>
+          <Accordion.Summary>
+            <Title>Права голосового канала</Title>
+          </Accordion.Summary>
           <Accordion.Content>
             Какой-тот оооочень длинный контент.
           </Accordion.Content>
         </Accordion>
       </Accordion.List>
-      {/* <Separator /> */}
-      <Accordion.List>
-        <Accordion>
-          <Accordion.Summary>Test</Accordion.Summary>
-          <Accordion.Content>
-            Какой-тот оооочень длинный контент.
-          </Accordion.Content>
-        </Accordion>
-        <Accordion>
-          <Accordion.Summary>Test</Accordion.Summary>
-          <Accordion.Content>
-            Какой-тот оооочень длинный контент.
-          </Accordion.Content>
-        </Accordion>
-      </Accordion.List>
-      <WriteBar>
-        <WriteBar.Icon>
-          <IconChevron type={"left"} />
-        </WriteBar.Icon>
-        <WriteBar.Field>
-          <WriteBar.Field.Textarea placeholder={"test"}>
-            test
-          </WriteBar.Field.Textarea>
-        </WriteBar.Field>
-        <WriteBar.Icon>
-          <IconChevron type={"right"} />
-        </WriteBar.Icon>
-      </WriteBar>
       {/* <Spinner color={"secondary"} size={"regular"} /> */}
       <Show when={activeView() === views.PROFILE_2}>
         <Button

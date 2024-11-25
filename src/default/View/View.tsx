@@ -1,5 +1,8 @@
 import { styles } from "./styles"
-import { type HTMLAttributes, LayoutManager, useStyle } from "ui"
+
+import { type HTMLAttributes } from "@ui/Types"
+import useStyle from "@src/default/utils/useStyle"
+import LayoutManager from "@src/default/Templates/LayoutManager/LayoutManager"
 
 import { type Component, splitProps } from "solid-js"
 

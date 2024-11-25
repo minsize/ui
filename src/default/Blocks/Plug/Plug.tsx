@@ -1,12 +1,16 @@
-import style from "./Plug.module.css"
-import { Flex } from "ui"
-import { Action, Container, Icon } from "./addons"
-import { SubTitle, Title } from "./Fonts"
+import { styles, generateTypography } from "./styles"
 
-import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
+import { type HTMLAttributes } from "@ui/Types"
+import useStyle from "@src/default/utils/useStyle"
+import Flex from "@src/default/Blocks/Flex/Flex"
+import TextContext from "@src/default/Templates/Text/context"
+
+import { Action, Container, Icon } from "./addons"
+
+import { type Component, splitProps, mergeProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
 
-interface Plug extends Omit<JSX.HTMLAttributes<DynamicProps<"div">>, "title"> {
+interface Plug extends Omit<HTMLAttributes<DynamicProps<"div">>, "title"> {
   /**
    * Определяет, должен ли элемент отображаться в полноэкранном режиме.
    */
@@ -17,11 +21,10 @@ type ComponentPlug = Component<Plug> & {
   Container: typeof Container
   Action: typeof Action
   Icon: typeof Icon
-  Title: typeof Title
-  SubTitle: typeof SubTitle
 }
 
 const Plug: ComponentPlug = (props) => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps({ mode: "bottom" }, props)
   const [local, others] = splitProps(merged, [
     "class",
@@ -31,28 +34,37 @@ const Plug: ComponentPlug = (props) => {
   ])
 
   return (
-    <Flex
-      component={"div"}
-      class={style.Plug}
-      classList={{
-        [`${local.class}`]: !!local.class,
-        ...local.classList,
-
-        [style[`Plug--full`]]: local.full,
-      }}
-      direction={"column"}
-      justifyContent={"center"}
-      {...others}
+    <TextContext.Provider
+      value={generateTypography({
+        title: {
+          class: style["Plug__title"],
+        },
+        subTitle: {
+          class: style["Plug__subtitle"],
+        },
+      })}
     >
-      {local.children}
-    </Flex>
+      <Flex
+        component={"div"}
+        class={style.Plug}
+        classList={{
+          [`${local.class}`]: !!local.class,
+          ...local.classList,
+
+          [style[`Plug--full`]]: local.full,
+        }}
+        direction={"column"}
+        justifyContent={"center"}
+        {...others}
+      >
+        {local.children}
+      </Flex>
+    </TextContext.Provider>
   )
 }
 
 Plug.Container = Container
 Plug.Action = Action
 Plug.Icon = Icon
-Plug.Title = Title
-Plug.SubTitle = SubTitle
 
 export default Plug

@@ -1,4 +1,4 @@
-import style from "./Title.module.css"
+import style from "./SubTitle.module.css"
 
 import { type HTMLAttributes, type TextProps } from "@ui/Types"
 import Text from "@src/default/Templates/Text/Text"
@@ -6,16 +6,16 @@ import TextContext from "@src/default/Templates/Text/context"
 
 import { type Component, mergeProps, splitProps, useContext } from "solid-js"
 
-interface Title extends HTMLAttributes<HTMLSpanElement> {
+interface SubTitle extends HTMLAttributes<HTMLSpanElement> {
   mode?: "default"
 }
 
 const modes: Record<"default", TextProps> = {
   default: {
     iOS: {
-      color: "primary",
-      size: "medium",
-      weight: "500",
+      color: "secondary",
+      size: "small",
+      weight: "400",
     },
     android: "iOS",
     macOS: "iOS",
@@ -24,7 +24,7 @@ const modes: Record<"default", TextProps> = {
   },
 }
 
-const Title: Component<Title> = (props) => {
+const SubTitle: Component<SubTitle> = (props) => {
   const context = useContext(TextContext)
 
   const merged = mergeProps({ mode: "default" }, props)
@@ -37,19 +37,19 @@ const Title: Component<Title> = (props) => {
 
   return (
     <Text
-      class={style.Title}
+      class={style.SubTitle}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
       }}
       {...others}
-      {...(context?.title
-        ? (context.title as any)
-        : modes[local.mode as NonNullable<Title["mode"]>])}
+      {...(context?.subTitle
+        ? (context.subTitle as any)
+        : modes[local.mode as NonNullable<SubTitle["mode"]>])}
     >
       {local.children}
     </Text>
   )
 }
 
-export default Title
+export default SubTitle

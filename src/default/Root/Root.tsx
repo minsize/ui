@@ -1,7 +1,11 @@
-import style from "./Root.module.css"
+import { styles } from "./styles"
+
+import { type HTMLAttributes } from "@ui/Types"
+import useStyle from "@src/default/utils/useStyle"
+import usePlatform from "@src/default/utils/usePlatform"
+import LayoutManager from "@src/default/Templates/LayoutManager/LayoutManager"
 
 import { type JSX, type Component, splitProps, createEffect } from "solid-js"
-import { type HTMLAttributes, LayoutManager, usePlatform } from "ui"
 
 interface Root extends HTMLAttributes<HTMLDivElement> {
   activeView: string
@@ -14,6 +18,7 @@ interface Root extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Root: Component<Root> = (props) => {
+  const style = useStyle(styles, props.platform)
   const [local, others] = splitProps(props, [
     "class",
     "classList",

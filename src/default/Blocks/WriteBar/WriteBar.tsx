@@ -1,14 +1,12 @@
 import { styles } from "./styles"
 import { Field, Icon } from "./addons"
 
-import {
-  type HTMLAttributes,
-  Flex,
-  Separator,
-  Show,
-  usePlatform,
-  useStyle,
-} from "ui"
+import { type HTMLAttributes } from "@ui/Types"
+import Flex from "@src/default/Blocks/Flex/Flex"
+import Separator from "@src/default/Blocks/Separator/Separator"
+import Show from "@src/default/Templates/Show/Show"
+import usePlatform from "@src/default/utils/usePlatform"
+import useStyle from "@src/default/utils/useStyle"
 
 import {
   type Component,

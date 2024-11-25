@@ -1,7 +1,8 @@
 import style from "./Hue.module.css"
 
+import Touch, { type GestureEvent } from "@src/default/Templates/Touch/Touch"
+
 import { type JSX, type Component, createEffect } from "solid-js"
-import { GestureEvent, Touch } from "ui"
 
 import { createStore } from "solid-js/store"
 import { clamp, HSVtoRGB } from "@minsize/utils"

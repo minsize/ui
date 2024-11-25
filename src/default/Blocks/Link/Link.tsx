@@ -1,5 +1,8 @@
-import style from "./Link.module.css"
-import { Events, IEvents } from "ui"
+import { styles } from "./styles"
+
+import { type Platform } from "@ui/Types"
+import Events, { type IEvents } from "@src/default/Templates/Events/Events"
+import useStyle from "@src/default/utils/useStyle"
 
 import { type JSX, mergeProps, splitProps, ValidComponent } from "solid-js"
 
@@ -9,14 +12,22 @@ interface Link<T extends ValidComponent> extends IEvents<T> {
    * По умолчанию используется `a` при href или `button`.
    */
   component?: T
+
+  platform?: Platform
 }
 
 const Link = <T extends ValidComponent>(props: Link<T>): JSX.Element => {
+  const style = useStyle(styles, props.platform)
   const merged = mergeProps(
     { component: props.href ? "a" : "button" },
     props,
   ) as Link<T>
-  const [local, others] = splitProps(merged, ["class", "classList", "children"])
+  const [local, others] = splitProps(merged, [
+    "platform",
+    "class",
+    "classList",
+    "children",
+  ])
 
   return (
     <Events

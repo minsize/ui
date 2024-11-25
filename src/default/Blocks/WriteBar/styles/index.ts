@@ -1,4 +1,4 @@
-import { createStyle } from "ui"
+import createStyle from "@src/default/utils/createStyle"
 
 import styleDefault from "../WriteBar.module.css"
 import iOS from "./iOS.module.css"

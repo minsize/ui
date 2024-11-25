@@ -1,5 +1,7 @@
 import style from "./Textarea.module.css"
-import { useComputedBlockStyles, type HTMLAttributes } from "ui"
+
+import { type HTMLAttributes } from "@ui/Types"
+import useComputedBlockStyles from "@src/default/utils/useComputedBlockStyles"
 
 import {
   type JSX,

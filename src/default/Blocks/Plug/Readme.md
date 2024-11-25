@@ -7,8 +7,8 @@ const Example = () => {
   return (
     <Plug full>
       <Plug.Container>
-        <Plug.Title>Title</Plug.Title>
-        <Plug.SubTitle>SubTitle</Plug.SubTitle>
+        <Title>Title</Title>
+        <SubTitle>SubTitle</SubTitle>
       </Plug.Container>
       <Plug.Icon>
         <IconElumTeam color={"white"} height={28} />

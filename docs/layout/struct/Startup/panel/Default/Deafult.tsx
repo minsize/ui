@@ -1,6 +1,6 @@
 import { type Component, type JSX, onMount } from "solid-js"
 
-import { Panel } from "ui"
+import { Panel } from "@src/index"
 import { Content } from "./elements"
 
 import { pages, replacePage } from "router"

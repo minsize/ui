@@ -1,7 +1,9 @@
+/* UI */
 import { type TextProps } from "@ui/Types"
 import createStyle from "@src/default/utils/createStyle"
+/* UI */
 
-import styleDefault from "../Button.module.css"
+import styleDefault from "../Plug.module.css"
 import iOS from "./iOS.module.css"
 import android from "./android.module.css"
 import macOS from "./macOS.module.css"
@@ -23,9 +25,10 @@ export const generateTypography = (
 ): Record<TypographyType, TextProps> => ({
   title: {
     iOS: {
-      size: "medium",
+      size: "xx-large",
       weight: "500",
-      color: "inherit",
+      color: "primary",
+      align: "center",
     },
     android: "iOS",
     macOS: "iOS",
@@ -35,9 +38,10 @@ export const generateTypography = (
   },
   subTitle: {
     iOS: {
-      size: "small",
+      size: "large",
       weight: "400",
-      color: "inherit",
+      color: "secondary",
+      align: "center",
     },
     android: "iOS",
     macOS: "iOS",

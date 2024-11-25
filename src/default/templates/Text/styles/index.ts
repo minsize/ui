@@ -1,4 +1,4 @@
-import { createStyle } from "@ui/Utils"
+import createStyle from "@src/default/utils/createStyle"
 
 import styleDefault from "../Text.module.css"
 import iOS from "./iOS.module.css"

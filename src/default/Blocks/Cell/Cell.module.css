@@ -17,6 +17,7 @@
   position: relative;
   width   : 100%;
   z-index : 2;
+  display : flex;
 }
 
 .Cell__before {
@@ -61,4 +62,12 @@
   bottom  : 0;
   left    : 0;
   right   : 0;
+}
+
+.Cell:only-child {
+  opacity: 0;
+}
+
+.Cell:not(:only-child):last-child .Cell__separator {
+  opacity: 0;
 }

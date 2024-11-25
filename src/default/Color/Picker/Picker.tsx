@@ -1,12 +1,13 @@
 import style from "./Picker.module.css"
 import { getPercentage, getPosition } from "./libs"
 
+import Touch, { type GestureEvent } from "@src/default/Templates/Touch/Touch"
+import Ratio from "@src/default/Templates/Ratio/Ratio"
+
 import { type Component, type JSX, createEffect, splitProps } from "solid-js"
 import { createStore } from "solid-js/store"
 
-import { type GestureEvent, Touch, Ratio } from "ui"
-
-import { clamp, HSVtoRGB, RGBtoHSV } from "@minsize/utils"
+import { clamp, HSVtoRGB } from "@minsize/utils"
 
 interface Picker
   extends Omit<JSX.HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
