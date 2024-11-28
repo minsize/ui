@@ -1,5 +1,6 @@
 import style from "./AccordionSummary.module.css"
 import { AccordionStore } from "../../context"
+import { Arrow } from "./addons"
 
 import { type HTMLAttributes } from "@ui/Types"
 import Cell from "@src/default/Blocks/Cell/Cell"
@@ -12,13 +13,17 @@ import {
   useContext,
   mergeProps,
 } from "solid-js"
-import { DynamicProps } from "solid-js/web"
+import { type DynamicProps } from "solid-js/web"
 
 interface AccordionSummary extends HTMLAttributes<DynamicProps<"article">> {
   /**
    * Элемент, который будет отображаться перед основным содержимым ячейки.
    */
   before?: JSX.Element
+  /**
+   * Элемент, который будет отображаться после основного содержимого ячейки.
+   */
+  after?: JSX.Element
   /**
    * Заголовок ячейки.
    * Рекомендуем использовать компонент: `Accordion.Summary.Title`
@@ -42,7 +47,11 @@ interface AccordionSummary extends HTMLAttributes<DynamicProps<"article">> {
   separator?: boolean
 }
 
-const AccordionSummary: Component<AccordionSummary> = (props) => {
+type ComponentAccordionSummary = Component<AccordionSummary> & {
+  Arrow: typeof Arrow
+}
+
+const AccordionSummary: ComponentAccordionSummary = (props) => {
   const merged = mergeProps({ separator: false }, props)
   const [local, others] = splitProps(merged, [
     "class",
@@ -61,18 +70,6 @@ const AccordionSummary: Component<AccordionSummary> = (props) => {
     <Cell
       class={style.AccordionSummary}
       onClick={handlerClick}
-      after={
-        <span>
-          {local.disabled ? (
-            "lock"
-          ) : (
-            <IconChevron
-              class={style.AccordionSummary__icon}
-              type={context.status?.() ? "up" : "down"}
-            />
-          )}
-        </span>
-      }
       selected={context.status?.()}
       {...others}
     >
@@ -80,5 +77,7 @@ const AccordionSummary: Component<AccordionSummary> = (props) => {
     </Cell>
   )
 }
+
+AccordionSummary.Arrow = Arrow
 
 export default AccordionSummary

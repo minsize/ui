@@ -1,11 +1,10 @@
 import { styles, generateTypography } from "./styles"
-import { CellList } from "./addons"
+import { CellList, Separator } from "./addons"
 
 /* UI */
 import { type HTMLAttributes } from "@ui/Types"
 
 import Flex from "@src/default/Blocks/Flex/Flex"
-import Separator from "@src/default/Blocks/Separator/Separator"
 
 import Events from "@src/default/Templates/Events/Events"
 import Align from "@src/default/Templates/Align/Align"
@@ -18,6 +17,7 @@ import TextContext from "@src/default/Templates/Text/context"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
+import { CellStore } from "./context"
 
 interface Cell extends Omit<HTMLAttributes<DynamicProps<"article">>, "title"> {
   /**
@@ -84,16 +84,6 @@ const Cell: ComponentCell = (props) => {
     "platform",
   ])
 
-  const CellSeparator: Component<{ when: boolean }> = (props) => (
-    <Show when={props.when && local.separator}>
-      <Separator
-        class={style.Cell__separator}
-        color={"secondary"}
-        size={"full"}
-      />
-    </Show>
-  )
-
   return (
     <TextContext.Provider
       value={generateTypography({
@@ -105,52 +95,69 @@ const Cell: ComponentCell = (props) => {
         },
       })}
     >
-      <Events
-        class={style.Cell}
-        classList={{
-          ...local.classList,
-          [`${local.class}`]: !!local.class,
-
-          [style[`Cell--selected`]]: local.selected,
+      <CellStore.Provider
+        value={{
+          getPlatform: platform,
+          isSeparator: () => local.separator,
+          getStyleContainer: () => style.Cell__in,
+          getStyleContent: () => style.Cell__content,
+          getStyleSeparator: () => style.Cell__separator,
         }}
-        {...others}
       >
-        <Align component={"article"} class={style.Cell__content}>
-          <Align.Before when={!!local.before}>
-            <Flex
-              alignItems={"center"}
-              justifyContent={"center"}
-              component={"span"}
-              class={style.Cell__before}
-            >
-              {local.before}
-            </Flex>
-          </Align.Before>
+        <Events
+          class={style.Cell}
+          classList={{
+            ...local.classList,
+            [`${local.class}`]: !!local.class,
 
-          <Align.Children class={style.Cell__in}>
-            <Show
-              component={"div"}
-              class={style.Cell__content}
-              children={local.children}
-            />
-            <Align.After when={!!local.after}>
+            [style[`Cell--selected`]]: local.selected,
+          }}
+          {...others}
+        >
+          <Align component={"article"} class={style.Cell__content}>
+            <Align.Before when={!!local.before}>
               <Flex
                 alignItems={"center"}
                 justifyContent={"center"}
                 component={"span"}
-                class={style.Cell__after}
+                class={style.Cell__before}
               >
-                {local.after}
+                {local.before}
               </Flex>
-            </Align.After>
-            <CellSeparator when={["iOS", "macOS"].indexOf(platform()) !== -1} />
-          </Align.Children>
-        </Align>
-        <CellSeparator
-          when={["android", "windows", "others"].indexOf(platform()) !== -1}
-        />
-        <span class={style.Cell__background} />
-      </Events>
+            </Align.Before>
+
+            <Align.Children class={style.Cell__in}>
+              <Show
+                component={"div"}
+                class={style.Cell__content}
+                children={local.children}
+              />
+              <Align.After when={!!local.after}>
+                <Flex
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  component={"span"}
+                  class={style.Cell__after}
+                >
+                  {local.after}
+                </Flex>
+              </Align.After>
+              <Separator
+                when={
+                  ["iOS", "macOS"].indexOf(platform()) !== -1 && local.separator
+                }
+              />
+            </Align.Children>
+          </Align>
+          <Separator
+            when={
+              ["android", "windows", "others"].indexOf(platform()) !== -1 &&
+              local.separator
+            }
+          />
+          <span class={style.Cell__background} />
+        </Events>
+      </CellStore.Provider>
     </TextContext.Provider>
   )
 }

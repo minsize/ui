@@ -30,11 +30,4 @@ document.addEventListener("touchstart", (e) => {
   e.stopPropagation()
 })
 
-render(
-  () => (
-    <Route pathname={"/static"} startPage={pages.STARTUP} struct={routerStruct}>
-      <Layout />
-    </Route>
-  ),
-  document.body,
-)
+render(() => <Layout />, document.body)
