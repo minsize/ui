@@ -4,13 +4,21 @@ import { createContext } from "solid-js"
 export const CellStore = createContext<{
   getPlatform: () => Platform
   isSeparator: () => boolean
-  getStyleContainer: () => string
-  getStyleContent: () => string
-  getStyleSeparator: () => string
+  getStyle: () => {
+    container: string
+    content: string
+    separator: string
+    before: string
+    after: string
+  }
 }>({
   getPlatform: () => "others" as Platform,
   isSeparator: () => false,
-  getStyleContainer: () => "",
-  getStyleContent: () => "",
-  getStyleSeparator: () => "",
+  getStyle: () => ({
+    container: "",
+    content: "",
+    separator: "",
+    before: "",
+    after: "",
+  }),
 })

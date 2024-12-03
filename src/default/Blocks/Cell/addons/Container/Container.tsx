@@ -29,15 +29,11 @@ const Container: Component<Container> = (props) => {
         [`${local.class}`]: !!local.class,
         ...local.classList,
 
-        [`${context.getStyleContainer()}`]: true,
+        [`${context.getStyle().container}`]: true,
       }}
       {...others}
     >
-      <Show
-        component={"div"}
-        class={context.getStyleContent()}
-        children={local.children}
-      />
+      {local.children}
       <Separator
         when={
           ["iOS", "macOS"].indexOf(context.getPlatform()) !== -1 &&

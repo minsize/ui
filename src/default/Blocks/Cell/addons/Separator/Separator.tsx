@@ -30,7 +30,7 @@ const Separator: Component<Separator> = (props) => {
   return (
     <Show when={local.when}>
       <ElSeparator
-        class={context.getStyleSeparator()}
+        class={context.getStyle().separator}
         classList={{
           [`${local.class}`]: !!local.class,
           ...local.classList,

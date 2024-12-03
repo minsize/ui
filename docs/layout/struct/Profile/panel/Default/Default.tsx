@@ -3,6 +3,7 @@ import { createSignal, Show, type Component, type JSX } from "solid-js"
 import { Panel, Accordion, Button, Cell, Title } from "@src/index"
 import { RGBtoHSV } from "@minsize/utils"
 import { pages, panels, pushPage, useRouter, views } from "router"
+import { Flex } from "root/dist"
 
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {}
 
@@ -28,7 +29,9 @@ const Default: Component<Default> = (props) => {
       <Accordion.List>
         <Accordion>
           <Accordion.Summary>
-            <Title>Tasks</Title>
+            <Accordion.Summary.Container>
+              <Title>Tasks</Title>
+            </Accordion.Summary.Container>
           </Accordion.Summary>
           <Accordion.Content>
             <Cell.List>
@@ -63,13 +66,26 @@ const Default: Component<Default> = (props) => {
         </Accordion>
         <Accordion>
           <Accordion.Summary>
-            <Title>Права голосового канала</Title>
+            <Accordion.Summary.Container>
+              <Title>Права голосового канала</Title>
+            </Accordion.Summary.Container>
           </Accordion.Summary>
           <Accordion.Content>
-            Какой-тот оооочень длинный контент.
+            <Accordion.Summary.Container>
+              <Title>Какой-тот оооочень длинный контент.</Title>
+            </Accordion.Summary.Container>
           </Accordion.Content>
         </Accordion>
       </Accordion.List>
+
+      <Button>
+        <Button.Icon>ICON</Button.Icon>
+        <Button.Container>
+          <Title>Test</Title>
+        </Button.Container>
+        <Button.Icon>ICON</Button.Icon>
+      </Button>
+
       {/* <Spinner color={"secondary"} size={"regular"} /> */}
       <Show when={activeView() === views.PROFILE_2}>
         <Button

@@ -1,28 +1,28 @@
-html[platform="android"] .Badge {
+.Badge {
   font-weight: 400;
 }
 
 /* Size */
-html[platform="android"] .Badge__size--small {
-  padding: 4px 6px;
-  gap: 4px;
+.Badge__size--small {
+  padding      : 4px 6px;
+  gap          : 4px;
   border-radius: 6px;
-  font-size: var(--font_size--small);
-  line-height: var(--font_height--small);
+  font-size    : var(--font_size--small);
+  line-height  : var(--font_height--small);
 }
 
-html[platform="android"] .Badge__size--medium {
-  padding: 6px 8px;
-  gap: 6px;
+.Badge__size--medium {
+  padding      : 6px 8px;
+  gap          : 6px;
   border-radius: 8px;
-  font-size: var(--font_size--medium);
-  line-height: var(--font_height--medium);
+  font-size    : var(--font_size--medium);
+  line-height  : var(--font_height--medium);
 }
 
-html[platform="android"] .Badge__size--large {
-  padding: 8px 10px;
-  gap: 8px;
+.Badge__size--large {
+  padding      : 8px 10px;
+  gap          : 8px;
   border-radius: 10px;
-  font-size: var(--font_size--large);
-  line-height: var(--font_height--large);
+  font-size    : var(--font_size--large);
+  line-height  : var(--font_height--large);
 }

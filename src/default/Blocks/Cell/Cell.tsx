@@ -1,5 +1,12 @@
 import { styles, generateTypography } from "./styles"
-import { CellList, Separator } from "./addons"
+import {
+  After,
+  Before,
+  CellList,
+  Container,
+  Content,
+  Separator,
+} from "./addons"
 
 /* UI */
 import { type HTMLAttributes } from "@ui/Types"
@@ -21,22 +28,14 @@ import { CellStore } from "./context"
 
 interface Cell extends Omit<HTMLAttributes<DynamicProps<"article">>, "title"> {
   /**
-   * Элемент, который будет отображаться перед основным содержимым ячейки.
-   */
-  before?: JSX.Element
-  /**
-   * Элемент, который будет отображаться после основного содержимого ячейки.
-   */
-  after?: JSX.Element
-  /**
    * Заголовок ячейки.
-   * Рекомендуем использовать компонент: `Cell.Title`
+   * Рекомендуем использовать компонент: `Title`
    */
   children?: JSX.Element
   /**
    * Дополнительный текст (подзаголовок), который будет отображаться под основным текстом ячейки.
    *
-   * Рекомендуем использовать компонент: `Cell.SubTitle`
+   * Рекомендуем использовать компонент: `SubTitle`
    *
    * @deprecated
    */
@@ -65,6 +64,10 @@ interface Cell extends Omit<HTMLAttributes<DynamicProps<"article">>, "title"> {
 
 type ComponentCell = Component<Cell> & {
   List: typeof CellList
+  Container: typeof Container
+  Content: typeof Content
+  Before: typeof Before
+  After: typeof After
 }
 
 const Cell: ComponentCell = (props) => {
@@ -75,8 +78,6 @@ const Cell: ComponentCell = (props) => {
   const [local, others] = splitProps(merged, [
     "class",
     "classList",
-    "before",
-    "after",
     "children",
     "subtitle",
     "separator",
@@ -99,9 +100,13 @@ const Cell: ComponentCell = (props) => {
         value={{
           getPlatform: platform,
           isSeparator: () => local.separator,
-          getStyleContainer: () => style.Cell__in,
-          getStyleContent: () => style.Cell__content,
-          getStyleSeparator: () => style.Cell__separator,
+          getStyle: () => ({
+            container: style.Cell__container,
+            content: style.Cell__content,
+            separator: style.Cell__separator,
+            before: style.Cell__before,
+            after: style.Cell__after,
+          }),
         }}
       >
         <Events
@@ -114,40 +119,8 @@ const Cell: ComponentCell = (props) => {
           }}
           {...others}
         >
-          <Align component={"article"} class={style.Cell__content}>
-            <Align.Before when={!!local.before}>
-              <Flex
-                alignItems={"center"}
-                justifyContent={"center"}
-                component={"span"}
-                class={style.Cell__before}
-              >
-                {local.before}
-              </Flex>
-            </Align.Before>
-
-            <Align.Children class={style.Cell__in}>
-              <Show
-                component={"div"}
-                class={style.Cell__content}
-                children={local.children}
-              />
-              <Align.After when={!!local.after}>
-                <Flex
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  component={"span"}
-                  class={style.Cell__after}
-                >
-                  {local.after}
-                </Flex>
-              </Align.After>
-              <Separator
-                when={
-                  ["iOS", "macOS"].indexOf(platform()) !== -1 && local.separator
-                }
-              />
-            </Align.Children>
+          <Align component={"article"} class={style.Cell__in}>
+            {local.children}
           </Align>
           <Separator
             when={
@@ -162,6 +135,10 @@ const Cell: ComponentCell = (props) => {
   )
 }
 
+Cell.Before = Before
 Cell.List = CellList
+Cell.Container = Container
+Cell.Content = Content
+Cell.After = After
 
 export default Cell

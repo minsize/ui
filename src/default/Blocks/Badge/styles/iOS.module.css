@@ -1,28 +1,28 @@
-html[platform="iOS"] .Badge {
+.Badge {
   font-weight: 400;
 }
 
 /* Size */
-html[platform="iOS"] .Badge__size--small {
-  padding: 2px 4px;
-  gap: 2px;
+.Badge__size--small {
+  padding      : 2px 4px;
+  gap          : 2px;
   border-radius: 6px;
-  font-size: var(--font_size--small);
-  line-height: var(--font_height--small);
+  font-size    : var(--font_size--small);
+  line-height  : var(--font_height--small);
 }
 
-html[platform="iOS"] .Badge__size--medium {
-  padding: 4px 6px;
-  gap: 4px;
+.Badge__size--medium {
+  padding      : 4px 6px;
+  gap          : 4px;
   border-radius: 8px;
-  font-size: var(--font_size--medium);
-  line-height: var(--font_height--medium);
+  font-size    : var(--font_size--medium);
+  line-height  : var(--font_height--medium);
 }
 
-html[platform="iOS"] .Badge__size--large {
-  padding: 6px 8px;
-  gap: 6px;
+.Badge__size--large {
+  padding      : 6px 8px;
+  gap          : 6px;
   border-radius: 10px;
-  font-size: var(--font_size--large);
-  line-height: var(--font_height--large);
+  font-size    : var(--font_size--large);
+  line-height  : var(--font_height--large);
 }

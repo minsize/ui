@@ -4,7 +4,7 @@
   transition: 0.3s;
 }
 
-.Cell__in {
+.Cell__container {
   display    : flex;
   align-items: center;
 }
@@ -14,13 +14,19 @@
 }
 
 .Cell__content {
-  position: relative;
-  width   : 100%;
-  z-index : 2;
-  display : flex;
+  position      : relative;
+  width         : 100%;
+  z-index       : 2;
+  display       : flex;
+  flex-direction: column;
 }
 
-.Cell__before {
+.Cell__in {
+  position: relative;
+  z-index : 2;
+}
+
+.Cell .Cell__before {
   position: relative;
 }
 
@@ -28,7 +34,9 @@
 
 .Cell__subtitle {}
 
-.Cell__after {}
+.Cell__after {
+  position: relative;
+}
 
 .Cell__background {
   transition: 0.3s;

@@ -1,5 +1,6 @@
 import style from "./Root.module.css"
-import { Accordion, Cell, Flex, Title } from "@src/index"
+import { Accordion, Badge, Cell, Flex, Title } from "@src/index"
+import { SubTitle } from "root/dist"
 
 import { type JSX, type Component, mergeProps, splitProps, For } from "solid-js"
 
@@ -74,22 +75,27 @@ const Root: Component<Root> = (props) => {
         <For each={Tabs}>
           {(tab, index) => (
             <Accordion data-index={index()}>
-              <Accordion.Summary
-                before={
-                  <>
-                    <Accordion.Summary.Arrow />
-                    <span
-                      style={{
-                        height: "28px",
-                        width: "28px",
-                        background: "#0D0E0F",
-                        "border-radius": "8px",
-                      }}
-                    />
-                  </>
-                }
-              >
-                <Title>{tab.label}</Title>
+              <Accordion.Summary>
+                <Accordion.Summary.Before>
+                  <Accordion.Summary.Arrow />
+                  <span
+                    style={{
+                      height: "28px",
+                      width: "28px",
+                      background: "#0D0E0F",
+                      "border-radius": "8px",
+                    }}
+                  />
+                </Accordion.Summary.Before>
+                <Accordion.Summary.Container>
+                  <Accordion.Summary.Content>
+                    <Title>{tab.label}</Title>
+                    <SubTitle>{tab.label}</SubTitle>
+                  </Accordion.Summary.Content>
+                  <Accordion.Summary.After>
+                    <Badge>Test</Badge>
+                  </Accordion.Summary.After>
+                </Accordion.Summary.Container>
               </Accordion.Summary>
               <Accordion.Content>
                 <For each={tab.tabs}>
@@ -103,22 +109,25 @@ const Root: Component<Root> = (props) => {
                       />
                       <Cell
                         style={{ width: "100%" }}
-                        separator={false}
+                        separator={true}
                         data-index={index()}
-                        before={
-                          <>
-                            <span
-                              style={{
-                                height: "28px",
-                                width: "28px",
-                                background: "#0D0E0F",
-                                "border-radius": "8px",
-                              }}
-                            />
-                          </>
-                        }
                       >
-                        <Title>{tab.label}</Title>
+                        <Cell.Before>
+                          <span
+                            style={{
+                              height: "28px",
+                              width: "28px",
+                              background: "#0D0E0F",
+                              "border-radius": "8px",
+                            }}
+                          />
+                        </Cell.Before>
+                        <Cell.Container>
+                          <Cell.Content>
+                            <Title>{tab.label}</Title>
+                          </Cell.Content>
+                          <Cell.After>After</Cell.After>
+                        </Cell.Container>
                       </Cell>
                     </Flex>
                   )}

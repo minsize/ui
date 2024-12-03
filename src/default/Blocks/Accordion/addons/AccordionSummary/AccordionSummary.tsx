@@ -4,7 +4,6 @@ import { Arrow } from "./addons"
 
 import { type HTMLAttributes } from "@ui/Types"
 import Cell from "@src/default/Blocks/Cell/Cell"
-import IconChevron from "@src/default/Icons/Chevron/Chevron"
 
 import {
   type JSX,
@@ -16,14 +15,6 @@ import {
 import { type DynamicProps } from "solid-js/web"
 
 interface AccordionSummary extends HTMLAttributes<DynamicProps<"article">> {
-  /**
-   * Элемент, который будет отображаться перед основным содержимым ячейки.
-   */
-  before?: JSX.Element
-  /**
-   * Элемент, который будет отображаться после основного содержимого ячейки.
-   */
-  after?: JSX.Element
   /**
    * Заголовок ячейки.
    * Рекомендуем использовать компонент: `Accordion.Summary.Title`
@@ -49,6 +40,10 @@ interface AccordionSummary extends HTMLAttributes<DynamicProps<"article">> {
 
 type ComponentAccordionSummary = Component<AccordionSummary> & {
   Arrow: typeof Arrow
+  Container: typeof Cell.Container
+  Content: typeof Cell.Content
+  Before: typeof Cell.Before
+  After: typeof Cell.After
 }
 
 const AccordionSummary: ComponentAccordionSummary = (props) => {
@@ -79,5 +74,9 @@ const AccordionSummary: ComponentAccordionSummary = (props) => {
 }
 
 AccordionSummary.Arrow = Arrow
+AccordionSummary.Container = Cell.Container
+AccordionSummary.Content = Cell.Content
+AccordionSummary.Before = Cell.Before
+AccordionSummary.After = Cell.After
 
 export default AccordionSummary

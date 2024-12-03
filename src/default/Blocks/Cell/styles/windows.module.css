@@ -27,7 +27,7 @@
   background-color: var(--accent_color);
 }
 
-.Cell__in {
+.Cell__container {
   padding   : 14px 12px 14px 0px;
   min-height: 44px;
   box-sizing: border-box;

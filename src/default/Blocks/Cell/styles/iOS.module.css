@@ -12,7 +12,7 @@
   padding: 8px 8px 8px 0px;
 }
 
-.Cell__in {
+.Cell__container {
   padding   : 8px 16px 8px 0px;
   min-height: 44px;
   box-sizing: border-box;

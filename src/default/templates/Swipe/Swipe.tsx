@@ -1,5 +1,9 @@
 import style from "./Swipe.module.css"
 
+import Align from "@src/default/Templates/Align/Align"
+import Touch from "@src/default/Templates/Touch/Touch"
+import useClickOutside from "@src/default/utils/useClickOutside"
+
 import {
   type Component,
   createEffect,
@@ -7,7 +11,6 @@ import {
   mergeProps,
   splitProps,
 } from "solid-js"
-import { Align, Touch, useClickOutside } from "../index"
 import { createStore, produce } from "solid-js/store"
 import { type GestureEvent } from "../Touch/Touch"
 import { clamp } from "@minsize/utils"

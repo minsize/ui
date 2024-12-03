@@ -1,6 +1,7 @@
 import { extname, relative, resolve } from "path"
 import { fileURLToPath } from "node:url"
 import { glob } from "glob"
+import copy from "rollup-plugin-copy"
 
 import { defineConfig } from "vite"
 import solidPlugin from "vite-plugin-solid"
@@ -19,7 +20,7 @@ export default defineConfig({
   //   modules: false,
   // },
   resolve: {
-    alias: [{ find: "ui", replacement: "/src" }],
+    alias: [{ find: "@src", replacement: "/src" }],
   },
   plugins: [
     solidPlugin(),
@@ -31,14 +32,17 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       output: {
-        format: "es",
-        inlineDynamicImports: false,
         // assetFileNames: "[name][extname]",
         entryFileNames: "[name].js",
         assetFileNames: ({ name }) => {
           const [[, ext]] = Array.from((name || "").matchAll(/.([0-9-a-z]+)$/g))
           return `${ext}/[hash].${ext}`
         },
+        plugins: [
+          copy({
+            targets: [{ src: "src/package.json", dest: "dist" }],
+          }),
+        ],
       },
       external: ["solid-js", "solid-js/web", "solid-js/store"],
       input: Object.fromEntries(

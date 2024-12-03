@@ -1,4 +1,4 @@
-import { Platform } from "ui"
+import { type Platform } from "@ui/Types"
 
 import { type JSX } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
