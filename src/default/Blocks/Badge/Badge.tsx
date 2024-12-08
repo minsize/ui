@@ -1,8 +1,10 @@
 import { styles, generateTypography } from "./styles"
+import { Container, Icon } from "./addons"
 
 /* UI */
 import { type HTMLAttributes } from "@ui/Types"
 import useStyle from "@src/default/utils/useStyle"
+import Flex from "@src/default/Blocks/Flex/Flex"
 import Align from "@src/default/Templates/Align/Align"
 import TextContext from "@src/default/Templates/Text/context"
 /* UI */
@@ -41,6 +43,13 @@ interface Badge extends HTMLAttributes<DynamicProps<"span">> {
   type?: "text" | "icon"
 }
 
+const getSizeSubTitle = (type: NonNullable<Badge["size"]>) =>
+  ({
+    small: "small",
+    medium: "small",
+    large: "medium",
+  }[type] as "small" | "medium" | "large")
+
 const getSizeTitle = (type: NonNullable<Badge["size"]>) =>
   ({
     small: "small",
@@ -48,7 +57,12 @@ const getSizeTitle = (type: NonNullable<Badge["size"]>) =>
     large: "large",
   }[type] as "small" | "medium" | "large")
 
-const Badge: Component<Badge> = (props) => {
+type ComponentBadge = Component<Badge> & {
+  Icon: typeof Icon
+  Container: typeof Container
+}
+
+const Badge: ComponentBadge = (props) => {
   const style = useStyle(styles, props.platform)
   const merged = mergeProps(
     { appearance: "accent", mode: "filled", size: "medium", type: "text" },
@@ -78,9 +92,17 @@ const Badge: Component<Badge> = (props) => {
             color: "inherit",
           },
         },
+        subTitle: {
+          class: style[`Badge__subtitle`],
+          iOS: {
+            size: getSizeSubTitle(local.size as NonNullable<Badge["size"]>),
+            weight: "400",
+            color: "inherit",
+          },
+        },
       })}
     >
-      <Align
+      <Flex
         class={style.Badge}
         classList={{
           [style[`Badge__appearance--${local.appearance}`]]: !!local.appearance,
@@ -93,12 +115,14 @@ const Badge: Component<Badge> = (props) => {
         }}
         {...others}
       >
-        <Align.Before class={style.Badge__before} children={local.before} />
-        <Align.Children class={style.Badge__in} children={local.children} />
-        <Align.After class={style.Badge__after} children={local.after} />
-      </Align>
+        {local.children}
+        <span class={style.Badge__background} />
+      </Flex>
     </TextContext.Provider>
   )
 }
+
+Badge.Container = Container
+Badge.Icon = Icon
 
 export default Badge

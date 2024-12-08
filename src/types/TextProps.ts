@@ -6,4 +6,9 @@ export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   macOS?: TextObject | Omit<Platform, "macOS">
   windows?: TextObject | Omit<Platform, "windows">
   others?: TextObject | Omit<Platform, "others">
+
+  /**
+   * Не переносит текст на новую строку
+   */
+  nowrap?: boolean
 }

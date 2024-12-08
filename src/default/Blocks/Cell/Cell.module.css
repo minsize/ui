@@ -2,6 +2,9 @@
   position  : relative;
   color     : var(--text_primary);
   transition: 0.3s;
+
+  width     : 100%;
+  box-sizing: border-box;
 }
 
 .Cell__container {

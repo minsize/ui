@@ -1,5 +1,5 @@
 import style from "./Children.module.css"
-import { Show } from "root/src/default/Templates"
+import { Show } from "@src/default/Templates"
 
 import { type JSX, type Component, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"

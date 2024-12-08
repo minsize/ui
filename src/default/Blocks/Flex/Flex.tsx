@@ -3,7 +3,7 @@ import style from "./Flex.module.css"
 import { type JSX, type ValidComponent, mergeProps, splitProps } from "solid-js"
 import { Dynamic, type DynamicProps } from "solid-js/web"
 
-interface Flex<T extends ValidComponent>
+export interface Flex<T extends ValidComponent>
   extends JSX.HTMLAttributes<DynamicProps<T>> {
   /**
    * Компонент, который будет использоваться для рендеринга Flexbox.

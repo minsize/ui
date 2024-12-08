@@ -6,12 +6,15 @@ import useStyle from "@src/default/utils/useStyle"
 
 import { type Component, mergeProps, splitProps } from "solid-js"
 
-interface Text extends HTMLAttributes<HTMLSpanElement> {
-  iOS: TextObject | Omit<Platform, "iOS">
-  android: TextObject | Omit<Platform, "android">
-  macOS: TextObject | Omit<Platform, "macOS">
-  windows: TextObject | Omit<Platform, "windows">
-  others: TextObject | Omit<Platform, "others">
+export interface Text extends HTMLAttributes<HTMLSpanElement> {
+  iOS?: TextObject | Omit<Platform, "iOS">
+  android?: TextObject | Omit<Platform, "android">
+  macOS?: TextObject | Omit<Platform, "macOS">
+  windows?: TextObject | Omit<Platform, "windows">
+  others?: TextObject | Omit<Platform, "others">
+
+  nowrap?: boolean
+  overflow?: boolean
 }
 
 const Text: Component<Text> = (props) => {
@@ -29,6 +32,8 @@ const Text: Component<Text> = (props) => {
     "windows",
     "others",
     "platform",
+    "nowrap",
+    "overflow",
   ])
 
   const getStyles = () => {
@@ -55,6 +60,9 @@ const Text: Component<Text> = (props) => {
 
         [`${local.class}`]: !!local.class,
         ...local.classList,
+
+        [style[`Text__whiteSpace--nowrap`]]: local.nowrap,
+        [style[`Text--overflow`]]: local.overflow,
       }}
       {...others}
     >

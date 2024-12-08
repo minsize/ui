@@ -2,6 +2,8 @@
   width           : 100%;
   height          : 100%;
   background-color: var(--bg_color);
+  overflow        : hidden;
+  box-sizing      : border-box;
 }
 
 .Menu {

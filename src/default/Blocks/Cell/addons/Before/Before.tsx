@@ -21,8 +21,6 @@ const Before: Component<Before> = (props) => {
   const merged = mergeProps({}, props)
   const [local, others] = splitProps(merged, ["class", "classList", "children"])
 
-  console.log({ f: context.getStyle() })
-
   return (
     <Align.Before when={!!local.children}>
       <Flex

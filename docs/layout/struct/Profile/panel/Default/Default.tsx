@@ -3,7 +3,7 @@ import { createSignal, Show, type Component, type JSX } from "solid-js"
 import { Panel, Accordion, Button, Cell, Title } from "@src/index"
 import { RGBtoHSV } from "@minsize/utils"
 import { pages, panels, pushPage, useRouter, views } from "router"
-import { Flex } from "root/dist"
+import { Flex } from "@src/index"
 
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {}
 

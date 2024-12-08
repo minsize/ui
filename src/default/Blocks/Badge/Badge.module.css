@@ -4,16 +4,6 @@
   color   : var(--badge_text);
 }
 
-.Badge__in {
-  position: relative;
-  z-index : 2;
-}
-
-.Badge__before,
-.Badge__after {
-  z-index: 2;
-}
-
 .Badge__title {
   color: var(--badge_text)
 }
@@ -21,6 +11,17 @@
 .Badge__subtitle {
   color  : var(--badge_text);
   opacity: 0.8;
+}
+
+.Badge__background {
+  content         : " ";
+  position        : absolute;
+  left            : 0;
+  right           : 0;
+  top             : 0;
+  bottom          : 0;
+  z-index         : -1;
+  background-color: var(--badge_background);
 }
 
 /* Type */
@@ -36,17 +37,6 @@
 .Badge__size--large {}
 
 /* Mode */
-.Badge::before {
-  content         : " ";
-  position        : absolute;
-  left            : 0;
-  right           : 0;
-  top             : 0;
-  bottom          : 0;
-  z-index         : 1;
-  background-color: var(--badge_background);
-}
-
 .Badge__mode--filled {}
 
 .Badge__mode--merges {}

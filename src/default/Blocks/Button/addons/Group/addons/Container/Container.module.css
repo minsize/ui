@@ -1,0 +1,10 @@
+.Container {
+  position  : relative;
+  overflow  : hidden;
+  box-sizing: border-box;
+  max-width : 100%;
+}
+
+.Container--stretched {
+  width: 100%;
+}

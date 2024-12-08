@@ -1,11 +1,11 @@
 .Button {
-  position     : relative;
-  appearance   : none;
-  background   : transparent;
-  border       : none;
-  outline      : none;
-  /* overflow  : hidden; */
-  box-sizing   : border-box;
+  position  : relative;
+  appearance: none;
+  background: transparent;
+  border    : none;
+  outline   : none;
+  overflow  : hidden;
+  box-sizing: border-box;
 
   padding: var(--button__padding-vertical) var(--button__padding-horizontal);
 }

@@ -16,7 +16,7 @@ export const styles = createStyle(styleDefault, {
   others,
 })
 
-type TypographyType = "title"
+type TypographyType = "title" | "subTitle"
 
 export const generateTypography = (
   props: Record<TypographyType, TextProps>,
@@ -32,5 +32,17 @@ export const generateTypography = (
     windows: "iOS",
     others: "iOS",
     ...props.title,
+  },
+  subTitle: {
+    iOS: {
+      size: "small",
+      weight: "400",
+      color: "inherit",
+    },
+    android: "iOS",
+    macOS: "iOS",
+    windows: "iOS",
+    others: "iOS",
+    ...props.subTitle,
   },
 })

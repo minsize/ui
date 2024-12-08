@@ -1,12 +1,12 @@
 import style from "./SubTitle.module.css"
 
-import { type HTMLAttributes, type TextProps } from "@ui/Types"
-import Text from "@src/default/Templates/Text/Text"
+import { type TextProps } from "@ui/Types"
+import Text, { type Text as TypeText } from "@src/default/Templates/Text/Text"
 import TextContext from "@src/default/Templates/Text/context"
 
 import { type Component, mergeProps, splitProps, useContext } from "solid-js"
 
-interface SubTitle extends HTMLAttributes<HTMLSpanElement> {
+interface SubTitle extends TypeText {
   mode?: "default"
 }
 

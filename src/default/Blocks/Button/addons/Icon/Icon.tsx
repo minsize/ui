@@ -9,7 +9,7 @@ const Icon: Component<Icon> = (props) => {
 
   return (
     <div
-      class={style.Test}
+      class={style.Icon}
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
@@ -21,4 +21,4 @@ const Icon: Component<Icon> = (props) => {
   )
 }
 
-export default Icon;
+export default Icon

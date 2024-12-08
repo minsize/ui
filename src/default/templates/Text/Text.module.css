@@ -68,3 +68,15 @@
   text-align: right;
   text-align: end
 }
+
+/* whiteSpace */
+.Text__whiteSpace--nowrap {
+  white-space: nowrap;
+}
+
+.Text--overflow {
+  position     : relative;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+  width        : 100%;
+}

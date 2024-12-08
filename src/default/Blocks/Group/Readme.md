@@ -4,7 +4,7 @@
 ```jsx
 const Example = () => {
   return (
-    <Group full>
+    <Group>
       <Group.Header>Header</Plug.Header>
       <Group.Container>
         <Cell>Павел Дуров</Cell>
@@ -14,7 +14,7 @@ const Example = () => {
       <Group.Footer>
         Footer
       </Group.Footer>
-    </Plug>
+    </Group>
   )
 }
 ```

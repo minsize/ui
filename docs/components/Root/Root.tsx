@@ -1,6 +1,6 @@
 import style from "./Root.module.css"
-import { Accordion, Badge, Cell, Flex, Title } from "@src/index"
-import { SubTitle } from "root/dist"
+import { Accordion, Badge, Button, Cell, Flex, Ratio, Title } from "@src/index"
+import { SubTitle } from "@src/index"
 
 import { type JSX, type Component, mergeProps, splitProps, For } from "solid-js"
 
@@ -93,7 +93,11 @@ const Root: Component<Root> = (props) => {
                     <SubTitle>{tab.label}</SubTitle>
                   </Accordion.Summary.Content>
                   <Accordion.Summary.After>
-                    <Badge>Test</Badge>
+                    <Badge size={"small"}>
+                      <Badge.Container>
+                        <Title>99+</Title>
+                      </Badge.Container>
+                    </Badge>
                   </Accordion.Summary.After>
                 </Accordion.Summary.Container>
               </Accordion.Summary>
@@ -104,13 +108,13 @@ const Root: Component<Root> = (props) => {
                       <span
                         style={{
                           height: "28px",
-                          width: "56px",
+                          width: "68px",
                         }}
                       />
                       <Cell
-                        style={{ width: "100%" }}
                         separator={true}
                         data-index={index()}
+                        onClick={() => {}}
                       >
                         <Cell.Before>
                           <span
@@ -136,6 +140,56 @@ const Root: Component<Root> = (props) => {
             </Accordion>
           )}
         </For>
+        <Button.Group>
+          <Button.Group.Container>
+            <Button stretched>
+              <Button.Container>
+                <Title overflow nowrap>
+                  Test Title 124125 12512 7587ttt ittt
+                </Title>
+                <SubTitle overflow nowrap>
+                  Test SubTitle
+                </SubTitle>
+              </Button.Container>
+            </Button>
+            <Button>
+              <Button.Container>
+                <Title nowrap>Test Title</Title>
+                <SubTitle nowrap>Test SubTitle</SubTitle>
+              </Button.Container>
+            </Button>
+          </Button.Group.Container>
+          <Button.Group.Container>
+            <Button stretched>
+              <Button.Container>
+                <Title nowrap>Test Title</Title>
+                <SubTitle nowrap>Test SubTitle</SubTitle>
+              </Button.Container>
+            </Button>
+
+            <Button stretched>
+              <Button.Container>
+                <Title nowrap>Test Title</Title>
+                <SubTitle nowrap>Test SubTitle</SubTitle>
+              </Button.Container>
+            </Button>
+          </Button.Group.Container>
+          <Button.Group.Container>
+            <Button stretched>
+              <Button.Container>
+                <Title nowrap>Test Title</Title>
+                <SubTitle nowrap>Test SubTitle</SubTitle>
+              </Button.Container>
+            </Button>
+
+            <Button stretched>
+              <Button.Container>
+                <Title nowrap>Test Title</Title>
+                <SubTitle nowrap>Test SubTitle</SubTitle>
+              </Button.Container>
+            </Button>
+          </Button.Group.Container>
+        </Button.Group>
       </div>
       <div class={style.Root__in}>{local.children}</div>
     </Flex>

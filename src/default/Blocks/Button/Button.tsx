@@ -1,5 +1,5 @@
 import { styles, generateTypography } from "./styles"
-import { Icon, Container } from "./addons"
+import { Icon, Container, Group } from "./addons"
 
 /* UI */
 import { type HTMLAttributes } from "@ui/Types"
@@ -47,6 +47,7 @@ interface Button extends HTMLAttributes<DynamicProps<"button">> {
 }
 
 type ComponentButton = Component<Button> & {
+  Group: typeof Group
   Container: typeof Container
   Icon: typeof Icon
 }
@@ -106,6 +107,7 @@ const Button: ComponentButton = (props) => {
   )
 }
 
+Button.Group = Group
 Button.Container = Container
 Button.Icon = Icon
 

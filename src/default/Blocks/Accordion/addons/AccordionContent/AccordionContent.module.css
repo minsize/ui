@@ -7,6 +7,7 @@
 .AccordionContent {
   transition: 0.2s;
   position  : relative;
+  width     : 100%;
   overflow  : hidden;
   color     : var(--text_secondary);
   box-sizing: border-box;
