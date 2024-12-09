@@ -19,9 +19,9 @@ export default defineConfig({
   // css: {
   //   modules: false,
   // },
-  resolve: {
-    alias: [{ find: "@src", replacement: "/src" }],
-  },
+  // resolve: {
+  //   alias: [{ find: "@src", replacement: "/src" }],
+  // },
   plugins: [
     solidPlugin(),
     tsconfigPaths(),

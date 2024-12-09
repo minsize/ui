@@ -22,7 +22,7 @@ type ComponentGroup = Component<Group> & {
 
 const Group: ComponentGroup = (props) => {
   const style = useStyle(styles, props.platform)
-  const merged = mergeProps({ stretched: false }, props)
+  const merged = mergeProps({}, props)
   const [local, others] = splitProps(merged, [
     "platform",
     "class",

@@ -13,19 +13,12 @@ import {
 
 interface Container<T extends ValidComponent = "span"> extends TypeFlex<T> {
   platform?: Platform
-
-  stretched?: boolean
 }
 
 const Container: Component<Container> = (props) => {
   const style = useStyle(styles, props.platform)
   const merged = mergeProps({}, props)
-  const [local, others] = splitProps(merged, [
-    "class",
-    "classList",
-    "children",
-    "stretched",
-  ])
+  const [local, others] = splitProps(merged, ["class", "classList", "children"])
 
   return (
     <Flex
@@ -33,8 +26,6 @@ const Container: Component<Container> = (props) => {
       classList={{
         [`${local.class}`]: !!local.class,
         ...local.classList,
-
-        [style[`Container--stretched`]]: local.stretched,
       }}
       {...others}
     >

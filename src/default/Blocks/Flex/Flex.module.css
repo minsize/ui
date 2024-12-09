@@ -33,7 +33,7 @@
 }
 
 .Flex__justifyContent--end {
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .Flex__justifyContent--space-around {

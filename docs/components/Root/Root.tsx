@@ -1,5 +1,5 @@
 import style from "./Root.module.css"
-import { Accordion, Badge, Button, Cell, Flex, Ratio, Title } from "@src/index"
+import { Accordion, Badge, Button, Cell, Flex, Title } from "@src/index"
 import { SubTitle } from "@src/index"
 
 import { type JSX, type Component, mergeProps, splitProps, For } from "solid-js"
@@ -141,11 +141,11 @@ const Root: Component<Root> = (props) => {
           )}
         </For>
         <Button.Group>
-          <Button.Group.Container>
-            <Button stretched>
+          <Button.Group.Container justifyContent={"start"}>
+            <Button>
               <Button.Container>
                 <Title overflow nowrap>
-                  Test Title 124125 12512 7587ttt ittt
+                  Test Title
                 </Title>
                 <SubTitle overflow nowrap>
                   Test SubTitle
@@ -160,29 +160,29 @@ const Root: Component<Root> = (props) => {
             </Button>
           </Button.Group.Container>
           <Button.Group.Container>
-            <Button stretched>
+            <Button>
               <Button.Container>
                 <Title nowrap>Test Title</Title>
                 <SubTitle nowrap>Test SubTitle</SubTitle>
               </Button.Container>
             </Button>
 
-            <Button stretched>
+            <Button>
               <Button.Container>
                 <Title nowrap>Test Title</Title>
                 <SubTitle nowrap>Test SubTitle</SubTitle>
               </Button.Container>
             </Button>
           </Button.Group.Container>
-          <Button.Group.Container>
-            <Button stretched>
+          <Button.Group.Container justifyContent={"end"}>
+            <Button>
               <Button.Container>
                 <Title nowrap>Test Title</Title>
                 <SubTitle nowrap>Test SubTitle</SubTitle>
               </Button.Container>
             </Button>
 
-            <Button stretched>
+            <Button>
               <Button.Container>
                 <Title nowrap>Test Title</Title>
                 <SubTitle nowrap>Test SubTitle</SubTitle>
