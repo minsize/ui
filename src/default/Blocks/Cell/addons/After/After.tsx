@@ -3,6 +3,8 @@ import { CellStore } from "../../context"
 
 import Align from "@src/default/Templates/Align/Align"
 import Flex from "@src/default/Blocks/Flex/Flex"
+import GapContext from "@src/default/Templates/Gap/context"
+import generateGap from "@src/default/utils/generateGap"
 
 import {
   type JSX,
@@ -21,8 +23,6 @@ const Before: Component<Before> = (props) => {
   const merged = mergeProps({}, props)
   const [local, others] = splitProps(merged, ["class", "classList", "children"])
 
-  console.log({ f: context.getStyle() })
-
   return (
     <Align.Before when={!!local.children}>
       <Flex
@@ -36,7 +36,22 @@ const Before: Component<Before> = (props) => {
         }}
         {...others}
       >
-        {local.children}
+        <GapContext.Provider
+          value={generateGap(
+            {
+              count: {
+                iOS: "8px",
+                android: "16px",
+                macOS: "8px",
+                windows: "12px",
+                others: "10px",
+              },
+            },
+            context.getPlatform,
+          )}
+        >
+          {local.children}
+        </GapContext.Provider>
       </Flex>
     </Align.Before>
   )

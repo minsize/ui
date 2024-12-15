@@ -74,7 +74,7 @@ const Cell: ComponentCell = (props) => {
   const style = useStyle(styles, props.platform)
   const platform = usePlatform(props.platform)
 
-  const merged = mergeProps({ separator: true }, props)
+  const merged = mergeProps({ separator: false }, props)
   const [local, others] = splitProps(merged, [
     "class",
     "classList",

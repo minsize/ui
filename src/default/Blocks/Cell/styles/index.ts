@@ -1,5 +1,5 @@
 /* UI */
-import { type TextProps } from "@ui/Types"
+import { type TextProps, type Platform } from "@ui/Types"
 import createStyle from "@src/default/utils/createStyle"
 /* UI */
 

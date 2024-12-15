@@ -9,7 +9,6 @@
 
 .Cell__before {
   padding: 6px 8px 6px 0px;
-  gap    : 8px;
 }
 
 .Cell__container {
@@ -24,5 +23,4 @@
 
 .Cell__after {
   padding-left: 8px;
-  gap         : 8px;
 }

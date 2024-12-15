@@ -1,128 +1,94 @@
-import { createSignal, Show, type Component, type JSX } from "solid-js"
+import { For, type Component, type JSX } from "solid-js"
 
-import { Panel, Accordion, Button, Cell, Title } from "@src/index"
-import { RGBtoHSV } from "@minsize/utils"
-import { pages, panels, pushPage, useRouter, views } from "router"
-import { Flex } from "@src/index"
-
+import { Panel, Group, Title, Cell, Badge, Button, Flex, Gap } from "@src/index"
 interface Default extends JSX.HTMLAttributes<HTMLDivElement> {}
 
+const Roles = [
+  {
+    name: "creator",
+    count: 1,
+    color: "red",
+  },
+  {
+    name: "admin",
+    count: 1,
+    color: "orange",
+  },
+  {
+    name: "team",
+    count: 1,
+    color: "blue",
+  },
+  {
+    name: "support",
+    count: 1,
+    color: "green",
+  },
+]
+
 const Default: Component<Default> = (props) => {
-  const activeView = useRouter("view")
-  const [selected, setSelected] = createSignal(1)
-
-  const [checked, setChecked] = createSignal(false)
-  const [hue, setHue] = createSignal(0)
-  const [color, setColor] = createSignal<[number, number, number]>([0, 0, 0])
-
-  const handlerGrid = (color: [number, number, number]) => {
-    const [h] = RGBtoHSV(color[0], color[1], color[2])
-    setHue(h)
-    setColor(color)
-  }
-
-  // onMount(() => console.log("mount", props.nav))
-  // onCleanup(() => console.log("cleanup", props.nav))
-
   return (
     <Panel nav={""}>
-      <Accordion.List>
-        <Accordion>
-          <Accordion.Summary>
-            <Accordion.Summary.Container>
-              <Title>Tasks</Title>
-            </Accordion.Summary.Container>
-          </Accordion.Summary>
-          <Accordion.Content>
-            <Cell.List>
-              <Cell
-                before={
-                  <span
-                    style={{
-                      display: "flex",
-                      width: "28px",
-                      height: "28px",
-                    }}
-                  />
-                }
-              >
-                <Title>Role</Title>
-              </Cell>
-              <Cell
-                before={
-                  <span
-                    style={{
-                      display: "flex",
-                      width: "28px",
-                      height: "28px",
-                    }}
-                  />
-                }
-              >
-                <Title>Role 2</Title>
-              </Cell>
-            </Cell.List>
-          </Accordion.Content>
-        </Accordion>
-        <Accordion>
-          <Accordion.Summary>
-            <Accordion.Summary.Container>
-              <Title>Права голосового канала</Title>
-            </Accordion.Summary.Container>
-          </Accordion.Summary>
-          <Accordion.Content>
-            <Accordion.Summary.Container>
-              <Title>Какой-тот оооочень длинный контент.</Title>
-            </Accordion.Summary.Container>
-          </Accordion.Content>
-        </Accordion>
-      </Accordion.List>
-
-      <Button>
-        <Button.Icon>ICON</Button.Icon>
-        <Button.Container>
-          <Title>Test</Title>
-        </Button.Container>
-        <Button.Icon>ICON</Button.Icon>
-      </Button>
-
-      {/* <Spinner color={"secondary"} size={"regular"} /> */}
-      <Show when={activeView() === views.PROFILE_2}>
-        <Button
-          onClick={() => {
-            pushPage({
-              pageId:
-                props.nav === panels.PROFILE_2
-                  ? pages.PROFILE_3
-                  : pages.PROFILE_2,
-            })
-          }}
-        >
-          <Button.Container>
-            <Title>
-              {props.nav === panels.PROFILE_2
-                ? pages.PROFILE_3
-                : pages.PROFILE_2}
-            </Title>
-            {/* <Button.SubTitle>PANELS</Button.SubTitle> */}
-          </Button.Container>
-        </Button>
-      </Show>
-      <Button
-        onClick={() => {
-          pushPage({
-            pageId:
-              props.nav === panels.PROFILE ? pages.PROFILE_2 : pages.PROFILE,
-          })
-        }}
-      >
-        <Button.Container>
-          <Title>
-            {props.nav === panels.PROFILE ? pages.PROFILE_2 : pages.PROFILE}
-          </Title>
-          {/* <Button.SubTitle>VIEWS</Button.SubTitle> */}
-        </Button.Container>
-      </Button>
+      <Flex>
+        <Flex style={{ width: "30%" }} direction={"column"}>
+          <Group>
+            <Group.Container>
+              <Title>Search</Title>
+            </Group.Container>
+          </Group>
+          <Group>
+            <Group.Container>
+              <For each={Roles}>
+                {(role, index) => (
+                  <Cell data-index={index()}>
+                    <Cell.Before>
+                      <Gap>
+                        <Flex
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                          }}
+                        >
+                          |
+                        </Flex>
+                        <span
+                          style={{
+                            width: "14px",
+                            height: "14px",
+                            background: role.color,
+                            "border-radius": "14px",
+                          }}
+                        />
+                      </Gap>
+                    </Cell.Before>
+                    <Cell.Container>
+                      <Cell.Content>
+                        <Title>{role.name}</Title>
+                      </Cell.Content>
+                      <Cell.After>
+                        <span>Icon</span>
+                        <span>1</span>
+                      </Cell.After>
+                    </Cell.Container>
+                  </Cell>
+                )}
+              </For>
+              <Button.Group>
+                <Button.Group.Container>
+                  <Button stretched size={"medium"}>
+                    <Button.Container>+</Button.Container>
+                  </Button>
+                </Button.Group.Container>
+              </Button.Group>
+            </Group.Container>
+          </Group>
+        </Flex>
+        <Group>
+          <Group.Container>
+            <Title>Search</Title>
+          </Group.Container>
+        </Group>
+      </Flex>
     </Panel>
   )
 }

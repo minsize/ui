@@ -75,7 +75,7 @@
   right   : 0;
 }
 
-.Cell:only-child {
+.Cell:only-child .Cell__separator {
   opacity: 0;
 }
 

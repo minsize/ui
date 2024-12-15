@@ -28,8 +28,6 @@ const output: OutputOptions | OutputOptions[] = {
   // experimentalMinChunkSize: 25_000,
 }
 
-console.log({ f: `${path.resolve(__dirname, "../src")}/` })
-
 export default defineConfig({
   base: "/static/",
   publicDir: "public",

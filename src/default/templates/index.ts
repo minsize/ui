@@ -9,3 +9,5 @@ export { default as TextContext } from "./Text/context"
 export { default as Text, type Text as TypeText } from "./Text/Text"
 export { default as Around } from "./Around/Around"
 export { default as Gap } from "./Gap/Gap"
+export { default as GapContext } from "./Gap/context"
+export { default as Drag } from './Drag/Drag';
