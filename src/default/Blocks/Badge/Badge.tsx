@@ -3,10 +3,10 @@ import { Container, Icon } from "./addons"
 
 /* UI */
 import { type HTMLAttributes } from "@ui/Types"
-import useStyle from "@src/default/utils/useStyle"
-import Flex from "@src/default/Blocks/Flex/Flex"
-import Align from "@src/default/Templates/Align/Align"
-import TextContext from "@src/default/Templates/Text/context"
+import useStyle from "@ui/default/utils/useStyle"
+import Flex from "@ui/default/Blocks/Flex/Flex"
+import Align from "@ui/default/Templates/Align/Align"
+import TextContext from "@ui/default/Templates/Text/context"
 /* UI */
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"

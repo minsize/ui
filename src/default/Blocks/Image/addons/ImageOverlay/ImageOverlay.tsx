@@ -1,6 +1,6 @@
 import style from "./ImageOverlay.module.css"
 
-import Events, { type IEvents } from "@src/default/Templates/Events/Events"
+import Events, { type IEvents } from "@ui/default/Templates/Events/Events"
 
 import { type Component, splitProps, mergeProps } from "solid-js"
 

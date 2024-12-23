@@ -1,6 +1,6 @@
 import style from "./Icon.module.css"
 
-import Around from "@src/default/Templates/Around/Around"
+import Around from "@ui/default/Templates/Around/Around"
 
 import {
   type JSX,

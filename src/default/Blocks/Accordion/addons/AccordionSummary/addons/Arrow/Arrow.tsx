@@ -1,6 +1,6 @@
 import style from "./Arrow.module.css"
 
-import IconChevron from "@src/default/Icons/Chevron/Chevron"
+import IconChevron from "@ui/default/Icons/Chevron/Chevron"
 import { AccordionStore } from "../../../../context"
 
 import {

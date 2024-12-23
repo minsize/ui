@@ -1,7 +1,7 @@
 import style from "./Content.module.css"
 import { CellStore } from "../../context"
 
-import Show from "@src/default/Templates/Show/Show"
+import Show from "@ui/default/Templates/Show/Show"
 
 import {
   type JSX,

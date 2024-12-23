@@ -1,8 +1,8 @@
 import style from "./Picker.module.css"
 import { getPercentage, getPosition } from "./libs"
 
-import Touch, { type GestureEvent } from "@src/default/Templates/Touch/Touch"
-import Ratio from "@src/default/Templates/Ratio/Ratio"
+import Touch, { type GestureEvent } from "@ui/default/Templates/Touch/Touch"
+import Ratio from "@ui/default/Templates/Ratio/Ratio"
 
 import { type Component, type JSX, createEffect, splitProps } from "solid-js"
 import { createStore } from "solid-js/store"

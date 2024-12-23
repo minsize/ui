@@ -1,9 +1,9 @@
 import { styles, generateTypography } from "./styles"
 
 import { type HTMLAttributes } from "@ui/Types"
-import useStyle from "@src/default/utils/useStyle"
-import Flex from "@src/default/Blocks/Flex/Flex"
-import TextContext from "@src/default/Templates/Text/context"
+import useStyle from "@ui/default/utils/useStyle"
+import Flex from "@ui/default/Blocks/Flex/Flex"
+import TextContext from "@ui/default/Templates/Text/context"
 
 import { Action, Container, Icon } from "./addons"
 

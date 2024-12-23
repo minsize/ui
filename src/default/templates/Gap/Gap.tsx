@@ -1,7 +1,7 @@
 import style from "./Gap.module.css"
 import GapContext from "./context"
 
-import Flex, { type Flex as TypeFlex } from "@src/default/Blocks/Flex/Flex"
+import Flex, { type Flex as TypeFlex } from "@ui/default/Blocks/Flex/Flex"
 
 import {
   type ValidComponent,

@@ -1,62 +1,44 @@
 .Button {}
 
-/* Appearance */
-.Button__appearance--accent {
-  --button_background: var(--accent_color);
-  --button_title     : var(--accent_color--text);
-}
-
-.Button__appearance--primary {
-  --button_background: var(--primary_color);
-  --button_title     : var(--primary_color--text);
-}
-
-.Button__appearance--red {
-  --button_background: var(--red_color);
-  --button_title     : var(--red_color--text);
-}
-
-.Button__appearance--green {
-  --button_background: var(--green_color);
-  --button_title     : var(--green_color--text);
-}
-
-.Button__appearance--secondary {}
-
 /* Size */
-.Button__size--small {
+.Button__type--default.Button__size--small {
   --button__padding-horizontal: 12px;
   --button__padding-vertical  : 8px;
   --button__gap               : 4px;
   border-radius               : 20px;
 }
 
-.Button__size--medium {
+.Button__type--default.Button__size--medium {
   --button__padding-horizontal: 16px;
   --button__padding-vertical  : 12px;
   --button__gap               : 6px;
   border-radius               : 8px;
 }
 
-.Button__size--large {
+.Button__type--default.Button__size--large {
   --button__padding-horizontal: 12px;
   --button__padding-vertical  : 15px;
   --button__gap               : 8px;
   border-radius               : 8px;
 }
 
-/* Size */
-.Button__mode--filled {}
-
-.Button__mode--outline {
-  --button_title: var(--button_background);
+.Button__type--icon.Button__size--small {
+  --button__padding-horizontal: 4px;
+  --button__padding-vertical  : 4px;
+  --button__gap               : 4px;
+  border-radius               : 8px;
 }
 
-.Button__mode--outline>.Button__background {
-  background-color: transparent;
-  border          : solid 1px var(--button_background);
+.Button__type--icon.Button__size--medium {
+  --button__padding-horizontal: 6px;
+  --button__padding-vertical  : 6px;
+  --button__gap               : 6px;
+  border-radius               : 8px;
 }
 
-.Button__mode--merges>.Button__background {
-  opacity: var(--opacity_merges);
+.Button__type--icon.Button__size--large {
+  --button__padding-horizontal: 10px;
+  --button__padding-vertical  : 10px;
+  --button__gap               : 8px;
+  border-radius               : 8px;
 }

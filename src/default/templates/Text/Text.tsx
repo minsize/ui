@@ -1,8 +1,8 @@
 import { styles } from "./styles"
 
 import { type HTMLAttributes, type Platform, type TextObject } from "@ui/Types"
-import usePlatform from "@src/default/utils/usePlatform"
-import useStyle from "@src/default/utils/useStyle"
+import usePlatform from "@ui/default/utils/usePlatform"
+import useStyle from "@ui/default/utils/useStyle"
 
 import { type Component, mergeProps, splitProps } from "solid-js"
 

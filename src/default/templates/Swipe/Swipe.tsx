@@ -1,8 +1,8 @@
 import style from "./Swipe.module.css"
 
-import Align from "@src/default/Templates/Align/Align"
-import Touch from "@src/default/Templates/Touch/Touch"
-import useClickOutside from "@src/default/utils/useClickOutside"
+import Align from "@ui/default/Templates/Align/Align"
+import Touch from "@ui/default/Templates/Touch/Touch"
+import useClickOutside from "@ui/default/utils/useClickOutside"
 
 import {
   type Component,

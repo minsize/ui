@@ -1,9 +1,9 @@
 import { styles } from "./styles"
 
 import { type HTMLAttributes } from "@ui/Types"
-import useStyle from "@src/default/utils/useStyle"
-import usePlatform from "@src/default/utils/usePlatform"
-import LayoutManager from "@src/default/Templates/LayoutManager/LayoutManager"
+import useStyle from "@ui/default/utils/useStyle"
+import usePlatform from "@ui/default/utils/usePlatform"
+import LayoutManager from "@ui/default/Templates/LayoutManager/LayoutManager"
 
 import { type JSX, type Component, splitProps, createEffect } from "solid-js"
 

@@ -1,6 +1,6 @@
 import style from "./Header.module.css"
 
-import Text from "@src/default/Templates/Text/Text"
+import Text from "@ui/default/Templates/Text/Text"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 

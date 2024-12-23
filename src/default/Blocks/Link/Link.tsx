@@ -1,8 +1,8 @@
 import { styles } from "./styles"
 
 import { type Platform } from "@ui/Types"
-import Events, { type IEvents } from "@src/default/Templates/Events/Events"
-import useStyle from "@src/default/utils/useStyle"
+import Events, { type IEvents } from "@ui/default/Templates/Events/Events"
+import useStyle from "@ui/default/utils/useStyle"
 
 import { type JSX, mergeProps, splitProps, ValidComponent } from "solid-js"
 

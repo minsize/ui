@@ -11,6 +11,7 @@ import {
   createUniqueId,
   useContext,
   createEffect,
+  on,
 } from "solid-js"
 
 interface Drag extends Omit<JSX.HTMLAttributes<HTMLDivElement>, "onClick"> {
@@ -58,20 +59,27 @@ const Drag: ComponentDrag = (props) => {
 
   createEffect(() => {
     const drag = context?.getDrag(local.key)
-    console.log("edit", drag?.transform?.y)
+
     if (drag) {
       setStore(
         produce((store) => {
           store.isActive = drag.isActive
           store.isAnim = drag.isAnim || false
-          store.position.x = drag.position.x || 0
-          store.position.y = drag.position.y || 0
+
+          if (store.isActive) {
+            store.position.x = drag.position.x || 0
+            store.position.y = drag.position.y || 0
+          } else {
+            store.position.x = 0
+            store.position.y = drag.transform?.y || 0
+          }
 
           return store
         }),
       )
     }
   })
+
   return (
     <div
       ref={ref!}
@@ -85,9 +93,7 @@ const Drag: ComponentDrag = (props) => {
       }}
       {...others}
       style={{
-        transform: store.isActive
-          ? `translate(${store.position.x}px, ${store.position.y}px)`
-          : `translate(0px, ${context?.getTransform(local.key).y}px)`,
+        transform: `translate(${store.position.x}px, ${store.position.y}px)`,
       }}
     >
       <TouchContext.Provider

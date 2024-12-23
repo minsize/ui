@@ -1,25 +1,19 @@
-@import "./styles/iOS.module.css";
-@import "./styles/android.module.css";
-@import "./styles/windows.module.css";
-@import "./styles/macOS.module.css";
-@import "./styles/others.module.css";
-
 .Spinner {
-  display: flex;
-  transition: .4s;
+  display        : flex;
+  transition     : .4s;
   justify-content: center;
-  align-items: center;
+  align-items    : center;
 }
 
 .Spinner svg {
   animation: _SpinnerRotateDefault 2s linear infinite;
-  z-index: 2;
+  z-index  : 2;
 }
 
 .Spinner circle {
-  stroke: currentColor;
+  stroke        : currentColor;
   stroke-linecap: round;
-  animation: _SpinnerDashDefault 2s ease-in-out infinite;
+  animation     : _SpinnerDashDefault 2s ease-in-out infinite;
 }
 
 @keyframes _SpinnerRotateDefault {
@@ -30,17 +24,17 @@
 
 @keyframes _SpinnerDashDefault {
   0% {
-    stroke-dasharray: 1, 150;
+    stroke-dasharray : 1, 150;
     stroke-dashoffset: 0;
   }
 
   50% {
-    stroke-dasharray: 90, 150;
+    stroke-dasharray : 90, 150;
     stroke-dashoffset: -35;
   }
 
   100% {
-    stroke-dasharray: 90, 150;
+    stroke-dasharray : 90, 150;
     stroke-dashoffset: -124;
   }
 }
@@ -59,4 +53,8 @@
 /* Colors */
 .Spinner__color--secondary svg {
   color: var(--secondary_bg_color);
+}
+
+.Spinner__color--inherit svg {
+  color: inherit;
 }

@@ -2,8 +2,8 @@ import style from "./Container.module.css"
 import Separator from "../Separator/Separator"
 import { CellStore } from "../../context"
 
-import Align from "@src/default/Templates/Align/Align"
-import Show from "@src/default/Templates/Show/Show"
+import Align from "@ui/default/Templates/Align/Align"
+import Show from "@ui/default/Templates/Show/Show"
 
 import {
   type JSX,

@@ -1,7 +1,7 @@
 import style from "./Grid.module.css"
 import { generateColor } from "./libs"
 
-import Ratio from "@src/default/Templates/Ratio/Ratio"
+import Ratio from "@ui/default/Templates/Ratio/Ratio"
 
 import { type Component, For, type JSX, splitProps } from "solid-js"
 

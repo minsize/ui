@@ -65,3 +65,13 @@
 .Flex--reverse.Flex__direction--column {
   flex-direction: column-reverse;
 }
+
+/* Height */
+.Flex__height--full {
+  height: 100%;
+}
+
+/* Width */
+.Flex__width--full {
+  width: 100%;
+}

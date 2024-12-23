@@ -7,7 +7,7 @@
   --bg_selected        : #1d2936;
   --bg_color           : #000000;
 
-  --section_bg_color: #1d2a36;
+  --section_bg_color: #0D0E0F;
 
   --bg_layout_shadow: black;
 
@@ -23,6 +23,9 @@
   --accent_color--text : #FFFFFF;
   --red_color          : #b80000;
   --red_color--text    : #FFFFFF;
+
+  --secondary_color      : #14161A;
+  --secondary_color--text: #ffffff;
 
   --green_color      : #0cb800;
   --green_color--text: #FFFFFF;

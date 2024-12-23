@@ -1,5 +1,5 @@
 import style from "./Before.module.css"
-import { Show } from "@src/default/Templates"
+import Show from "root/ui/default/Templates/Show/Show"
 
 import { type JSX, type Component, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"

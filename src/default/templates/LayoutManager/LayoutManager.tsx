@@ -2,7 +2,7 @@ import style from "./LayoutManager.module.css"
 import { First, Last } from "./addons"
 
 import { LayoutManagerStore } from "./context"
-import toArray from "@src/default/utils/toArray"
+import toArray from "@ui/default/utils/toArray"
 
 import {
   type JSX,

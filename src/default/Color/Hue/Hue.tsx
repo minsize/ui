@@ -1,6 +1,6 @@
 import style from "./Hue.module.css"
 
-import Touch, { type GestureEvent } from "@src/default/Templates/Touch/Touch"
+import Touch, { type GestureEvent } from "@ui/default/Templates/Touch/Touch"
 
 import { type JSX, type Component, createEffect } from "solid-js"
 

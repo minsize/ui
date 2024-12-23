@@ -1,7 +1,7 @@
 import style from "./CheckBox.module.css"
 
-import Events from "@src/default/Templates/Events/Events"
-import IconCheck from "@src/default/Icons/Check.svg"
+import Events from "@ui/default/Templates/Events/Events"
+import IconCheck from "@ui/default/Icons/Check.svg"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 

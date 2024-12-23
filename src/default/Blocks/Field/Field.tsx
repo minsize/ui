@@ -2,7 +2,7 @@ import { styles } from "./styles"
 import { Textarea } from "./addons"
 
 import { type HTMLAttributes } from "@ui/Types"
-import useStyle from "@src/default/utils/useStyle"
+import useStyle from "@ui/default/utils/useStyle"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 

@@ -3,7 +3,7 @@ import { AccordionStore } from "../../context"
 import { Arrow } from "./addons"
 
 import { type HTMLAttributes } from "@ui/Types"
-import Cell from "@src/default/Blocks/Cell/Cell"
+import Cell from "@ui/default/Blocks/Cell/Cell"
 
 import {
   type JSX,

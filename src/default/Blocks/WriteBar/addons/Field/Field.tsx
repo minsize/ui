@@ -1,8 +1,8 @@
 import { styles } from "./styles"
 
 import { type HTMLAttributes } from "@ui/Types"
-import ElField from "@src/default/Blocks/Field/Field"
-import useStyle from "@src/default/utils/useStyle"
+import ElField from "@ui/default/Blocks/Field/Field"
+import useStyle from "@ui/default/utils/useStyle"
 
 import { type Component, createEffect, mergeProps, splitProps } from "solid-js"
 

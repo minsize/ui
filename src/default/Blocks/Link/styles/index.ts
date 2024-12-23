@@ -1,5 +1,5 @@
 /* UI */
-import createStyle from "@src/default/utils/createStyle"
+import createStyle from "@ui/default/utils/createStyle"
 /* UI */
 
 import styleDefault from "../Link.module.css"

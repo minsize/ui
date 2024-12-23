@@ -1,6 +1,6 @@
 import style from "./Radio.module.css"
 
-import Events from "@src/default/Templates/Events/Events"
+import Events from "@ui/default/Templates/Events/Events"
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 

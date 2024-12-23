@@ -1,8 +1,8 @@
 import style from "./Title.module.css"
 
 import { type TextProps } from "@ui/Types"
-import Text, { type Text as TypeText } from "@src/default/Templates/Text/Text"
-import TextContext from "@src/default/Templates/Text/context"
+import Text, { type Text as TypeText } from "@ui/default/Templates/Text/Text"
+import TextContext from "@ui/default/Templates/Text/context"
 
 import { type Component, mergeProps, splitProps, useContext } from "solid-js"
 

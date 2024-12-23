@@ -1,5 +1,5 @@
 import style from "./Container.module.css"
-import Flex from "@src/default/Blocks/Flex/Flex"
+import Flex from "@ui/default/Blocks/Flex/Flex"
 
 import { type JSX, type Component, mergeProps, splitProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"

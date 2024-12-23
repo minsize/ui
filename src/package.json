@@ -4,6 +4,9 @@
     "description": "Library of UI components for solidJS",
     "license": "MIT",
     "types": "index.ts",
+    "sideEffects": [
+        "./index.ts"
+    ],
     "author": {
         "name": "Egor Kytyukov",
         "url": "https://t.me/xuserz"

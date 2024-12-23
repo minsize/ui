@@ -2,8 +2,8 @@ import { styles } from "./styles"
 import { Container } from "./addons"
 
 import { type Platform } from "@ui/Types"
-import useStyle from "@src/default/utils/useStyle"
-import Flex, { type Flex as TypeFlex } from "@src/default/Blocks/Flex/Flex"
+import useStyle from "@ui/default/utils/useStyle"
+import Flex, { type Flex as TypeFlex } from "@ui/default/Blocks/Flex/Flex"
 
 import {
   type ValidComponent,

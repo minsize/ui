@@ -1,6 +1,6 @@
 /* UI */
 import { type TextProps } from "@ui/Types"
-import createStyle from "@src/default/utils/createStyle"
+import createStyle from "@ui/default/utils/createStyle"
 /* UI */
 
 import styleDefault from "../Plug.module.css"

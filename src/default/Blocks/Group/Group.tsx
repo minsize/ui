@@ -3,7 +3,7 @@ import { Container } from "./addons"
 import { Footer, Header } from "./Fonts"
 
 import { type HTMLAttributes } from "@ui/Types"
-import useStyle from "@src/default/utils/useStyle"
+import useStyle from "@ui/default/utils/useStyle"
 
 import { type Component, mergeProps, splitProps } from "solid-js"
 

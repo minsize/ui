@@ -1,26 +1,39 @@
-import style from "./Spinner.module.css"
+import { styles } from "./styles"
 
-import renameSize from "@src/default/utils/renameSize"
+import { type HTMLAttributes } from "@ui/Types"
+import renameSize from "@ui/default/utils/renameSize"
+import useStyle from "@ui/default/utils/useStyle"
 
-import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
+import { type Component, splitProps, mergeProps } from "solid-js"
 
-interface Spinner extends JSX.HTMLAttributes<HTMLDivElement> {
+interface Spinner extends HTMLAttributes<HTMLDivElement> {
   size?: "small" | "regular" | "large" | "medium" | "auto"
-  color?: "secondary"
+  color?: "secondary" | "inherit"
 }
 
 const Spinner: Component<Spinner> = (props) => {
+  const style = useStyle(styles, props.platform)
+
   const merged = mergeProps(
     { size: "regular", color: "secondary" },
     props,
   ) as Spinner
-  const [local, others] = splitProps(merged, ["size", "color"])
+  const [local, others] = splitProps(merged, [
+    "platform",
+    "size",
+    "color",
+    "class",
+    "classList",
+  ])
 
   return (
     <div
       class={style.Spinner}
       classList={{
-        [style[`Spinner__size--${renameSize(local.size)}`]]: !!local.size,
+        [`${local.class}`]: !!local.class,
+        ...local.classList,
+
+        [style[`Spinner__size--${local.size}`]]: !!local.size,
         [style[`Spinner__color--${local.color}`]]: !!local.color,
       }}
       {...others}

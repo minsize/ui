@@ -1,8 +1,8 @@
 import style from "./Separator.module.css"
 
 import { CellStore } from "../../context"
-import ElSeparator from "@src/default/Blocks/Separator/Separator"
-import Show from "@src/default/Templates/Show/Show"
+import ElSeparator from "@ui/default/Blocks/Separator/Separator"
+import Show from "@ui/default/Templates/Show/Show"
 
 import {
   type JSX,

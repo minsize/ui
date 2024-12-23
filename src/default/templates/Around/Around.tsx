@@ -1,6 +1,6 @@
 import style from "./Around.module.css"
 
-import Flex, { type Flex as TypeFlex } from "@src/default/Blocks/Flex/Flex"
+import Flex, { type Flex as TypeFlex } from "@ui/default/Blocks/Flex/Flex"
 
 import {
   type ValidComponent,

@@ -1,3 +1,7 @@
+.Text {
+  display: block;
+}
+
 /* Color */
 .Text__color--accent {
   color: var(--accent_color);

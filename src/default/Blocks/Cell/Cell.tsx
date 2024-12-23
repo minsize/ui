@@ -11,22 +11,21 @@ import {
 /* UI */
 import { type HTMLAttributes } from "@ui/Types"
 
-import Flex from "@src/default/Blocks/Flex/Flex"
+import { Events, Align, usePlatform, useStyle, TextContext } from "@ui/index"
 
-import Events from "@src/default/Templates/Events/Events"
-import Align from "@src/default/Templates/Align/Align"
-import Show from "@src/default/Templates/Show/Show"
+// import Events from "@ui/default/Templates/Events/Events"
+// import Align from "@ui/default/Templates/Align/Align"
 
-import usePlatform from "@src/default/utils/usePlatform"
-import useStyle from "@src/default/utils/useStyle"
-import TextContext from "@src/default/Templates/Text/context"
+// import usePlatform from "@ui/default/utils/usePlatform"
+// import useStyle from "@ui/default/utils/useStyle"
+// import TextContext from "@ui/default/Templates/Text/context"
 /* UI */
 
 import { type JSX, type Component, splitProps, mergeProps } from "solid-js"
 import { type DynamicProps } from "solid-js/web"
 import { CellStore } from "./context"
 
-interface Cell extends Omit<HTMLAttributes<DynamicProps<"article">>, "title"> {
+interface Cell extends HTMLAttributes<DynamicProps<"article">> {
   /**
    * Заголовок ячейки.
    * Рекомендуем использовать компонент: `Title`

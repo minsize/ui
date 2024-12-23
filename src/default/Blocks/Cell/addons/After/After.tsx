@@ -1,10 +1,10 @@
 import style from "./Before.module.css"
 import { CellStore } from "../../context"
 
-import Align from "@src/default/Templates/Align/Align"
-import Flex from "@src/default/Blocks/Flex/Flex"
-import GapContext from "@src/default/Templates/Gap/context"
-import generateGap from "@src/default/utils/generateGap"
+import Align from "@ui/default/Templates/Align/Align"
+import Flex from "@ui/default/Blocks/Flex/Flex"
+import GapContext from "@ui/default/Templates/Gap/context"
+import generateGap from "@ui/default/utils/generateGap"
 
 import {
   type JSX,

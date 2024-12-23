@@ -1,5 +1,5 @@
 import { type TextProps } from "@ui/Types"
-import createStyle from "@src/default/utils/createStyle"
+import createStyle from "@ui/default/utils/createStyle"
 
 import styleDefault from "../Group.module.css"
 import iOS from "./iOS.module.css"

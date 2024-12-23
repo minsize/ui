@@ -32,6 +32,10 @@ export interface Flex<T extends ValidComponent>
    * Определяет, должен ли порядок элементов быть обратный.
    */
   reverse?: boolean
+
+  height?: "full"
+
+  width?: "full"
 }
 
 const Flex = <T extends ValidComponent>(props: Flex<T>) => {
@@ -52,6 +56,8 @@ const Flex = <T extends ValidComponent>(props: Flex<T>) => {
     "justifyContent",
     "direction",
     "reverse",
+    "height",
+    "width",
   ])
 
   return (
@@ -61,6 +67,8 @@ const Flex = <T extends ValidComponent>(props: Flex<T>) => {
         [`${local.class}`]: !!local.class,
         ...local.classList,
 
+        [style[`Flex__width--${local.width}`]]: !!local.width,
+        [style[`Flex__height--${local.height}`]]: !!local.height,
         [style[`Flex__alignItems--${local.alignItems}`]]: !!local.alignItems,
         [style[`Flex__justifyContent--${local.justifyContent}`]]:
           !!local.justifyContent,
